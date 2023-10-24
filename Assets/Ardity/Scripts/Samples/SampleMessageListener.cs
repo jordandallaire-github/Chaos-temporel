@@ -66,13 +66,13 @@ public class SampleMessageListener : MonoBehaviour
             joystickG.value = conversionG;
 
             // // Rotate around the Y-axis at a speed proportional to the rotation value.
-            // cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
+            cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
 
             // // Move forward or backward at a speed proportional to the movement value.
             // cube.transform.Translate(0, 0, movement * 5 * Time.deltaTime);
 
             // Rotate around the Y-axis at a speed proportional to the rotation value.
-            joueurRb.angularVelocity = new Vector3(0, rotation * 50, 0);
+            // joueurRb.angularVelocity = new Vector3(0, rotation * 50, 0);
 
             // Move forward or backward at a speed proportional to the movement value.
             joueurRb.velocity = cube.transform.forward * movement * 5;
