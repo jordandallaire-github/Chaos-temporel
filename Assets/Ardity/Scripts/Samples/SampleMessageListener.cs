@@ -19,10 +19,20 @@ using System;
 public class SampleMessageListener : MonoBehaviour
 {
     public GameObject cube;
+    
+    private Rigidbody joueurRb;
+
     public Slider joystickG;
     public Slider joystickD;
     private float batonG;
     private float batonD;
+
+
+
+     void Start()
+    {
+        joueurRb = cube.GetComponent<Rigidbody>();
+    }
 
     // Invoked when a line of data is received from the serial device.
     void OnMessageArrived(string msg)
@@ -55,11 +65,17 @@ public class SampleMessageListener : MonoBehaviour
             joystickD.value = conversionD;
             joystickG.value = conversionG;
 
+            // // Rotate around the Y-axis at a speed proportional to the rotation value.
+            // cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
+
+            // // Move forward or backward at a speed proportional to the movement value.
+            // cube.transform.Translate(0, 0, movement * 5 * Time.deltaTime);
+
             // Rotate around the Y-axis at a speed proportional to the rotation value.
-            cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
+            joueurRb.angularVelocity = new Vector3(0, rotation * 50, 0);
 
             // Move forward or backward at a speed proportional to the movement value.
-            cube.transform.Translate(0, 0, movement * 5 * Time.deltaTime);
+            joueurRb.velocity = cube.transform.forward * movement * 5;
 
 
             Debug.Log("rotation: " + rotation);
