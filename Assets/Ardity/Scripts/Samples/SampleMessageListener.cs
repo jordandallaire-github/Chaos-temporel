@@ -22,6 +22,7 @@ public class SampleMessageListener : MonoBehaviour
     public float speed = 0.1f;
     public float maxSpeed = 10f; // Adjust this value to set the maximum speed
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
+    public float rotationSpeed = 0.1f;
     
     private Rigidbody joueurRb;
 
@@ -69,18 +70,18 @@ public class SampleMessageListener : MonoBehaviour
             joystickG.value = conversionG;
 
             // // Rotate around the Y-axis at a speed proportional to the rotation value.
-            cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
+            // cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
 
             // // Move forward or backward at a speed proportional to the movement value.
             // cube.transform.Translate(0, 0, movement * 5 * Time.deltaTime);
 
             // Rotate around the Y-axis at a speed proportional to the rotation value.
-            // joueurRb.angularVelocity = new Vector3(0, rotation * 50, 0);
+            joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
             // Move forward or backward at a speed proportional to the movement value.
             // joueurRb.velocity = cube.transform.forward * movement * 5;float speed = 0.1f; // Adjust this value to get the desired speed
             // Apply force to the Rigidbody
-            joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
+            joueurRb.AddForce(cube.transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
             
             // Clamp the Rigidbody's speed to the maximum speed
             if (joueurRb.velocity.magnitude > maxSpeed)
