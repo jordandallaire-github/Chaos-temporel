@@ -19,6 +19,9 @@ using System;
 public class SampleMessageListener : MonoBehaviour
 {
     public GameObject cube;
+    public float speed = 0.1f;
+    public float maxSpeed = 10f; // Adjust this value to set the maximum speed
+    public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     
     private Rigidbody joueurRb;
 
@@ -75,8 +78,22 @@ public class SampleMessageListener : MonoBehaviour
             // joueurRb.angularVelocity = new Vector3(0, rotation * 50, 0);
 
             // Move forward or backward at a speed proportional to the movement value.
-            // joueurRb.velocity = cube.transform.forward * movement * 5;
-            joueurRb.AddRelativeForce(cube.transform.forward * movement * 4);
+            // joueurRb.velocity = cube.transform.forward * movement * 5;float speed = 0.1f; // Adjust this value to get the desired speed
+            // Apply force to the Rigidbody
+            joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
+            
+            // Clamp the Rigidbody's speed to the maximum speed
+            if (joueurRb.velocity.magnitude > maxSpeed)
+            {
+                joueurRb.velocity = joueurRb.velocity.normalized * maxSpeed;
+            }
+            
+            // Apply a braking force when the movement value is close to zero
+            if (Mathf.Abs(movement) < 0.1f)
+            {
+                joueurRb.velocity = Vector3.Lerp(joueurRb.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+            }
+            joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
 
 
             Debug.Log("rotation: " + rotation);
