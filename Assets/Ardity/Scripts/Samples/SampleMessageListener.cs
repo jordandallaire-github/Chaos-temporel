@@ -75,7 +75,8 @@ public class SampleMessageListener : MonoBehaviour
             // joueurRb.angularVelocity = new Vector3(0, rotation * 50, 0);
 
             // Move forward or backward at a speed proportional to the movement value.
-            joueurRb.velocity = cube.transform.forward * movement * 5;
+            // joueurRb.velocity = cube.transform.forward * movement * 5;
+            joueurRb.AddRelativeForce(cube.transform.forward * movement * 4);
 
 
             Debug.Log("rotation: " + rotation);
