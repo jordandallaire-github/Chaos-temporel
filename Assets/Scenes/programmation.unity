@@ -939,13 +939,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 705845978}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 9.661125, y: 7.0048094, z: 9.852868}
-  m_Center: {x: 0.21973515, y: -1.0024047, z: -0.10623407}
-  m_Area: 0
-  m_AffectedAgents: ffffffff
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 1
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: ec34c0370dddc6642b9a7bce7509ee27, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &782859511
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782859511}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 
@@ -1160,7 +1175,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.21390367, y: 0.000000018792065, z: -0.000000004114933, w: 0.9768548}
+  m_LocalRotation: {x: 0.21390367, y: -0.000000018792061, z: 0.000000004114932, w: 0.9768548}
   m_LocalPosition: {x: 0, y: 5.02, z: -6.5299997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1939,7 +1954,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087961406}
-  m_LocalRotation: {x: 0.21390367, y: 0.000000018792065, z: -0.000000004114933, w: 0.9768548}
+  m_LocalRotation: {x: 0.21390367, y: -0.000000018792061, z: 0.000000004114932, w: 0.9768548}
   m_LocalPosition: {x: 0, y: 5.02, z: -6.5299997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2074,7 +2089,7 @@ GameObject:
   - component: {fileID: 823572706}
   m_Layer: 0
   m_Name: Car2.0
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2398,6 +2413,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 969853731}
+  detectionRange: 20
+  speed: 8
+  rotationSpeed: 1.5
+  maxSpeed: 10
+  brakeSpeed: 2
 --- !u!195 &2917137820113065092
 NavMeshAgent:
   m_ObjectHideFlags: 0
