@@ -24,7 +24,7 @@ public class VoitureJoueur : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Adversaire")
             {
 
                 Rigidbody autreRb = collision.rigidbody;
