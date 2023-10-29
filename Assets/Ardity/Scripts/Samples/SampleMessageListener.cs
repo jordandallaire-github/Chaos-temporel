@@ -97,8 +97,8 @@ public class SampleMessageListener : MonoBehaviour
             joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
 
 
-            Debug.Log("rotation: " + rotation);
-            Debug.Log("mouvement: " + movement);
+            //Debug.Log("rotation: " + rotation);
+            //Debug.Log("mouvement: " + movement);
 
     }
 
