@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299392523}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a03027548d784348a5d2b1fbe819cfa, type: 3}
   m_Name: 
@@ -1377,12 +1377,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782859511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: ACM0
+  portName: COM3
   baudRate: 9600
   messageListener: {fileID: 299392523}
   reconnectionDelay: 1000
@@ -1672,7 +1672,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.21390367, y: -0.000000018792061, z: 0.000000004114932, w: 0.9768548}
+  m_LocalRotation: {x: 0.21390367, y: 0.000000018792067, z: -0.0000000041149333, w: 0.9768548}
   m_LocalPosition: {x: -27.6, y: 5.02, z: -265.59998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3101,7 +3101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087961406}
-  m_LocalRotation: {x: 0.21390367, y: -0.000000018792061, z: 0.000000004114932, w: 0.9768548}
+  m_LocalRotation: {x: 0.21390367, y: 0.000000018792067, z: -0.0000000041149333, w: 0.9768548}
   m_LocalPosition: {x: -27.6, y: 5.02, z: -265.59998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3235,6 +3235,7 @@ GameObject:
   - component: {fileID: 823572707}
   - component: {fileID: 823572706}
   - component: {fileID: 919132148026489577}
+  - component: {fileID: 919132148026489578}
   m_Layer: 0
   m_Name: Car2.0
   m_TagString: Player
@@ -3258,6 +3259,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &919132148026489578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148026489576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27b6d439955aed4393f19859aee8826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repoussement: 3000
+  isOnGround: 0
 --- !u!4 &924906679078997094
 Transform:
   m_ObjectHideFlags: 0
@@ -3437,6 +3452,7 @@ GameObject:
   - component: {fileID: 2917137820113065090}
   - component: {fileID: 2917137820113065091}
   - component: {fileID: 2917137820113065092}
+  - component: {fileID: 2917137820113065093}
   m_Layer: 0
   m_Name: Car
   m_TagString: Adversaire
@@ -3604,6 +3620,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2917137820113065093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535546144424070714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27b6d439955aed4393f19859aee8826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repoussement: 3000
+  isOnGround: 0
 --- !u!4 &2924859671704416622
 Transform:
   m_ObjectHideFlags: 0
