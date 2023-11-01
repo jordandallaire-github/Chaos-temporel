@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Adversaire
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

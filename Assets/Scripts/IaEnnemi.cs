@@ -15,33 +15,19 @@ public class IaEnnemi : MonoBehaviour {
     public Transform[] checkpoints;
 
 
+
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        agent.stoppingDistance = 0f; // Make the AI reach exactly its destination
         GoToNextCheckpoint();
         agent.speed = speed;
+        
     }
 
     void Update () {
 
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-        {
-            GoToNextCheckpoint();
-        }
-
-
-        // On récupère la direction vers la cible
-        Vector3 directionToTarget = (checkpoints[currentCheckpointIndex].position - transform.position).normalized;
-            
-        // On calcule la rotation nécessaire pour faire face à la cible
-        float rotationToTarget = Vector3.SignedAngle(transform.forward, directionToTarget, Vector3.up);
-            
-        // On applique la rotation à l'IA si la rotation est active
-            rb.angularVelocity = new Vector3(0, rotationToTarget * rotationSpeed, 0);
-
-        // On déplace l'IA vers la cible si le mouvement est actif
-            rb.AddForce(directionToTarget * speed, ForceMode.VelocityChange);
-
+        
             // Limite la vitesse maximale
             if (rb.velocity.magnitude > maxSpeed)
             {
@@ -55,11 +41,17 @@ public class IaEnnemi : MonoBehaviour {
             }
     }
 
+       void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("Checkpoint")) {
+            GoToNextCheckpoint();
+        }
+    }
+
         void GoToNextCheckpoint()
     {
         if (currentCheckpointIndex >= checkpoints.Length)
         {
-            currentCheckpointIndex = 0;
+            return;
         }
 
         agent.SetDestination(checkpoints[currentCheckpointIndex].position);
