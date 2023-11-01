@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RaceTrack : MonoBehaviour
+public class CheckpointPiste : MonoBehaviour
 {
     public Transform[] checkpointPositions;
     public float checkpointXLimit = 10f;
