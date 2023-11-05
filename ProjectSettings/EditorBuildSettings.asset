@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MapProgrammationCutscene.unity
+    guid: 1fd03e1b8f3a91446b1c614dc31af8e6
+  - enabled: 1
+    path: Assets/Scenes/MapProgrammation.unity
+    guid: ecda108ae70ce094e82d2407059fdf1d
   m_configObjects: {}
