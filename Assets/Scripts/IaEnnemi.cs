@@ -10,7 +10,9 @@ public class IaEnnemi : MonoBehaviour {
     public float maxSpeed = 10f; // Vitesse maximale
     public float brakeSpeed = 2f; // Vitesse de freinage
 
-    private int currentCheckpointIndex = 0; 
+    private bool hasReachedEnd = false;
+
+    private int currentCheckpointIndex = -1; 
 
     public Transform[] checkpoints;
 
@@ -26,7 +28,14 @@ public class IaEnnemi : MonoBehaviour {
     }
 
     void Update () {
-
+        
+            // Si l'IA n'a pas atteint la fin
+            if (!hasReachedEnd) {
+                NavMeshPath path = new NavMeshPath();
+                if (NavMesh.CalculatePath(transform.position, checkpoints[currentCheckpointIndex % checkpoints.Length].position, NavMesh.AllAreas, path)) {
+                    agent.SetPath(path);
+                }
+            }
         
             // Limite la vitesse maximale
             if (rb.velocity.magnitude > maxSpeed)
@@ -47,15 +56,15 @@ public class IaEnnemi : MonoBehaviour {
         }
     }
 
-        void GoToNextCheckpoint()
-    {
-        if (currentCheckpointIndex >= checkpoints.Length)
-        {
-            return;
-        }
+        void GoToNextCheckpoint() {
+            currentCheckpointIndex++;
 
-        agent.SetDestination(checkpoints[currentCheckpointIndex].position);
-        currentCheckpointIndex++;
-    }
+            if (currentCheckpointIndex < checkpoints.Length) {
+                // Définir la destination de l'IA sur la position du prochain checkpoint
+                agent.SetDestination(checkpoints[currentCheckpointIndex].position);
+            } else {
+                hasReachedEnd = true;
+            }
+        }
  }
 

@@ -320,7 +320,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299392523}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a03027548d784348a5d2b1fbe819cfa, type: 3}
   m_Name: 
@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782859511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bc5f48af2cffd747a079fe8c632e2c8, type: 3}
   m_Name: 
@@ -4067,7 +4067,7 @@ MonoBehaviour:
   detectionRange: 20
   speed: 8
   rotationSpeed: 1.5
-  maxSpeed: 10
+  maxSpeed: 50
   brakeSpeed: 2
   checkpoints:
   - {fileID: 1221259042}
