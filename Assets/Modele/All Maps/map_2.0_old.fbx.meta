@@ -3,27 +3,7 @@ guid: 97a6d2456ff6a664294352e888064b46
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Asphalt.001
-    second: {fileID: 2100000, guid: 1f48e3261a2e35841be54827c32d28ac, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Concrete 1.003
-    second: {fileID: 2100000, guid: c64ac2b43c3fbb949aa11c7822f12874, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Hurricane Wire Fence.003
-    second: {fileID: 2100000, guid: c68e4a8abb4dd424fa649a6e4cbe46ef, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rough white metal.003
-    second: {fileID: 2100000, guid: 3c44bfc968adc57489f3d70df9226d50, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
