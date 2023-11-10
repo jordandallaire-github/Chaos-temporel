@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1207c74477ac82438b7b6653122f393, type: 3}
   m_Name: BuffVitesse
   m_EditorClassIdentifier: 
-  vitesse: 0
+  cooldown: 3
+  vitesse: 0.5
