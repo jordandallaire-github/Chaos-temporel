@@ -19,10 +19,15 @@ using System;
 public class SampleMessageListener : MonoBehaviour
 {
     public GameObject cube;
+
+    public PowerUpsEffets currentPowerUp;
     public float speed = 0.1f;
     public float maxSpeed = 10f; // Adjust this value to set the maximum speed
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     public float rotationSpeed = 0.1f;
+
+    public bool hasPowerUp = false;
+    public GameObject arduino;
 
     private Rigidbody joueurRb;
 
@@ -33,6 +38,7 @@ public class SampleMessageListener : MonoBehaviour
     private float batonG;
     private float batonD;
     private int btnValue;
+    public bool isButtonPressed = false;
 
 
 
@@ -73,6 +79,31 @@ public class SampleMessageListener : MonoBehaviour
             joystickD.value = conversionD;
             joystickG.value = conversionG;
 
+            isButtonPressed = (btnValue == 1);
+
+            if (isButtonPressed)
+            {
+                if (hasPowerUp)
+                {
+                    // Vérifier si le power-up est en cooldown
+                    if (currentPowerUp != null )
+                    {
+                        // Activer le power-up actuel sur l'objet cible
+                        currentPowerUp.Appliquer(arduino);
+                        // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
+                        StartCoroutine(DesactiverPowerUp());
+                    }
+                    else
+                    {
+                        // Le power-up est en cooldown, ne rien faire
+                    }
+                }
+                else
+                {
+                    // Le joueur n'a pas de power-up actuellement
+                }
+            }
+
             // // Rotate around the Y-axis at a speed proportional to the rotation value.
             // cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
 
@@ -106,9 +137,25 @@ public class SampleMessageListener : MonoBehaviour
                 //Debug.Log("rotation: " + rotation);
                 //Debug.Log("mouvement: " + movement);
                 
-            }
+            }   
 
 
+    }
+
+    IEnumerator DesactiverPowerUp()
+    {
+        yield return new WaitForSeconds(currentPowerUp.cooldown);
+        
+        // Vérifier si currentPowerUp et powerUpTarget sont définis avant de les utiliser
+        if (currentPowerUp != null && arduino != null)
+        {
+            // Désactiver le power-up
+            currentPowerUp.Desactiver(arduino);
+            // Réinitialiser l'état du power-up
+            hasPowerUp = false;
+            currentPowerUp = null;
+            arduino = null;
+        }
     }
 
 }

@@ -5,16 +5,25 @@ using UnityEngine;
 public class CollisionPowerUps : MonoBehaviour
 {
     public PowerUpsEffets powerUpsEffets;
+    public SampleMessageListener messageListener;
 
     public GameObject arduino;
 
-    void Start(){
-        arduino = arduino.GetComponent<SampleMessageListener>();
-    }
-
-    private void OntriggerEnter(Collider col){
+    private void OnTriggerEnter(Collider col)
+    {
         Destroy(gameObject);
-        powerUpsEffets.Appliquer(col, arduino);
+
+        if (!messageListener.hasPowerUp)
+        {
+            // Stocker le power-up
+            messageListener.hasPowerUp = true;
+            messageListener.currentPowerUp = powerUpsEffets;
+            messageListener.arduino = arduino;
+        }
+        else
+        {
+            // Le joueur a déjà un power-up, détruire le power-up sans prendre l'effet
+        }
     }
 
 }

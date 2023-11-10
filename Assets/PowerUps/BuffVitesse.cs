@@ -11,4 +11,9 @@ public class BuffVitesse : PowerUpsEffets
     public override void Appliquer(GameObject cible){
         cible.GetComponent<SampleMessageListener>().speed += vitesse;
     }
+
+    public override void Desactiver(GameObject cible)
+    {
+        cible.GetComponent<SampleMessageListener>().speed -= vitesse;
+    }
 }
