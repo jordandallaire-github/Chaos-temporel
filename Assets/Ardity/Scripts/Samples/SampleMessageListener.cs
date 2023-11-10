@@ -32,6 +32,7 @@ public class SampleMessageListener : MonoBehaviour
     public Slider joystickD;
     private float batonG;
     private float batonD;
+    private int btnValue;
 
 
 
@@ -46,8 +47,8 @@ public class SampleMessageListener : MonoBehaviour
     {
         string[] valeurs = msg.Split(char.Parse(";"));
         batonG = float.Parse(valeurs[0]); 
-        batonD = float.Parse(valeurs[1]); 
-
+        batonD = float.Parse(valeurs[1]);
+        btnValue = int.Parse(valeurs[2]);
 
     }
 
@@ -102,8 +103,8 @@ public class SampleMessageListener : MonoBehaviour
                 joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
 
 
-                //Debug.Log("rotation: " + rotation);
-                //Debug.Log("mouvement: " + movement);
+                Debug.Log("rotation: " + rotation);
+                Debug.Log("mouvement: " + movement);
                 
             }
 
