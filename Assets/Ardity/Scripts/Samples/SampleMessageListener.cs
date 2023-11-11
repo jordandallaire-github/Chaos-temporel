@@ -21,7 +21,8 @@ public class SampleMessageListener : MonoBehaviour
     public GameObject cube;
 
     public PowerUpsEffets currentPowerUp;
-    public float speed = 0.1f;
+    public float speed = 1f;
+    private float originalSpeed = 1f;
     public float maxSpeed = 10f; // Adjust this value to set the maximum speed
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     public float rotationSpeed = 0.1f;
@@ -90,6 +91,10 @@ public class SampleMessageListener : MonoBehaviour
                     {
                         // Activer le power-up actuel sur l'objet cible
                         currentPowerUp.Appliquer(arduino);
+
+                        if (speed >= maxSpeed){
+                            speed = maxSpeed;
+                        }
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
                         StartCoroutine(DesactiverPowerUp());
                     }
@@ -151,6 +156,8 @@ public class SampleMessageListener : MonoBehaviour
         {
             // Désactiver le power-up
             currentPowerUp.Desactiver(arduino);
+
+            speed = originalSpeed;
             // Réinitialiser l'état du power-up
             hasPowerUp = false;
             currentPowerUp = null;

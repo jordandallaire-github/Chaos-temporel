@@ -1,13 +1,17 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.AI;
 
 public class IaEnnemi : MonoBehaviour {
     private NavMeshAgent agent;
     private Rigidbody rb;
+    public PowerUpsEffets currentPowerUp;
+    public bool hasPowerUp = false;
     public float detectionRange = 10f; // Ajustez cette valeur en fonction de votre jeu
-    public float speed = 8f; // Vitesse initiale
+    public float speed = 15f; // Vitesse initiale
+    private float originalSpeed = 15f;
     public float rotationSpeed = 0.1f;
-    public float maxSpeed = 10f; // Vitesse maximale
+    public float maxSpeed = 20f; // Vitesse maximale
     public float brakeSpeed = 2f; // Vitesse de freinage
 
     private bool hasReachedEnd = false;
@@ -48,6 +52,30 @@ public class IaEnnemi : MonoBehaviour {
             {
                 rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
             }
+
+            if (hasPowerUp)
+            {
+                // Vérifier si le power-up est en cooldown
+                 if (currentPowerUp != null )
+                {
+                    // Activer le power-up actuel sur l'objet cible
+                    currentPowerUp.Appliquer(this.gameObject);
+
+                    if (speed >= maxSpeed){
+                         speed = maxSpeed;
+                    }
+                    // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
+                    StartCoroutine(DesactiverPowerUp());
+                }
+                else
+                {
+                    // Le power-up est en cooldown, ne rien faire
+                }
+                }
+            else
+            {
+                    // Le joueur n'a pas de power-up actuellement
+            }
     }
 
        void OnTriggerEnter(Collider other) {
@@ -66,5 +94,23 @@ public class IaEnnemi : MonoBehaviour {
                 hasReachedEnd = true;
             }
         }
+
+        IEnumerator DesactiverPowerUp()
+        {
+            yield return new WaitForSeconds(currentPowerUp.cooldown);
+            
+            // Vérifier si currentPowerUp et powerUpTarget sont définis avant de les utiliser
+            if (currentPowerUp != null && this.gameObject != null)
+            {
+                // Désactiver le power-up
+                currentPowerUp.Desactiver(this.gameObject);
+
+                speed = originalSpeed;
+                // Réinitialiser l'état du power-up
+                hasPowerUp = false;
+                currentPowerUp = null;
+            }
+        }
+
  }
 
