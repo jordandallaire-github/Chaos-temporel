@@ -14,6 +14,14 @@ public class IaEnnemi : MonoBehaviour {
     public float maxSpeed = 20f; // Vitesse maximale
     public float brakeSpeed = 2f; // Vitesse de freinage
 
+    public GameObject barrelPrefab; // Reference to the barrel prefab
+
+    private GameObject barrelInstance; // Reference to the instantiated barrel
+
+    public GameObject emplacemementTonneau; // Reference to the instantiated barrel
+
+    private bool barrelCreated = false;
+
     private bool hasReachedEnd = false;
 
     private int currentCheckpointIndex = -1; 
@@ -76,6 +84,11 @@ public class IaEnnemi : MonoBehaviour {
             {
                     // Le joueur n'a pas de power-up actuellement
             }
+
+            if (currentPowerUp != null && currentPowerUp.name == "SabotageBarrel")
+            {
+                CreerTonneau();
+            }
     }
 
        void OnTriggerEnter(Collider other) {
@@ -100,10 +113,21 @@ public class IaEnnemi : MonoBehaviour {
             yield return new WaitForSeconds(currentPowerUp.cooldown);
             
             // Vérifier si currentPowerUp et powerUpTarget sont définis avant de les utiliser
-            if (currentPowerUp != null && this.gameObject != null)
+            if (currentPowerUp != null)
             {
-                // Désactiver le power-up
-                currentPowerUp.Desactiver(this.gameObject);
+                if (currentPowerUp.name == "BuffVitesse")
+                {
+                    // Désactiver le power-up sur l'Arduino
+                    currentPowerUp.Desactiver(this.gameObject);
+                }
+                else if (currentPowerUp.name == "SabotageBarrel")
+                {
+                    currentPowerUp.Desactiver(barrelInstance);
+                }
+                else
+                {
+                    // Le power-up n'a pas de cible spécifique, ne rien faire
+                }
 
                 speed = originalSpeed;
                 // Réinitialiser l'état du power-up
@@ -111,6 +135,33 @@ public class IaEnnemi : MonoBehaviour {
                 currentPowerUp = null;
             }
         }
+
+                private void CreerTonneau()
+            {
+                if (!barrelCreated)
+                {
+                    // Créer le tonneau devant le véhicule
+                    barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
+                    barrelInstance.transform.parent = emplacemementTonneau.transform;
+                    barrelCreated = true;
+                }
+
+                    StartCoroutine(LancerPowerUp());
+            }
+
+            private IEnumerator LancerPowerUp()
+            {
+                yield return new WaitForSeconds(2f); // Attendre 2 secondes
+
+                if(barrelInstance != null){
+                    barrelInstance.transform.parent = null;
+                    Rigidbody tonneauRB  =  GameObject.Find("Barrel(Clone)").GetComponent<Rigidbody>();
+                    tonneauRB.isKinematic = false;
+                    TonneauController tonneauScript = GameObject.Find("Barrel(Clone)").GetComponent<TonneauController>();
+                    tonneauScript.enabled = true;
+                }
+
+            }
 
  }
 

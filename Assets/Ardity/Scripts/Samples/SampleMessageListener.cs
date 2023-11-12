@@ -27,6 +27,14 @@ public class SampleMessageListener : MonoBehaviour
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     public float rotationSpeed = 0.1f;
 
+    public GameObject barrelPrefab; // Reference to the barrel prefab
+
+    private GameObject barrelInstance; // Reference to the instantiated barrel
+
+    public GameObject emplacemementTonneau; // Reference to the instantiated barrel
+
+    private bool barrelCreated = false;
+
     public bool hasPowerUp = false;
     public GameObject arduino;
 
@@ -68,7 +76,10 @@ public class SampleMessageListener : MonoBehaviour
     }
 
     void Update(){
-        //Debug.Log(joystickD, joystickG);
+         if (currentPowerUp != null ){
+            Debug.Log(currentPowerUp.name);
+         }
+            
 
             float conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;
             float conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1) * -1;
@@ -89,12 +100,25 @@ public class SampleMessageListener : MonoBehaviour
                     // Vérifier si le power-up est en cooldown
                     if (currentPowerUp != null )
                     {
-                        // Activer le power-up actuel sur l'objet cible
-                        currentPowerUp.Appliquer(arduino);
+                        
+                        // Vérifier le nom du power-up actuel
+                        if (currentPowerUp.name == "BuffVitesse")
+                        {
+                            // Appliquer le power-up sur l'Arduino
+                            currentPowerUp.Appliquer(arduino);
 
-                        if (speed >= maxSpeed){
-                            speed = maxSpeed;
+                            if (speed >= maxSpeed)
+                            {
+                                speed = maxSpeed;
+                            }
+
                         }
+
+                        else
+                        {
+                            // Le power-up n'a pas de cible spécifique, ne rien faire
+                        }
+
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
                         StartCoroutine(DesactiverPowerUp());
                     }
@@ -107,6 +131,11 @@ public class SampleMessageListener : MonoBehaviour
                 {
                     // Le joueur n'a pas de power-up actuellement
                 }
+            }
+
+            if (currentPowerUp != null && currentPowerUp.name == "SabotageBarrel")
+            {
+                CreerTonneau();
             }
 
             // // Rotate around the Y-axis at a speed proportional to the rotation value.
@@ -152,10 +181,21 @@ public class SampleMessageListener : MonoBehaviour
         yield return new WaitForSeconds(currentPowerUp.cooldown);
         
         // Vérifier si currentPowerUp et powerUpTarget sont définis avant de les utiliser
-        if (currentPowerUp != null && arduino != null)
+        if (currentPowerUp != null)
         {
-            // Désactiver le power-up
-            currentPowerUp.Desactiver(arduino);
+            if (currentPowerUp.name == "BuffVitesse")
+            {
+                // Désactiver le power-up sur l'Arduino
+                currentPowerUp.Desactiver(arduino);
+            }
+            else if (currentPowerUp.name == "SabotageBarrel")
+            {
+                currentPowerUp.Desactiver(barrelInstance);
+            }
+            else
+            {
+                // Le power-up n'a pas de cible spécifique, ne rien faire
+            }
 
             speed = originalSpeed;
             // Réinitialiser l'état du power-up
@@ -163,6 +203,26 @@ public class SampleMessageListener : MonoBehaviour
             currentPowerUp = null;
             arduino = null;
         }
+    }
+
+        private void CreerTonneau()
+    {
+        if (!barrelCreated)
+        {
+            // Créer le tonneau devant le véhicule
+            barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
+            barrelInstance.transform.parent = emplacemementTonneau.transform;
+            barrelCreated = true;
+        }
+
+        if (isButtonPressed)
+            {
+                barrelInstance.transform.parent = null;
+                Rigidbody tonneauRB  =  GameObject.Find("Barrel(Clone)").GetComponent<Rigidbody>();
+                tonneauRB.isKinematic = false;
+                TonneauController tonneauScript = GameObject.Find("Barrel(Clone)").GetComponent<TonneauController>();
+                tonneauScript.enabled = true;
+            }
     }
 
 }
