@@ -8,6 +8,8 @@ TagManager:
   - Adversaire
   - Checkpoint
   - Arduino
+  - Barrel
+  - Wall
   layers:
   - Default
   - TransparentFX

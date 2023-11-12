@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26cf86ca0e913341aa6f57f91e0ea8e, type: 3}
   m_Name: SabotageBarrel
   m_EditorClassIdentifier: 
-  cooldown: 0
-  barrelPrefab: {fileID: 0}
+  cooldown: 10

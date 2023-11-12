@@ -280,6 +280,8 @@ MonoBehaviour:
   maxSpeed: 10
   brakeSpeed: 1
   rotationSpeed: 1.5
+  barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
+  emplacemementTonneau: {fileID: 1137487331}
   hasPowerUp: 0
   arduino: {fileID: 68575160}
   joystickG: {fileID: 1041466576}
@@ -820,6 +822,37 @@ Transform:
   m_Father: {fileID: 198810529}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &277860041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 277860042}
+  m_Layer: 0
+  m_Name: EmplacementTonneau
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &277860042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277860041}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.32, y: 0.35, z: 3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1255632276}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &309258220
 GameObject:
   m_ObjectHideFlags: 3
@@ -2970,6 +3003,7 @@ Transform:
   - {fileID: 1679226169}
   - {fileID: 1103876552}
   - {fileID: 1490961779}
+  - {fileID: 1137487332}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 105, z: 0}
@@ -3514,9 +3548,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 1996562341477154574, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996562341477154574, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3614974123813055937, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3525,6 +3567,10 @@ PrefabInstance:
     - target: {fileID: 5941538594709760839, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941538594709760839, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3573,6 +3619,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3885557061716669265, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
+--- !u!1 &1137487331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137487332}
+  m_Layer: 0
+  m_Name: EmplacementTonneau
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137487332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137487331}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.32, y: 0.35, z: 3.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1012739442}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1155319693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5941538594709760839, guid: 184a509ec7005e54d9454bb13c5da608, type: 3}
@@ -3774,7 +3851,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255632270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: -1372625422
   m_Radius: 1
   m_Speed: 10
@@ -3796,7 +3873,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255632270}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d97133f781edb7a4384494a898e95a36, type: 3}
   m_Name: 
@@ -3808,6 +3885,8 @@ MonoBehaviour:
   rotationSpeed: 1.5
   maxSpeed: 25
   brakeSpeed: 2
+  barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
+  emplacemementTonneau: {fileID: 277860041}
   checkpoints:
   - {fileID: 382807008}
   - {fileID: 1039106368}
@@ -3884,6 +3963,7 @@ Transform:
   - {fileID: 873829353}
   - {fileID: 1513915640}
   - {fileID: 1731702687}
+  - {fileID: 277860042}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
@@ -5252,7 +5332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a0da52af9e4d54183506952056db57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpsEffets: {fileID: 11400000, guid: 00b8c5b931593df46973b4045e9caff4, type: 2}
+  powerUpsEffets: {fileID: 11400000, guid: a81863dc4ec7a964b9beb073e9db0d4c, type: 2}
   messageListener: {fileID: 68575161}
   ennemi: {fileID: 1255632273}
 --- !u!65 &1961510965
