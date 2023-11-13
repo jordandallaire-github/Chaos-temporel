@@ -16,7 +16,7 @@ public class BuffVitesse : PowerUpsEffets
         if (cible.tag == "Arduino" ){
             SampleMessageListener listener = cible.GetComponent<SampleMessageListener>();
             originalSpeedPlayer = listener.speed;
-            listener.speed += vitesse/listener.speed;
+            listener.speed += vitesse;
         }
         if (cible.tag == "Adversaire" ){
             IaEnnemi ennemi = cible.GetComponent<IaEnnemi>();

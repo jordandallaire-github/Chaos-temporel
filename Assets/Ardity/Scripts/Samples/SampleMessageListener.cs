@@ -40,7 +40,7 @@ public class SampleMessageListener : MonoBehaviour
 
     private Rigidbody joueurRb;
 
-    private VoitureJoueur voitureJoueur;
+    private VoitureCollision voitureCollision;
 
     public Slider joystickG;
     public Slider joystickD;
@@ -53,7 +53,7 @@ public class SampleMessageListener : MonoBehaviour
 
      void Start()
     {
-        voitureJoueur = cube.GetComponent<VoitureJoueur>();
+        voitureCollision = cube.GetComponent<VoitureCollision>();
         joueurRb = cube.GetComponent<Rigidbody>();
     }
 
@@ -114,11 +114,6 @@ public class SampleMessageListener : MonoBehaviour
 
                         }
 
-                        else
-                        {
-                            // Le power-up n'a pas de cible spécifique, ne rien faire
-                        }
-
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
                         StartCoroutine(DesactiverPowerUp());
                     }
@@ -144,7 +139,11 @@ public class SampleMessageListener : MonoBehaviour
             // // Move forward or backward at a speed proportional to the movement value.
             // cube.transform.Translate(0, 0, movement * 5 * Time.deltaTime);
 
-            if(voitureJoueur.isOnGround){
+            if(voitureCollision.isOnGround){
+
+                speed = originalSpeed;
+
+                maxSpeed = 15f;
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -152,6 +151,12 @@ public class SampleMessageListener : MonoBehaviour
                 // Move forward or backward at a speed proportional to the movement value.
                 // joueurRb.velocity = cube.transform.forward * movement * 5;float speed = 0.1f; // Adjust this value to get the desired speed
                 // Apply force to the Rigidbody
+
+                // Smoothly change the speed using interpolation
+                float targetSpeed = speed;
+                float smoothSpeed = Mathf.Lerp(joueurRb.velocity.magnitude, targetSpeed, 0.1f);
+                joueurRb.velocity = joueurRb.velocity.normalized * smoothSpeed;
+
                 joueurRb.AddForce(cube.transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
                         
                 // Clamp the Rigidbody's speed to the maximum speed
@@ -171,7 +176,46 @@ public class SampleMessageListener : MonoBehaviour
                 //Debug.Log("rotation: " + rotation);
                 //Debug.Log("mouvement: " + movement);
                 
-            }   
+            }
+
+            if(voitureCollision.isOnGrass){
+
+                speed = 0.5f;
+
+                maxSpeed = 5f;
+
+                // Rotate around the Y-axis at a speed proportional to the rotation value.
+                joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
+
+                // Move forward or backward at a speed proportional to the movement value.
+                // joueurRb.velocity = cube.transform.forward * movement * 5;float speed = 0.1f; // Adjust this value to get the desired speed
+                // Apply force to the Rigidbody
+
+                // Smoothly change the speed using interpolation
+                float targetSpeed = speed;
+                float smoothSpeed = Mathf.Lerp(joueurRb.velocity.magnitude, targetSpeed, 0.1f);
+                joueurRb.velocity = joueurRb.velocity.normalized * smoothSpeed;
+
+                joueurRb.AddForce(cube.transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
+                        
+                // Clamp the Rigidbody's speed to the maximum speed
+                if (joueurRb.velocity.magnitude > maxSpeed)
+                {
+                    joueurRb.velocity = joueurRb.velocity.normalized * maxSpeed;
+                }
+                        
+                // Apply a braking force when the movement value is close to zero
+                if (Mathf.Abs(movement) < 0.1f)
+                {
+                    joueurRb.velocity = Vector3.Lerp(joueurRb.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+                }
+                joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
+
+
+                //Debug.Log("rotation: " + rotation);
+                //Debug.Log("mouvement: " + movement);
+                
+            }      
 
 
     }
@@ -202,17 +246,21 @@ public class SampleMessageListener : MonoBehaviour
             hasPowerUp = false;
             currentPowerUp = null;
             arduino = null;
+            barrelCreated = false;
         }
     }
 
         private void CreerTonneau()
     {
-        if (!barrelCreated)
+        if (!barrelCreated )
         {
-            // Créer le tonneau devant le véhicule
-            barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
-            barrelInstance.transform.parent = emplacemementTonneau.transform;
-            barrelCreated = true;
+                if (barrelInstance == null || !barrelInstance.activeSelf)
+                {
+                    // Créer le tonneau devant le véhicule
+                    barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
+                    barrelInstance.transform.parent = emplacemementTonneau.transform;
+                    barrelCreated = true;
+                }
         }
 
         if (isButtonPressed)

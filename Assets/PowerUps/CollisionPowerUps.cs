@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class CollisionPowerUps : MonoBehaviour
 {
-    public PowerUpsEffets powerUpsEffets;
+
+    public PowerUpsEffets[] powerUpsDisponibles;
+
+    public PowerUpsEffets powerUpsActuel;
     public SampleMessageListener messageListener;
 
     public IaEnnemi ennemi;
 
-
+    void Start()
+    {
+        // Choisir un power-up aléatoire
+        int indexAleatoire = Random.Range(0, powerUpsDisponibles.Length);
+        powerUpsActuel = powerUpsDisponibles[indexAleatoire];
+    }
     private void OnTriggerEnter(Collider col)
     {
         Destroy(gameObject);
@@ -20,7 +28,7 @@ public class CollisionPowerUps : MonoBehaviour
             {
                 // Stocker le power-up
                 messageListener.hasPowerUp = true;
-                messageListener.currentPowerUp = powerUpsEffets;
+                messageListener.currentPowerUp = powerUpsActuel;
             }
             else
             {
@@ -34,7 +42,7 @@ public class CollisionPowerUps : MonoBehaviour
             {
                 // Stocker le power-up
                 ennemi.hasPowerUp = true;
-                ennemi.currentPowerUp = powerUpsEffets;
+                ennemi.currentPowerUp = powerUpsActuel;
             }
             else
             {

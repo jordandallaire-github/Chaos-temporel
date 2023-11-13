@@ -14,6 +14,6 @@ public class Sabotage : PowerUpsEffets
 
     public override void Desactiver(GameObject cible)
     {
-        Destroy(cible);
+       cible.SetActive(false);
     }
 }

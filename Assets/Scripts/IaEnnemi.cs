@@ -133,17 +133,21 @@ public class IaEnnemi : MonoBehaviour {
                 // Réinitialiser l'état du power-up
                 hasPowerUp = false;
                 currentPowerUp = null;
+                barrelCreated = false;
             }
         }
 
                 private void CreerTonneau()
             {
-                if (!barrelCreated)
+                if (!barrelCreated )
                 {
-                    // Créer le tonneau devant le véhicule
-                    barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
-                    barrelInstance.transform.parent = emplacemementTonneau.transform;
-                    barrelCreated = true;
+                    if (barrelInstance == null || !barrelInstance.activeSelf)
+                    {
+                        // Créer le tonneau devant le véhicule
+                        barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
+                        barrelInstance.transform.parent = emplacemementTonneau.transform;
+                        barrelCreated = true;
+                    }
                 }
 
                     StartCoroutine(LancerPowerUp());
@@ -153,7 +157,7 @@ public class IaEnnemi : MonoBehaviour {
             {
                 yield return new WaitForSeconds(2f); // Attendre 2 secondes
 
-                if(barrelInstance != null){
+                if(barrelInstance == true){
                     barrelInstance.transform.parent = null;
                     Rigidbody tonneauRB  =  GameObject.Find("Barrel(Clone)").GetComponent<Rigidbody>();
                     tonneauRB.isKinematic = false;
