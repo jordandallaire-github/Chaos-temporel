@@ -20,6 +20,8 @@ public class IaEnnemi : MonoBehaviour {
 
     public GameObject emplacemementTonneau; // Reference to the instantiated barrel
 
+    private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
+
     private bool barrelCreated = false;
 
     private bool hasReachedEnd = false;
@@ -133,22 +135,25 @@ public class IaEnnemi : MonoBehaviour {
                 // Réinitialiser l'état du power-up
                 hasPowerUp = false;
                 currentPowerUp = null;
-                barrelCreated = false;
+                barrelInstance.SetActive(false);
+                barrelCount--; // Décrémenter le compteur de tonneaux créés
             }
         }
 
                 private void CreerTonneau()
             {
-                if (!barrelCreated )
+                if (barrelCount < 5) // Vérifier si le nombre de tonneaux créés est inférieur à 1
                 {
-                    if (barrelInstance == null || !barrelInstance.activeSelf)
+                    if (barrelInstance == null)
                     {
                         // Créer le tonneau devant le véhicule
                         barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
                         barrelInstance.transform.parent = emplacemementTonneau.transform;
-                        barrelCreated = true;
+
+                        barrelCount++; // Incrémenter le compteur de tonneaux créés
                     }
                 }
+
 
                     StartCoroutine(LancerPowerUp());
             }
@@ -157,9 +162,11 @@ public class IaEnnemi : MonoBehaviour {
             {
                 yield return new WaitForSeconds(2f); // Attendre 2 secondes
 
-                if(barrelInstance == true){
+                if(barrelInstance != null){
                     barrelInstance.transform.parent = null;
                     Rigidbody tonneauRB  =  GameObject.Find("Barrel(Clone)").GetComponent<Rigidbody>();
+                    Collider tonneauC = barrelInstance.GetComponent<Collider>();
+                    tonneauC.enabled = true;
                     tonneauRB.isKinematic = false;
                     TonneauController tonneauScript = GameObject.Find("Barrel(Clone)").GetComponent<TonneauController>();
                     tonneauScript.enabled = true;

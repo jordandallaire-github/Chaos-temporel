@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 /**
  * When creating your message listeners you need to implement these two methods:
@@ -33,7 +34,7 @@ public class SampleMessageListener : MonoBehaviour
 
     public GameObject emplacemementTonneau; // Reference to the instantiated barrel
 
-    private bool barrelCreated = false;
+    private List<GameObject> barrelPrefabs = new List<GameObject>();
 
     public bool hasPowerUp = false;
     public GameObject arduino;
@@ -48,6 +49,10 @@ public class SampleMessageListener : MonoBehaviour
     private float batonD;
     private int btnValue;
     public bool isButtonPressed = false;
+
+    private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
+
+    private static bool isBarrelLaunched = false;
 
 
 
@@ -141,9 +146,9 @@ public class SampleMessageListener : MonoBehaviour
 
             if(voitureCollision.isOnGround){
 
-                speed = originalSpeed;
+                //speed = originalSpeed;
 
-                maxSpeed = 15f;
+                //maxSpeed = 15f;
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -180,9 +185,9 @@ public class SampleMessageListener : MonoBehaviour
 
             if(voitureCollision.isOnGrass){
 
-                speed = 0.5f;
+                //speed = 0.5f;
 
-                maxSpeed = 5f;
+                //maxSpeed = 5f;
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -242,35 +247,54 @@ public class SampleMessageListener : MonoBehaviour
             }
 
             speed = originalSpeed;
+
             // Réinitialiser l'état du power-up
             hasPowerUp = false;
             currentPowerUp = null;
-            arduino = null;
-            barrelCreated = false;
+
+                    // Désactiver les préfabs des tonneaux qui n'ont pas été activés
+            foreach (GameObject barrelPrefab in barrelPrefabs)
+            {
+                if (barrelPrefab != barrelInstance)
+                {
+                    barrelPrefab.SetActive(false);
+                }
+            }
+
+            isBarrelLaunched = false;
+
+            barrelPrefabs.Clear();
+
+            // Réinitialiser l'état du power-up
+            barrelCount--; // Décrémenter le compteur de tonneaux créés
         }
     }
 
-        private void CreerTonneau()
+    private void CreerTonneau()
     {
-        if (!barrelCreated )
+        if (!isBarrelLaunched && barrelCount < 4)
         {
-                if (barrelInstance == null || !barrelInstance.activeSelf)
-                {
-                    // Créer le tonneau devant le véhicule
-                    barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
-                    barrelInstance.transform.parent = emplacemementTonneau.transform;
-                    barrelCreated = true;
-                }
+            // Créer le tonneau devant le véhicule
+            barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
+            barrelInstance.transform.parent = emplacemementTonneau.transform;
+
+            barrelCount++;
+            isBarrelLaunched = true;
+
+            // Ajouter le préfab du tonneau à la liste
+            barrelPrefabs.Add(barrelInstance);
         }
 
-        if (isButtonPressed)
-            {
-                barrelInstance.transform.parent = null;
-                Rigidbody tonneauRB  =  GameObject.Find("Barrel(Clone)").GetComponent<Rigidbody>();
-                tonneauRB.isKinematic = false;
-                TonneauController tonneauScript = GameObject.Find("Barrel(Clone)").GetComponent<TonneauController>();
-                tonneauScript.enabled = true;
-            }
+        if (isButtonPressed && barrelInstance != null)
+        {
+            barrelInstance.transform.parent = null;
+            Rigidbody tonneauRB = barrelInstance.GetComponent<Rigidbody>();
+            tonneauRB.isKinematic = false;
+            Collider tonneauC = barrelInstance.GetComponent<Collider>();
+            tonneauC.enabled = true;
+            TonneauController tonneauScript = barrelInstance.GetComponent<TonneauController>();
+            tonneauScript.enabled = true;
+        }
     }
 
 }
