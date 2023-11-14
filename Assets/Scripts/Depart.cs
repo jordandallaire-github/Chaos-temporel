@@ -6,6 +6,7 @@ using UnityEngine;
 public class Depart : MonoBehaviour
 {
     [SerializeField] private GameObject[] vehicules;
+    [SerializeField] private RaceTimer globalTimer;
     private UnityEngine.Vector3[] positions;
 
 
@@ -91,7 +92,9 @@ public class Depart : MonoBehaviour
             GameObject sampleMessageListenerObject = GameObject.Find("Arduino");
             SampleMessageListener sampleMessageListener = sampleMessageListenerObject.GetComponent<SampleMessageListener>();
             sampleMessageListener.enabled = true;
-            
+
+            // Active le timer de la course
+            globalTimer.StartTimer();            
 
     }
 }
