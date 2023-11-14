@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -326,12 +326,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cube: {fileID: 919132148026489576}
+  currentPowerUp: {fileID: 0}
   speed: 0.1
   maxSpeed: 10
   brakeSpeed: 1
   rotationSpeed: 1.5
+  barrelPrefab: {fileID: 0}
+  emplacemementTonneau: {fileID: 0}
+  hasPowerUp: 0
+  arduino: {fileID: 0}
   joystickG: {fileID: 1319463629}
   joystickD: {fileID: 533754654}
+  isButtonPressed: 0
 --- !u!4 &299392525
 Transform:
   m_ObjectHideFlags: 0
@@ -497,6 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84711b262e1b9f73abe64d377723855d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rankings: {fileID: 11400000, guid: db65b51ddb10d98469dfddc145484fe9, type: 2}
 --- !u!1 &466708638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,7 +1997,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.21390367, y: 0.000000018792067, z: -0.0000000041149333, w: 0.9768548}
+  m_LocalRotation: {x: 0.21390367, y: -0.000000018792061, z: 0.000000004114932, w: 0.9768548}
   m_LocalPosition: {x: -27.6, y: 5.02, z: -265.59998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3573,7 +3580,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087961406}
-  m_LocalRotation: {x: 0.21390367, y: 0.000000018792067, z: -0.0000000041149333, w: 0.9768548}
+  m_LocalRotation: {x: 0.21390367, y: -0.000000018792061, z: 0.000000004114932, w: 0.9768548}
   m_LocalPosition: {x: -27.6, y: 5.02, z: -265.59998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3745,6 +3752,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repoussement: 3000
   isOnGround: 0
+  isOnGrass: 0
+  rotationSpeed: 360
+  jumpHeight: 1
+  jumpDuration: 0.1
 --- !u!4 &924906679078997094
 Transform:
   m_ObjectHideFlags: 0
@@ -3926,7 +3937,7 @@ GameObject:
   - component: {fileID: 2917137820113065092}
   - component: {fileID: 2917137820113065093}
   m_Layer: 0
-  m_Name: Car
+  m_Name: CPU01
   m_TagString: Adversaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4064,11 +4075,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d97133f781edb7a4384494a898e95a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPowerUp: {fileID: 0}
+  hasPowerUp: 0
   detectionRange: 20
-  speed: 8
-  rotationSpeed: 1.5
+  speed: 30
+  rotationSpeed: 1
   maxSpeed: 50
   brakeSpeed: 2
+  barrelPrefab: {fileID: 0}
+  emplacemementTonneau: {fileID: 0}
   checkpoints:
   - {fileID: 1221259042}
   - {fileID: 409790818}
@@ -4085,7 +4100,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 1
-  m_Speed: 3.5
+  m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -4111,6 +4126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repoussement: 3000
   isOnGround: 0
+  isOnGrass: 0
+  rotationSpeed: 360
+  jumpHeight: 1
+  jumpDuration: 0.1
 --- !u!4 &2924859671704416622
 Transform:
   m_ObjectHideFlags: 0
