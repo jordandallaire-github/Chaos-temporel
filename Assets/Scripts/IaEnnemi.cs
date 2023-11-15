@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class IaEnnemi : MonoBehaviour {
     private NavMeshAgent agent;
@@ -21,6 +22,10 @@ public class IaEnnemi : MonoBehaviour {
     public GameObject emplacemementTonneau; // Reference to the instantiated barrel
 
     private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
+
+    private static bool isBarrelLaunched = false;
+
+    private List<GameObject> barrelPrefabs = new List<GameObject>();
 
     private bool barrelCreated = false;
 
@@ -135,23 +140,37 @@ public class IaEnnemi : MonoBehaviour {
                 // Réinitialiser l'état du power-up
                 hasPowerUp = false;
                 currentPowerUp = null;
-                barrelInstance.SetActive(false);
-                barrelCount--; // Décrémenter le compteur de tonneaux créés
+
+                // Désactiver les préfabs des tonneaux qui n'ont pas été activés
+                foreach (GameObject barrelPrefab in barrelPrefabs)
+                {
+                    if (barrelPrefab != barrelInstance)
+                    {
+                        barrelPrefab.SetActive(false);
+                    }
+                }
+
+                isBarrelLaunched = false;
+
+                barrelPrefabs.Clear();
+
+                barrelCount--;
             }
         }
 
                 private void CreerTonneau()
             {
-                if (barrelCount < 5) // Vérifier si le nombre de tonneaux créés est inférieur à 1
+                if (!isBarrelLaunched && barrelCount < 5) // Vérifier si le nombre de tonneaux créés est inférieur à 1
                 {
-                    if (barrelInstance == null)
-                    {
                         // Créer le tonneau devant le véhicule
                         barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
                         barrelInstance.transform.parent = emplacemementTonneau.transform;
 
                         barrelCount++; // Incrémenter le compteur de tonneaux créés
-                    }
+                        isBarrelLaunched = true;
+
+                        // Ajouter le préfab du tonneau à la liste
+                        barrelPrefabs.Add(barrelInstance);
                 }
 
 
@@ -164,11 +183,11 @@ public class IaEnnemi : MonoBehaviour {
 
                 if(barrelInstance != null){
                     barrelInstance.transform.parent = null;
-                    Rigidbody tonneauRB  =  GameObject.Find("Barrel(Clone)").GetComponent<Rigidbody>();
+                    Rigidbody tonneauRB  =  barrelInstance.GetComponent<Rigidbody>();
                     Collider tonneauC = barrelInstance.GetComponent<Collider>();
                     tonneauC.enabled = true;
                     tonneauRB.isKinematic = false;
-                    TonneauController tonneauScript = GameObject.Find("Barrel(Clone)").GetComponent<TonneauController>();
+                    TonneauController tonneauScript = barrelInstance.GetComponent<TonneauController>();
                     tonneauScript.enabled = true;
                 }
 

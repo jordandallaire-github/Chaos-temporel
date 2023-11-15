@@ -23,7 +23,7 @@ public class SampleMessageListener : MonoBehaviour
 
     public PowerUpsEffets currentPowerUp;
     public float speed = 1f;
-    private float originalSpeed = 1f;
+    private float originalSpeed = 4f;
     public float maxSpeed = 10f; // Adjust this value to set the maximum speed
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     public float rotationSpeed = 0.1f;
@@ -148,7 +148,11 @@ public class SampleMessageListener : MonoBehaviour
 
                 //speed = originalSpeed;
 
-                //maxSpeed = 15f;
+                maxSpeed = 15f;
+
+                if(speed < 4){
+                    speed = 4;
+                }
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -185,9 +189,13 @@ public class SampleMessageListener : MonoBehaviour
 
             if(voitureCollision.isOnGrass){
 
-                //speed = 0.5f;
 
-                //maxSpeed = 5f;
+
+                maxSpeed = 3f;
+
+                if(speed > maxSpeed){
+                    speed = maxSpeed;
+                }
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -265,14 +273,13 @@ public class SampleMessageListener : MonoBehaviour
 
             barrelPrefabs.Clear();
 
-            // Réinitialiser l'état du power-up
             barrelCount--; // Décrémenter le compteur de tonneaux créés
         }
     }
 
     private void CreerTonneau()
     {
-        if (!isBarrelLaunched && barrelCount < 4)
+        if (!isBarrelLaunched && barrelCount < 5)
         {
             // Créer le tonneau devant le véhicule
             barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
