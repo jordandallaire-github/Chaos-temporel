@@ -16,7 +16,7 @@ public class ChaosMod : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {
-       const tailleInitial =  affectedObjects.transform.localScale = new Vector3(1, 1, 1);
+    //    const tailleInitial =  affectedObjects.transform.localScale = new Vector3(1, 1, 1);
 
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
