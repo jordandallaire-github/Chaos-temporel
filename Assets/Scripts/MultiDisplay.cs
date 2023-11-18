@@ -15,10 +15,4 @@ public class MultiDisplay : MonoBehaviour
             Display.displays[i].Activate();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
