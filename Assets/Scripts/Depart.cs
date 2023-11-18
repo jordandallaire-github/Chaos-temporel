@@ -7,6 +7,10 @@ public class Depart : MonoBehaviour
 {
     [SerializeField] private GameObject[] vehicules;
     [SerializeField] private RaceTimer globalTimer;
+    [SerializeField] private SampleMessageListener arduino01;
+    [SerializeField] private SampleMessageListener arduino02;
+    [SerializeField] private SerialController sc1;
+    [SerializeField] private SerialController sc2;
     private UnityEngine.Vector3[] positions;
 
 
@@ -50,14 +54,14 @@ public class Depart : MonoBehaviour
         }
 
         // Désactiver le script SerialController
-        GameObject serialControllerObject = GameObject.Find("SerialController");
-        SerialController serialController = serialControllerObject.GetComponent<SerialController>();
-        serialController.enabled = false;
+        
+        sc1.enabled = false;
+        sc2.enabled = false;
 
         // Désactiver le script SampleMessageListener
-        GameObject sampleMessageListenerObject = GameObject.Find("Arduino");
-        SampleMessageListener sampleMessageListener = sampleMessageListenerObject.GetComponent<SampleMessageListener>();
-        sampleMessageListener.enabled = false;
+        
+        arduino01.enabled = false;
+        arduino02.enabled = false;
 
         StartCoroutine(StartGame());
     }
@@ -84,14 +88,12 @@ public class Depart : MonoBehaviour
         }
 
             // Active le script SerialController
-            GameObject serialControllerObject = GameObject.Find("SerialController");
-            SerialController serialController = serialControllerObject.GetComponent<SerialController>();
-            serialController.enabled = true;
+            sc1.enabled = true;
+            sc2.enabled = true;
 
             // Active le script SampleMessageListener
-            GameObject sampleMessageListenerObject = GameObject.Find("Arduino");
-            SampleMessageListener sampleMessageListener = sampleMessageListenerObject.GetComponent<SampleMessageListener>();
-            sampleMessageListener.enabled = true;
+            arduino01.enabled = true;
+            arduino02.enabled = true;
 
             // Active le timer de la course
             globalTimer.StartTimer();            
