@@ -24,6 +24,8 @@ public class ChaosMod : MonoBehaviour
       effetsPowerUps = new System.Action[]
       {
           CallAugmenteTaille,
+          CallFreeze,
+          CallSlowMo
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -43,6 +45,7 @@ public class ChaosMod : MonoBehaviour
     void CallFreeze()
     {
         sampleMessageListener.enabled = false;
+        sampleMessageListener2.enabled = false;
         FreezeGame();
         StartCoroutine(WaitAndResume(5f));
     }
@@ -54,6 +57,7 @@ public class ChaosMod : MonoBehaviour
 
     void ResumeGame()
     {   
+        sampleMessageListener2.enabled = true;
         sampleMessageListener.enabled = true;
         Time.timeScale = 1;
     }

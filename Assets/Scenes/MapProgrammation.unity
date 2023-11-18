@@ -5271,9 +5271,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleMessageListener: {fileID: 68575161}
+  sampleMessageListener2: {fileID: 37172196}
   affectedObjects:
-  - {fileID: 1255632270}
+  - {fileID: 72098845}
   - {fileID: 1012739437}
+  - {fileID: 1255632270}
 --- !u!4 &1184124024
 Transform:
   m_ObjectHideFlags: 0
