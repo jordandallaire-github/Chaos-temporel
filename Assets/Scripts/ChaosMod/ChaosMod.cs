@@ -8,6 +8,8 @@ public class ChaosMod : MonoBehaviour
 
     public SampleMessageListener sampleMessageListener;
 
+    public SampleMessageListener sampleMessageListener2;
+
     public List<GameObject> affectedObjects;
 
    // La liste des fonctions
@@ -73,7 +75,7 @@ public class ChaosMod : MonoBehaviour
     {
         foreach (GameObject obj in affectedObjects)
         {
-            StartCoroutine(ChangeSize(obj, 1.8f, 2f));
+            StartCoroutine(ChangeSize(obj, 1.8f, 5f));
         }
     }
 
@@ -97,7 +99,7 @@ public class ChaosMod : MonoBehaviour
             yield return null;
         }
 
-        obj.transform.localScale = initialScale * targetScale;
+        obj.transform.localScale = initialScale;
     }
 
 }
