@@ -1,14 +1,33 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class IaEnnemi : MonoBehaviour {
     private NavMeshAgent agent;
     private Rigidbody rb;
+    public PowerUpsEffets currentPowerUp;
+    public bool hasPowerUp = false;
     public float detectionRange = 10f; // Ajustez cette valeur en fonction de votre jeu
-    public float speed = 8f; // Vitesse initiale
+    public float speed = 15f; // Vitesse initiale
+    private float originalSpeed = 15f;
     public float rotationSpeed = 0.1f;
-    public float maxSpeed = 10f; // Vitesse maximale
+    public float maxSpeed = 20f; // Vitesse maximale
     public float brakeSpeed = 2f; // Vitesse de freinage
+
+    public GameObject barrelPrefab; // Reference to the barrel prefab
+
+    private GameObject barrelInstance; // Reference to the instantiated barrel
+
+    public GameObject emplacemementTonneau; // Reference to the instantiated barrel
+
+    private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
+
+    private static bool isBarrelLaunched = false;
+
+    private List<GameObject> barrelPrefabs = new List<GameObject>();
+
+    private bool barrelCreated = false;
 
     private bool hasReachedEnd = false;
 
@@ -48,6 +67,35 @@ public class IaEnnemi : MonoBehaviour {
             {
                 rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
             }
+
+            if (hasPowerUp)
+            {
+                // Vérifier si le power-up est en cooldown
+                 if (currentPowerUp != null )
+                {
+                    // Activer le power-up actuel sur l'objet cible
+                    currentPowerUp.Appliquer(this.gameObject);
+
+                    if (speed >= maxSpeed){
+                         speed = maxSpeed;
+                    }
+                    // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
+                    StartCoroutine(DesactiverPowerUp());
+                }
+                else
+                {
+                    // Le power-up est en cooldown, ne rien faire
+                }
+                }
+            else
+            {
+                    // Le joueur n'a pas de power-up actuellement
+            }
+
+            if (currentPowerUp != null && currentPowerUp.name == "SabotageBarrel")
+            {
+                CreerTonneau();
+            }
     }
 
        void OnTriggerEnter(Collider other) {
@@ -66,5 +114,84 @@ public class IaEnnemi : MonoBehaviour {
                 hasReachedEnd = true;
             }
         }
+
+        IEnumerator DesactiverPowerUp()
+        {
+            yield return new WaitForSeconds(currentPowerUp.cooldown);
+            
+            // Vérifier si currentPowerUp et powerUpTarget sont définis avant de les utiliser
+            if (currentPowerUp != null)
+            {
+                if (currentPowerUp.name == "BuffVitesse")
+                {
+                    // Désactiver le power-up sur l'Arduino
+                    currentPowerUp.Desactiver(this.gameObject);
+                }
+                else if (currentPowerUp.name == "SabotageBarrel")
+                {
+                    currentPowerUp.Desactiver(barrelInstance);
+                }
+                else
+                {
+                    // Le power-up n'a pas de cible spécifique, ne rien faire
+                }
+
+                speed = originalSpeed;
+                // Réinitialiser l'état du power-up
+                hasPowerUp = false;
+                currentPowerUp = null;
+
+                // Désactiver les préfabs des tonneaux qui n'ont pas été activés
+                foreach (GameObject barrelPrefab in barrelPrefabs)
+                {
+                    if (barrelPrefab != barrelInstance)
+                    {
+                        barrelPrefab.SetActive(false);
+                    }
+                }
+
+                isBarrelLaunched = false;
+
+                barrelPrefabs.Clear();
+
+                barrelCount--;
+            }
+        }
+
+                private void CreerTonneau()
+            {
+                if (!isBarrelLaunched && barrelCount < 5) // Vérifier si le nombre de tonneaux créés est inférieur à 1
+                {
+                        // Créer le tonneau devant le véhicule
+                        barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
+                        barrelInstance.transform.parent = emplacemementTonneau.transform;
+
+                        barrelCount++; // Incrémenter le compteur de tonneaux créés
+                        isBarrelLaunched = true;
+
+                        // Ajouter le préfab du tonneau à la liste
+                        barrelPrefabs.Add(barrelInstance);
+                }
+
+
+                    StartCoroutine(LancerPowerUp());
+            }
+
+            private IEnumerator LancerPowerUp()
+            {
+                yield return new WaitForSeconds(2f); // Attendre 2 secondes
+
+                if(barrelInstance != null){
+                    barrelInstance.transform.parent = null;
+                    Rigidbody tonneauRB  =  barrelInstance.GetComponent<Rigidbody>();
+                    Collider tonneauC = barrelInstance.GetComponent<Collider>();
+                    tonneauC.enabled = true;
+                    tonneauRB.isKinematic = false;
+                    TonneauController tonneauScript = barrelInstance.GetComponent<TonneauController>();
+                    tonneauScript.enabled = true;
+                }
+
+            }
+
  }
 

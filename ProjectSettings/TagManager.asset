@@ -7,6 +7,9 @@ TagManager:
   - Obstacle
   - Adversaire
   - Checkpoint
+  - Arduino
+  - Barrel
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -14,9 +17,9 @@ TagManager:
   - Sol
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Gazon
+  - J1
+  - J2
   - 
   - 
   - 
