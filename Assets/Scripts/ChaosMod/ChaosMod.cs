@@ -24,8 +24,6 @@ public class ChaosMod : MonoBehaviour
       effetsPowerUps = new System.Action[]
       {
           CallAugmenteTaille,
-          CallFreeze,
-          CallSlowMo
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -81,6 +79,9 @@ public class ChaosMod : MonoBehaviour
         {
             StartCoroutine(ChangeSize(obj, 1.8f, 5f));
         }
+
+        sampleMessageListener = GetComponent<SampleMessageListener>();
+        sampleMessageListener.maxSpeedSol = 7;
     }
 
     void CallDiminueTaille()
@@ -89,6 +90,9 @@ public class ChaosMod : MonoBehaviour
         {
             StartCoroutine(ChangeSize(obj, 0.2f, 5f));
         }
+
+        sampleMessageListener = GetComponent<SampleMessageListener>();
+        sampleMessageListener.maxSpeedSol = 16;
     }
 
     IEnumerator ChangeSize(GameObject obj, float targetScale, float duration)
@@ -100,10 +104,16 @@ public class ChaosMod : MonoBehaviour
         {
             float t = (Time.time - startTime) / duration;
             obj.transform.localScale = Vector3.Lerp(initialScale, initialScale * targetScale, t);
-            yield return null;
         }
 
-        obj.transform.localScale = initialScale;
+        yield return new WaitForSeconds(7f);
+
+           // Réinitialisez la taille de l'objet à sa taille initiale
+             obj.transform.localScale = initialScale;
+
+        
+
     }
+
 
 }

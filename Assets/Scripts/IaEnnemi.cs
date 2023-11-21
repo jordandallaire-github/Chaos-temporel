@@ -129,7 +129,6 @@ public class IaEnnemi : MonoBehaviour {
                 }
                 else if (currentPowerUp.name == "SabotageBarrel")
                 {
-                    currentPowerUp.Desactiver(barrelInstance);
                 }
                 else
                 {
@@ -141,18 +140,9 @@ public class IaEnnemi : MonoBehaviour {
                 hasPowerUp = false;
                 currentPowerUp = null;
 
-                // Désactiver les préfabs des tonneaux qui n'ont pas été activés
-                foreach (GameObject barrelPrefab in barrelPrefabs)
-                {
-                    if (barrelPrefab != barrelInstance)
-                    {
-                        barrelPrefab.SetActive(false);
-                    }
-                }
-
                 isBarrelLaunched = false;
 
-                barrelPrefabs.Clear();
+                this.barrelInstance.SetActive(false);
 
                 barrelCount--;
             }

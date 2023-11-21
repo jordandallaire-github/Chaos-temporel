@@ -8,7 +8,9 @@ public class CollisionPowerUps : MonoBehaviour
     public PowerUpsEffets[] powerUpsDisponibles;
 
     public PowerUpsEffets powerUpsActuel;
-    public SampleMessageListener messageListener;
+    public SampleMessageListener messageListener1;
+
+    public SampleMessageListener messageListener2;
 
     public IaEnnemi ennemi;
 
@@ -22,13 +24,27 @@ public class CollisionPowerUps : MonoBehaviour
     {
         Destroy(gameObject);
 
-        if(col.tag == "Player"){
+        if(col.tag == "Player1"){
 
-            if (!messageListener.hasPowerUp)
+            if (!messageListener1.hasPowerUp)
             {
                 // Stocker le power-up
-                messageListener.hasPowerUp = true;
-                messageListener.currentPowerUp = powerUpsActuel;
+                messageListener1.hasPowerUp = true;
+                messageListener1.currentPowerUp = powerUpsActuel;
+            }
+            else
+            {
+                // Le joueur a déjà un power-up, détruire le power-up sans prendre l'effet
+            }
+        }
+
+        if(col.tag == "Player2"){
+
+            if (!messageListener2.hasPowerUp)
+            {
+                // Stocker le power-up
+                messageListener2.hasPowerUp = true;
+                messageListener2.currentPowerUp = powerUpsActuel;
             }
             else
             {

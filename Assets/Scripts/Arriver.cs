@@ -15,7 +15,7 @@ public class Arriver : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider vehicule){
-    if (vehicule.tag == "Player" || vehicule.tag == "Adversaire")
+    if (vehicule.tag == "Player1" || vehicule.tag == "Adversaire" || vehicule.tag == "Player2")
     {
         if (System.Array.IndexOf(rankings.ranking, vehicule.gameObject) == -1)
         {

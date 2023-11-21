@@ -6,34 +6,37 @@ using UnityEngine;
 public class BuffVitesse : PowerUpsEffets
 {
 
-    public float vitesse = 0.2f;
+    public float vitesse = 4f;
 
-    private float originalSpeedPlayer;
-
-    private float originalSpeedAdversaire;
 
     public override void Appliquer(GameObject cible){
-        if (cible.tag == "Arduino" ){
+        if (cible.tag == "Arduino1" ){
             SampleMessageListener listener = cible.GetComponent<SampleMessageListener>();
-            originalSpeedPlayer = listener.speed;
-            listener.speed += vitesse/originalSpeedPlayer;
+            listener.maxSpeedSol += vitesse;
+        }
+        if (cible.tag == "Arduino2" ){
+            SampleMessageListener listener = cible.GetComponent<SampleMessageListener>();
+            listener.maxSpeedSol += vitesse;
         }
         if (cible.tag == "Adversaire" ){
             IaEnnemi ennemi = cible.GetComponent<IaEnnemi>();
-            originalSpeedAdversaire = ennemi.speed;
-            ennemi.speed += vitesse/originalSpeedAdversaire;
+            ennemi.maxSpeed += vitesse;
         }
     }
 
     public override void Desactiver(GameObject cible)
     {
-        if (cible.tag == "Arduino" ){
+        if (cible.tag == "Arduino1" ){
             SampleMessageListener listener = cible.GetComponent<SampleMessageListener>();
-            listener.speed = originalSpeedPlayer;
+            listener.maxSpeedSol = 12;
+        }
+        if (cible.tag == "Arduino2" ){
+            SampleMessageListener listener = cible.GetComponent<SampleMessageListener>();
+            listener.maxSpeedSol = 12;
         }
         if (cible.tag == "Adversaire" ){
             IaEnnemi ennemi = cible.GetComponent<IaEnnemi>();
-            ennemi.speed = originalSpeedAdversaire;
+            ennemi.maxSpeed = 20;
         }
     }
 

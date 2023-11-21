@@ -24,20 +24,31 @@ public class SampleMessageListener : MonoBehaviour
     public PowerUpsEffets currentPowerUp;
     public float speed = 1f;
     private float originalSpeed = 4f;
-    public float maxSpeed = 10f; // Adjust this value to set the maximum speed
+
+    public float accelerationTime = 4f; // Temps en secondes pour atteindre la vitesse maximale
+    public float minReverseSpeed = 4f;
+    public float decelerationTime = 4f;
+    public float maxSpeedSol = 12;
+    public float maxSpeedGazon = 8;
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
+
+
     public float rotationSpeed = 0.1f;
 
     public GameObject barrelPrefab; // Reference to the barrel prefab
 
     private GameObject barrelInstance; // Reference to the instantiated barrel
 
-    public GameObject emplacemementTonneau; // Reference to the instantiated barrel
+    public GameObject emplacemementTonneau1; // Reference to the instantiated barrel
+
+    public GameObject emplacemementTonneau2; // Reference to the instantiated barrel
 
     private List<GameObject> barrelPrefabs = new List<GameObject>();
 
     public bool hasPowerUp = false;
-    public GameObject arduino;
+    public GameObject arduino1;
+
+    public GameObject arduino2;
 
     private Rigidbody joueurRb;
 
@@ -52,7 +63,9 @@ public class SampleMessageListener : MonoBehaviour
 
     private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
 
-    private static bool isBarrelLaunched = false;
+    private static bool isBarrelLaunched1 = false;
+
+    private static bool isBarrelLaunched2 = false;
 
 
 
@@ -81,11 +94,7 @@ public class SampleMessageListener : MonoBehaviour
     }
 
     void Update(){
-         if (currentPowerUp != null ){
-            Debug.Log(currentPowerUp.name);
-         }
             
-
             float conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;
             float conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1) * -1;
 
@@ -109,16 +118,18 @@ public class SampleMessageListener : MonoBehaviour
                         // Vérifier le nom du power-up actuel
                         if (currentPowerUp.name == "BuffVitesse")
                         {
-                            // Appliquer le power-up sur l'Arduino
-                            currentPowerUp.Appliquer(arduino);
-
-                            if (speed >= maxSpeed)
-                            {
-                                speed = maxSpeed;
+                            if(gameObject.tag == "Arduino1"){
+                                // Appliquer le power-up sur l'Arduino
+                                currentPowerUp.Appliquer(arduino1);
                             }
 
-                        }
+                            if(gameObject.tag == "Arduino2"){
+                                // Appliquer le power-up sur l'Arduino
+                                currentPowerUp.Appliquer(arduino2);
+                            }
 
+
+                        }
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
                         StartCoroutine(DesactiverPowerUp());
                     }
@@ -146,32 +157,30 @@ public class SampleMessageListener : MonoBehaviour
 
             if(voitureCollision.isOnGround){
 
-                //speed = originalSpeed;
-
-                maxSpeed = 15f;
-
-                if(speed < 4){
-                    speed = 4;
-                }
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
-                // Move forward or backward at a speed proportional to the movement value.
-                // joueurRb.velocity = cube.transform.forward * movement * 5;float speed = 0.1f; // Adjust this value to get the desired speed
-                // Apply force to the Rigidbody
-
                 // Smoothly change the speed using interpolation
-                float targetSpeed = speed;
-                float smoothSpeed = Mathf.Lerp(joueurRb.velocity.magnitude, targetSpeed, 0.1f);
-                joueurRb.velocity = joueurRb.velocity.normalized * smoothSpeed;
+                if (movement > 0.6) {
+                    // If the vehicle is moving forward, increase the speed
+                    speed = Mathf.Lerp(speed, maxSpeedSol, Time.deltaTime / accelerationTime);
+                } else if (movement <= 0) {
+                    // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
+                    speed = minReverseSpeed;
+                } else  {
+                    // If the vehicle is not moving, decrease the speed
+                    speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
+                }
+
+                joueurRb.velocity = joueurRb.velocity.normalized * speed;
 
                 joueurRb.AddForce(cube.transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
                         
                 // Clamp the Rigidbody's speed to the maximum speed
-                if (joueurRb.velocity.magnitude > maxSpeed)
+                if (joueurRb.velocity.magnitude > maxSpeedSol)
                 {
-                    joueurRb.velocity = joueurRb.velocity.normalized * maxSpeed;
+                    joueurRb.velocity = joueurRb.velocity.normalized * maxSpeedSol;
                 }
                         
                 // Apply a braking force when the movement value is close to zero
@@ -189,32 +198,30 @@ public class SampleMessageListener : MonoBehaviour
 
             if(voitureCollision.isOnGrass){
 
-
-
-                maxSpeed = 3f;
-
-                if(speed > maxSpeed){
-                    speed = maxSpeed;
-                }
-
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
-                // Move forward or backward at a speed proportional to the movement value.
-                // joueurRb.velocity = cube.transform.forward * movement * 5;float speed = 0.1f; // Adjust this value to get the desired speed
-                // Apply force to the Rigidbody
-
                 // Smoothly change the speed using interpolation
-                float targetSpeed = speed;
-                float smoothSpeed = Mathf.Lerp(joueurRb.velocity.magnitude, targetSpeed, 0.1f);
-                joueurRb.velocity = joueurRb.velocity.normalized * smoothSpeed;
+                if (movement > 0.6) {
+                    // If the vehicle is moving forward, increase the speed
+                    speed = Mathf.Lerp(speed, maxSpeedGazon, Time.deltaTime / accelerationTime);
+                } else if (movement <= 0) {
+                    // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
+                    speed = minReverseSpeed;
+                } else  {
+                    // If the vehicle is not moving, decrease the speed
+                    speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
+                }
+
+                joueurRb.velocity = joueurRb.velocity.normalized * speed;
+
 
                 joueurRb.AddForce(cube.transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
                         
                 // Clamp the Rigidbody's speed to the maximum speed
-                if (joueurRb.velocity.magnitude > maxSpeed)
+                if (joueurRb.velocity.magnitude > maxSpeedGazon)
                 {
-                    joueurRb.velocity = joueurRb.velocity.normalized * maxSpeed;
+                    joueurRb.velocity = joueurRb.velocity.normalized * maxSpeedGazon;
                 }
                         
                 // Apply a braking force when the movement value is close to zero
@@ -228,7 +235,7 @@ public class SampleMessageListener : MonoBehaviour
                 //Debug.Log("rotation: " + rotation);
                 //Debug.Log("mouvement: " + movement);
                 
-            }      
+            } 
 
 
     }
@@ -242,54 +249,64 @@ public class SampleMessageListener : MonoBehaviour
         {
             if (currentPowerUp.name == "BuffVitesse")
             {
-                // Désactiver le power-up sur l'Arduino
-                currentPowerUp.Desactiver(arduino);
+                if(this.gameObject.tag == "Arduino1"){
+                    // Appliquer le power-up sur l'Arduino
+                     currentPowerUp.Desactiver(arduino1);
+                }
+
+                if(this.gameObject.tag == "Arduino2"){
+                    // Appliquer le power-up sur l'Arduino
+                    currentPowerUp.Desactiver(arduino2);
+                }
             }
             else if (currentPowerUp.name == "SabotageBarrel")
             {
-                currentPowerUp.Desactiver(barrelInstance);
+
             }
             else
             {
                 // Le power-up n'a pas de cible spécifique, ne rien faire
             }
 
-            speed = originalSpeed;
-
             // Réinitialiser l'état du power-up
             hasPowerUp = false;
             currentPowerUp = null;
 
-                    // Désactiver les préfabs des tonneaux qui n'ont pas été activés
-            foreach (GameObject barrelPrefab in barrelPrefabs)
-            {
-                if (barrelPrefab != barrelInstance)
-                {
-                    barrelPrefab.SetActive(false);
-                }
+            if(gameObject.tag == "Arduino1"){
+                this.barrelInstance.SetActive(false);
+                isBarrelLaunched1 = false;
             }
 
-            isBarrelLaunched = false;
+            if(gameObject.tag == "Arduino2"){
+                this.barrelInstance.SetActive(false);
+                isBarrelLaunched2 = false;
+            }      
 
-            barrelPrefabs.Clear();
-
-            barrelCount--; // Décrémenter le compteur de tonneaux créés
         }
     }
 
     private void CreerTonneau()
     {
-        if (!isBarrelLaunched && barrelCount < 5)
+        if (barrelCount < 5)
         {
-            // Créer le tonneau devant le véhicule
-            barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
-            barrelInstance.transform.parent = emplacemementTonneau.transform;
+            
+            if(gameObject.tag == "Arduino1" && !isBarrelLaunched1){
+                // Créer le tonneau devant le véhicule
+                barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau1.transform.position, emplacemementTonneau1.transform.rotation);
+                barrelInstance.transform.parent = emplacemementTonneau1.transform;
+                barrelCount++;
+                isBarrelLaunched1 = true;
+            }
 
-            barrelCount++;
-            isBarrelLaunched = true;
+            if(gameObject.tag == "Arduino2" && !isBarrelLaunched2){
+                // Créer le tonneau devant le véhicule
+                barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau2.transform.position, emplacemementTonneau2.transform.rotation);
+                barrelInstance.transform.parent = emplacemementTonneau2.transform;
+                barrelCount++;
+                isBarrelLaunched2 = true;
+            }
 
-            // Ajouter le préfab du tonneau à la liste
-            barrelPrefabs.Add(barrelInstance);
+
         }
 
         if (isButtonPressed && barrelInstance != null)

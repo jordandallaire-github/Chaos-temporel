@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8364453248175074997}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b584d2515136b274f9a8a168c02c329c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 60
   rollForce: 10
   bounceForce: 500
 --- !u!54 &4912645947581489821
@@ -148,7 +148,7 @@ CapsuleCollider:
   m_ProvidesContacts: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.68330026
-  m_Height: 1.9209391
+  m_Radius: 0.35378063
+  m_Height: 1.1231704
   m_Direction: 2
-  m_Center: {x: 0.0018337728, y: 0, z: 0.86075586}
+  m_Center: {x: -0.0039293766, y: -0.0039327545, z: 0.4618715}
