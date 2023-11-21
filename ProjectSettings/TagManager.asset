@@ -10,6 +10,10 @@ TagManager:
   - Arduino
   - Barrel
   - Wall
+  - Player1
+  - Player2
+  - Arduino1
+  - Arduino2
   layers:
   - Default
   - TransparentFX

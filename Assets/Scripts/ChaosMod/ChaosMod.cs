@@ -104,15 +104,10 @@ public class ChaosMod : MonoBehaviour
         {
             float t = (Time.time - startTime) / duration;
             obj.transform.localScale = Vector3.Lerp(initialScale, initialScale * targetScale, t);
+            yield return null;
         }
 
-        yield return new WaitForSeconds(7f);
-
-           // Réinitialisez la taille de l'objet à sa taille initiale
-             obj.transform.localScale = initialScale;
-
-        
-
+        obj.transform.localScale = initialScale;
     }
 
 

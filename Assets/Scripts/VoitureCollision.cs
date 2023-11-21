@@ -29,6 +29,12 @@ public class VoitureCollision : MonoBehaviour
             autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
         }
 
+        if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
+        {
+            Rigidbody autreRb = collision.rigidbody;
+            autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
+        }
+
         if (collision.gameObject.tag == "Barrel")
         {
             StartCoroutine(BarrelCollisionReaction());
