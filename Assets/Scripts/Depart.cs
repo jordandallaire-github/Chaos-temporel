@@ -96,7 +96,7 @@ public class Depart : MonoBehaviour
             arduino02.enabled = true;
 
             // Active le timer de la course
-            globalTimer.StartTimer();            
+            globalTimer.StartTimer();
 
     }
 }

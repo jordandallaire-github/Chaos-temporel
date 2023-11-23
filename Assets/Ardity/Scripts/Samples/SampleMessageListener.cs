@@ -53,9 +53,6 @@ public class SampleMessageListener : MonoBehaviour
     private Rigidbody joueurRb;
 
     private VoitureCollision voitureCollision;
-
-    public Slider joystickG;
-    public Slider joystickD;
     private float batonG;
     private float batonD;
     private int btnValue;
@@ -102,8 +99,6 @@ public class SampleMessageListener : MonoBehaviour
             float rotation = conversionG - conversionD;
             float movement = (conversionG + conversionD) / 2;
 
-            joystickD.value = conversionD;
-            joystickG.value = conversionG;
 
             isButtonPressed = (btnValue == 1);
 
@@ -149,13 +144,7 @@ public class SampleMessageListener : MonoBehaviour
                 CreerTonneau();
             }
 
-            // // Rotate around the Y-axis at a speed proportional to the rotation value.
-            // cube.transform.Rotate(0, rotation * 50 * Time.deltaTime, 0);
-
-            // // Move forward or backward at a speed proportional to the movement value.
-            // cube.transform.Translate(0, 0, movement * 5 * Time.deltaTime);
-
-            if(voitureCollision.isOnGround){
+            /* if(voitureCollision.isOnGround){
 
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
@@ -194,7 +183,7 @@ public class SampleMessageListener : MonoBehaviour
                 //Debug.Log("rotation: " + rotation);
                 //Debug.Log("mouvement: " + movement);
                 
-            }
+            } */
 
             if(voitureCollision.isOnGrass){
 
@@ -230,16 +219,30 @@ public class SampleMessageListener : MonoBehaviour
                     joueurRb.velocity = Vector3.Lerp(joueurRb.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
                 }
                 joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
-
-
-                //Debug.Log("rotation: " + rotation);
-                //Debug.Log("mouvement: " + movement);
                 
             } 
 
 
     }
 
+    // Envoie les valeurs du Joystick gauche 
+    // à n'importe quel objet qui appelle cette méthode
+    public float GetJoystickL(){
+        return batonG;
+    }
+
+    // Envoie les valeurs du Joystick droite à 
+    // n'importe quel objet qui appelle cette méthode
+    public float GetJoystickR(){
+        return batonD;
+    }
+
+    // Envoie les valeurs du bouton rouge 
+    //à n'importe quel objet qui appelle cette méthode
+    public float GetActionButton(){
+        return btnValue;
+    }
+    
     IEnumerator DesactiverPowerUp()
     {
         yield return new WaitForSeconds(currentPowerUp.cooldown);
