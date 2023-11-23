@@ -82,6 +82,7 @@ public class ChaosMod : MonoBehaviour
 
         sampleMessageListener = GetComponent<SampleMessageListener>();
         sampleMessageListener.maxSpeedSol = 7;
+        sampleMessageListener2.maxSpeedSol = 7;
     }
 
     void CallDiminueTaille()
@@ -92,7 +93,8 @@ public class ChaosMod : MonoBehaviour
         }
 
         sampleMessageListener = GetComponent<SampleMessageListener>();
-        sampleMessageListener.maxSpeedSol = 16;
+        sampleMessageListener.maxSpeedSol = 12;
+        sampleMessageListener2.maxSpeedSol = 12;
     }
 
     IEnumerator ChangeSize(GameObject obj, float targetScale, float duration)
@@ -108,6 +110,8 @@ public class ChaosMod : MonoBehaviour
         }
 
         obj.transform.localScale = initialScale;
+        sampleMessageListener.maxSpeedSol = 10;
+        sampleMessageListener2.maxSpeedSol = 10;
     }
 
 

@@ -180,12 +180,11 @@ public class SampleMessageListener : MonoBehaviour
                 joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
 
 
-                //Debug.Log("rotation: " + rotation);
-                //Debug.Log("mouvement: " + movement);
+
                 
             } */
 
-            if(voitureCollision.isOnGrass){
+           /* if(voitureCollision.isOnGrass){
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRb.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -220,7 +219,7 @@ public class SampleMessageListener : MonoBehaviour
                 }
                 joueurRb.AddForce(cube.transform.forward * movement * speed, ForceMode.VelocityChange);
                 
-            } 
+            } */
 
 
     }

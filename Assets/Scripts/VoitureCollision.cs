@@ -85,8 +85,6 @@ public class VoitureCollision : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        // Assurez-vous que le joueur revient à sa position Y originale à la fin
         transform.position = new Vector3(transform.position.x, originalY, transform.position.z);
     }
 

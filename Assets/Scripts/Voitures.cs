@@ -6,9 +6,11 @@ public class Voitures : MonoBehaviour
 {
     [SerializeField] private SampleMessageListener controls; // Donnée reçu par le Arduino
     public bool controlsEnabled = false;
+    private bool isResetting = false;
     public float rotationSpeed = 0.1f;
     public float speed = 1f;
     public float maxSpeedSol = 12;
+    public float maxSpeedGazon = 8;
     public float accelerationTime = 4f; // Temps en secondes pour atteindre la vitesse maximale
     public float minReverseSpeed = 4f;
     public float decelerationTime = 4f;
@@ -16,6 +18,8 @@ public class Voitures : MonoBehaviour
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
     private bool isButtonPressed = false;
+
+    private float timeUpsideDown = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,21 @@ public class Voitures : MonoBehaviour
     {
         if(controlsEnabled){
             Deplacement();
+        }
+
+        // Vérifiez si le véhicule est à l'envers
+        Vector3 rotation = transform.rotation.eulerAngles;
+        if (!isResetting && (Mathf.Abs(rotation.x - 180) < 90 || Mathf.Abs(rotation.z - 180) < 90))
+        {
+            timeUpsideDown += Time.deltaTime;
+            if (!isResetting && timeUpsideDown >= 5f)
+            {
+                ResetRotation();
+            }
+        }
+        else
+        {
+            timeUpsideDown = 0f;
         }
     }
 
@@ -82,5 +101,53 @@ public class Voitures : MonoBehaviour
                 }
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
         }
+
+        if(collision.isOnGrass){
+
+                // Rotate around the Y-axis at a speed proportional to the rotation value.
+                joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
+
+                // Smoothly change the speed using interpolation
+                if (movement > 0.6) {
+                    // If the vehicle is moving forward, increase the speed
+                    speed = Mathf.Lerp(speed, maxSpeedGazon, Time.deltaTime / accelerationTime);
+                } else if (movement <= 0) {
+                    // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
+                    speed = minReverseSpeed;
+                } else  {
+                    // If the vehicle is not moving, decrease the speed
+                    speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
+                }
+
+                joueurRB.velocity = joueurRB.velocity.normalized * speed;
+
+
+                joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
+                        
+                // Clamp the Rigidbody's speed to the maximum speed
+                if (joueurRB.velocity.magnitude > maxSpeedGazon)
+                {
+                    joueurRB.velocity = joueurRB.velocity.normalized * maxSpeedGazon;
+                }
+                        
+                // Apply a braking force when the movement value is close to zero
+                if (Mathf.Abs(movement) < 0.1f)
+                {
+                    joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+                }
+                joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
+                
+            } 
+    }
+
+    void ResetRotation()
+    {
+        isResetting = true;
+        // Réinitialisez la position du véhicule
+        transform.rotation = Quaternion.Euler(0, 130f, 0);
+
+        timeUpsideDown = 0f;
+        
+        isResetting = false;
     }
 }
