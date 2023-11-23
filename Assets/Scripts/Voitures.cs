@@ -19,8 +19,8 @@ public class Voitures : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        joueurRB.GetComponent<Rigidbody>();
-        collision.GetComponent<VoitureCollision>();
+        joueurRB = GetComponent<Rigidbody>();
+        collision = GetComponent<VoitureCollision>();
     }
 
     // Update is called once per frame
@@ -36,6 +36,9 @@ public class Voitures : MonoBehaviour
         // Obtenir les valeur reçu par le arduino
         float batonG = controls.GetJoystickL();
         float batonD = controls.GetJoystickR();
+
+        Debug.Log(batonG);
+        Debug.Log(batonD);
 
         // Convertir en valeur numérique entre -1 et 1
         float conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;

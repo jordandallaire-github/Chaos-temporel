@@ -23,7 +23,6 @@ public class UIJoueur : MonoBehaviour
 
     void AfficherCompteur(){
         float time = Compteur.FetchCurrentTime();
-        Debug.Log(time);
 
         TimeSpan ts = TimeSpan.FromSeconds(time);
 
