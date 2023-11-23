@@ -6,9 +6,9 @@ public class ChaosMod : MonoBehaviour
 {
 
 
-    public SampleMessageListener sampleMessageListener;
+    public Voitures j1;
 
-    public SampleMessageListener sampleMessageListener2;
+    public Voitures j2;
 
     public List<GameObject> affectedObjects;
 
@@ -42,8 +42,8 @@ public class ChaosMod : MonoBehaviour
 
     void CallFreeze()
     {
-        sampleMessageListener.enabled = false;
-        sampleMessageListener2.enabled = false;
+        j1.enabled = false;
+        j2.enabled = false;
         FreezeGame();
         StartCoroutine(WaitAndResume(5f));
     }
@@ -55,8 +55,8 @@ public class ChaosMod : MonoBehaviour
 
     void ResumeGame()
     {   
-        sampleMessageListener2.enabled = true;
-        sampleMessageListener.enabled = true;
+        j1.enabled = true;
+        j2.enabled = true;
         Time.timeScale = 1;
     }
 
@@ -79,10 +79,8 @@ public class ChaosMod : MonoBehaviour
         {
             StartCoroutine(ChangeSize(obj, 1.8f, 5f));
         }
-
-        sampleMessageListener = GetComponent<SampleMessageListener>();
-        sampleMessageListener.maxSpeedSol = 7;
-        sampleMessageListener2.maxSpeedSol = 7;
+        j1.maxSpeedSol = 7;
+        j2.maxSpeedSol = 7;
     }
 
     void CallDiminueTaille()
@@ -91,10 +89,8 @@ public class ChaosMod : MonoBehaviour
         {
             StartCoroutine(ChangeSize(obj, 0.2f, 5f));
         }
-
-        sampleMessageListener = GetComponent<SampleMessageListener>();
-        sampleMessageListener.maxSpeedSol = 12;
-        sampleMessageListener2.maxSpeedSol = 12;
+        j1.maxSpeedSol = 12;
+        j2.maxSpeedSol = 12;
     }
 
     IEnumerator ChangeSize(GameObject obj, float targetScale, float duration)
@@ -110,8 +106,8 @@ public class ChaosMod : MonoBehaviour
         }
 
         obj.transform.localScale = initialScale;
-        sampleMessageListener.maxSpeedSol = 10;
-        sampleMessageListener2.maxSpeedSol = 10;
+        j1.maxSpeedSol = 10;
+        j2.maxSpeedSol = 10;
     }
 
 

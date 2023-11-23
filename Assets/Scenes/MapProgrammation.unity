@@ -213,23 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03027548d784348a5d2b1fbe819cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 72098845}
-  currentPowerUp: {fileID: 0}
-  speed: 4
-  accelerationTime: 7
-  minReverseSpeed: 4
-  decelerationTime: 2
-  maxSpeedSol: 12
-  maxSpeedGazon: 8
-  brakeSpeed: 1
-  rotationSpeed: 1.5
-  barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
-  emplacemementTonneau1: {fileID: 1137487331}
-  emplacemementTonneau2: {fileID: 1509683086}
-  hasPowerUp: 0
-  arduino1: {fileID: 68575160}
-  arduino2: {fileID: 37172195}
-  isButtonPressed: 0
 --- !u!4 &37172197
 Transform:
   m_ObjectHideFlags: 0
@@ -335,23 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a03027548d784348a5d2b1fbe819cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 1012739437}
-  currentPowerUp: {fileID: 0}
-  speed: 4
-  accelerationTime: 7
-  minReverseSpeed: 4
-  decelerationTime: 2
-  maxSpeedSol: 12
-  maxSpeedGazon: 8
-  brakeSpeed: 1
-  rotationSpeed: 1.5
-  barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
-  emplacemementTonneau1: {fileID: 1137487331}
-  emplacemementTonneau2: {fileID: 1509683086}
-  hasPowerUp: 0
-  arduino1: {fileID: 68575160}
-  arduino2: {fileID: 37172195}
-  isButtonPressed: 0
 --- !u!4 &68575162
 Transform:
   m_ObjectHideFlags: 0
@@ -503,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 37172196}
+  currentPowerUp: {fileID: 0}
   controlsEnabled: 0
   rotationSpeed: 1
   speed: 1
@@ -511,7 +478,11 @@ MonoBehaviour:
   accelerationTime: 4
   minReverseSpeed: 4
   decelerationTime: 4
+  hasPowerUp: 0
   brakeSpeed: 2
+  barrelPrefab: {fileID: 0}
+  emplacemementTonneau1: {fileID: 0}
+  emplacemementTonneau2: {fileID: 0}
 --- !u!1001 &93597284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3461,8 +3432,8 @@ MonoBehaviour:
   powerUpsDisponibles:
   - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
   powerUpsActuel: {fileID: 0}
-  messageListener1: {fileID: 68575161}
-  messageListener2: {fileID: 37172196}
+  j1: {fileID: 1012739447}
+  j2: {fileID: 72098851}
   ennemi: {fileID: 1255632273}
 --- !u!65 &933227673
 BoxCollider:
@@ -4040,6 +4011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controls: {fileID: 68575161}
+  currentPowerUp: {fileID: 0}
   controlsEnabled: 0
   rotationSpeed: 1
   speed: 1
@@ -4048,7 +4020,11 @@ MonoBehaviour:
   accelerationTime: 4
   minReverseSpeed: 4
   decelerationTime: 4
+  hasPowerUp: 0
   brakeSpeed: 2
+  barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
+  emplacemementTonneau1: {fileID: 1137487331}
+  emplacemementTonneau2: {fileID: 1509683086}
 --- !u!1 &1035886066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5004,7 +4980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1184124023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5017,8 +4993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1a26dec7d8950c4caef5b8dfd864e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sampleMessageListener: {fileID: 68575161}
-  sampleMessageListener2: {fileID: 37172196}
+  j1: {fileID: 0}
+  j2: {fileID: 0}
   affectedObjects:
   - {fileID: 72098845}
   - {fileID: 1012739437}
@@ -5282,8 +5258,8 @@ MonoBehaviour:
   powerUpsDisponibles:
   - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
   powerUpsActuel: {fileID: 0}
-  messageListener1: {fileID: 68575161}
-  messageListener2: {fileID: 37172196}
+  j1: {fileID: 1012739447}
+  j2: {fileID: 72098851}
   ennemi: {fileID: 1255632273}
 --- !u!65 &1267990716
 BoxCollider:
@@ -6258,10 +6234,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpsDisponibles:
-  - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
+  - {fileID: 11400000, guid: 432a59ae6a298824195cd9e7f202e37b, type: 2}
   powerUpsActuel: {fileID: 0}
-  messageListener1: {fileID: 68575161}
-  messageListener2: {fileID: 37172196}
+  j1: {fileID: 1012739447}
+  j2: {fileID: 72098851}
   ennemi: {fileID: 1255632273}
 --- !u!65 &1669799505
 BoxCollider:
@@ -7756,8 +7732,8 @@ MonoBehaviour:
   powerUpsDisponibles:
   - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
   powerUpsActuel: {fileID: 0}
-  messageListener1: {fileID: 68575161}
-  messageListener2: {fileID: 37172196}
+  j1: {fileID: 1012739447}
+  j2: {fileID: 72098851}
   ennemi: {fileID: 1255632273}
 --- !u!65 &2106836869
 BoxCollider:

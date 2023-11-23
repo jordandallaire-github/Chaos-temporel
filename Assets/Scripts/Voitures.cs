@@ -5,6 +5,7 @@ using UnityEngine;
 public class Voitures : MonoBehaviour
 {
     [SerializeField] private SampleMessageListener controls; // Donnée reçu par le Arduino
+    public PowerUpsEffets currentPowerUp;
     public bool controlsEnabled = false;
     private bool isResetting = false;
     public float rotationSpeed = 0.1f;
@@ -14,12 +15,26 @@ public class Voitures : MonoBehaviour
     public float accelerationTime = 4f; // Temps en secondes pour atteindre la vitesse maximale
     public float minReverseSpeed = 4f;
     public float decelerationTime = 4f;
+    public bool hasPowerUp = false;
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
     private bool isButtonPressed = false;
 
     private float timeUpsideDown = 0f;
+    public GameObject barrelPrefab; // Reference to the barrel prefab
+
+    private GameObject barrelInstance; // Reference to the instantiated barrel
+
+    public GameObject emplacemementTonneau1; // Reference to the instantiated barrel
+
+    public GameObject emplacemementTonneau2; // Reference to the instantiated barrel
+
+    private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
+
+    private static bool isBarrelLaunched1 = false;
+
+    private static bool isBarrelLaunched2 = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +64,53 @@ public class Voitures : MonoBehaviour
         {
             timeUpsideDown = 0f;
         }
+
+        float btnValue = controls.GetActionButton();
+
+        isButtonPressed = (btnValue == 1);
+
+        if (isButtonPressed)
+        {
+                if (hasPowerUp)
+                {
+                    // Vérifier si le power-up est en cooldown
+                    if (currentPowerUp != null )
+                    {
+                        
+                        // Vérifier le nom du power-up actuel
+                        if (currentPowerUp.name == "BuffVitesse")
+                        {
+                            if(gameObject.tag == "Player1"){
+                                // Appliquer le power-up sur l'Arduino
+                                currentPowerUp.Appliquer(this.gameObject);
+                            }
+
+                            if(gameObject.tag == "Player2"){
+                                // Appliquer le power-up sur l'Arduino
+                                currentPowerUp.Appliquer(this.gameObject);
+                            }
+
+
+                        }
+                        // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
+                        StartCoroutine(DesactiverPowerUp());
+                    }
+                    else
+                    {
+                        // Le power-up est en cooldown, ne rien faire
+                    }
+                }
+                else
+                {
+                    // Le joueur n'a pas de power-up actuellement
+                }
+        }
+
+        if (currentPowerUp != null && currentPowerUp.name == "SabotageBarrel")
+         {
+            CreerTonneau();
+         }
+
     }
 
     // Prend les données des Joysticks envoyé par le Arduino
@@ -149,5 +211,84 @@ public class Voitures : MonoBehaviour
         timeUpsideDown = 0f;
         
         isResetting = false;
+    }
+
+    private void CreerTonneau()
+    {
+        if (barrelCount < 5)
+        {
+            
+            if(gameObject.tag == "Player1" && !isBarrelLaunched1){
+                // Créer le tonneau devant le véhicule
+                barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau1.transform.position, emplacemementTonneau1.transform.rotation);
+                barrelInstance.transform.parent = emplacemementTonneau1.transform;
+                barrelCount++;
+                isBarrelLaunched1 = true;
+            }
+
+            if(gameObject.tag == "Player2" && !isBarrelLaunched2){
+                // Créer le tonneau devant le véhicule
+                barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau2.transform.position, emplacemementTonneau2.transform.rotation);
+                barrelInstance.transform.parent = emplacemementTonneau2.transform;
+                barrelCount++;
+                isBarrelLaunched2 = true;
+            }
+
+
+        }
+
+        if (isButtonPressed && barrelInstance != null)
+        {
+            barrelInstance.transform.parent = null;
+            Rigidbody tonneauRB = barrelInstance.GetComponent<Rigidbody>();
+            tonneauRB.isKinematic = false;
+            Collider tonneauC = barrelInstance.GetComponent<Collider>();
+            tonneauC.enabled = true;
+            TonneauController tonneauScript = barrelInstance.GetComponent<TonneauController>();
+            tonneauScript.enabled = true;
+        }
+    }
+
+
+
+    IEnumerator DesactiverPowerUp()
+    {
+        yield return new WaitForSeconds(currentPowerUp.cooldown);
+        
+        // Vérifier si currentPowerUp et powerUpTarget sont définis avant de les utiliser
+        if (currentPowerUp != null)
+        {
+            if (currentPowerUp.name == "BuffVitesse")
+            {
+                if(this.gameObject.tag == "Player1"){
+                    // Appliquer le power-up sur l'Arduino
+                     currentPowerUp.Desactiver(this.gameObject);
+                }
+
+                if(this.gameObject.tag == "Player2"){
+                    // Appliquer le power-up sur l'Arduino
+                    currentPowerUp.Desactiver(this.gameObject);
+                }
+            }
+            else
+            {
+                // Le power-up n'a pas de cible spécifique, ne rien faire
+            }
+
+            // Réinitialiser l'état du power-up
+            hasPowerUp = false;
+            currentPowerUp = null;
+
+            if(gameObject.tag == "Player1"){
+                this.barrelInstance.SetActive(false);
+                isBarrelLaunched1 = false;
+            }
+
+            if(gameObject.tag == "Player2"){
+                this.barrelInstance.SetActive(false);
+                isBarrelLaunched2 = false;
+            }      
+
+        }
     }
 }

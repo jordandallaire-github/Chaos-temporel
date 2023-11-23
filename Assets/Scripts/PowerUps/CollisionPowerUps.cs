@@ -8,9 +8,9 @@ public class CollisionPowerUps : MonoBehaviour
     public PowerUpsEffets[] powerUpsDisponibles;
 
     public PowerUpsEffets powerUpsActuel;
-    public SampleMessageListener messageListener1;
+    public Voitures j1;
 
-    public SampleMessageListener messageListener2;
+    public Voitures j2;
 
     public IaEnnemi ennemi;
 
@@ -26,11 +26,11 @@ public class CollisionPowerUps : MonoBehaviour
 
         if(col.tag == "Player1"){
 
-            if (!messageListener1.hasPowerUp)
+            if (!j1.hasPowerUp)
             {
                 // Stocker le power-up
-                messageListener1.hasPowerUp = true;
-                messageListener1.currentPowerUp = powerUpsActuel;
+                j1.hasPowerUp = true;
+                j1.currentPowerUp = powerUpsActuel;
             }
             else
             {
@@ -40,11 +40,11 @@ public class CollisionPowerUps : MonoBehaviour
 
         if(col.tag == "Player2"){
 
-            if (!messageListener2.hasPowerUp)
+            if (!j2.hasPowerUp)
             {
                 // Stocker le power-up
-                messageListener2.hasPowerUp = true;
-                messageListener2.currentPowerUp = powerUpsActuel;
+                j2.hasPowerUp = true;
+                j2.currentPowerUp = powerUpsActuel;
             }
             else
             {
