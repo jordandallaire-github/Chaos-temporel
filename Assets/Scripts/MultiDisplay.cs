@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MultiDisplay : MonoBehaviour
 {
@@ -14,5 +15,8 @@ public class MultiDisplay : MonoBehaviour
         {
             Display.displays[i].Activate();
         }
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }
