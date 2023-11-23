@@ -275,19 +275,19 @@ public class Voitures : MonoBehaviour
                 // Le power-up n'a pas de cible spécifique, ne rien faire
             }
 
-            // Réinitialiser l'état du power-up
-            hasPowerUp = false;
-            currentPowerUp = null;
-
-            if(gameObject.tag == "Player1"){
+            if(gameObject.tag == "Player1" && currentPowerUp.name == "SabotageBarrel"){
                 this.barrelInstance.SetActive(false);
                 isBarrelLaunched1 = false;
             }
 
-            if(gameObject.tag == "Player2"){
+            if(gameObject.tag == "Player2" && currentPowerUp.name == "SabotageBarrel"){
                 this.barrelInstance.SetActive(false);
                 isBarrelLaunched2 = false;
-            }      
+            }  
+
+            // Réinitialiser l'état du power-up
+            hasPowerUp = false;
+            currentPowerUp = null;    
 
         }
     }
