@@ -11,6 +11,7 @@ public class Depart : MonoBehaviour
     [SerializeField] private SampleMessageListener arduino02;
     [SerializeField] private SerialController sc1;
     [SerializeField] private SerialController sc2;
+    [SerializeField] private Voitures[] Joueurs;
     private UnityEngine.Vector3[] positions;
 
 
@@ -94,6 +95,12 @@ public class Depart : MonoBehaviour
             // Active le script SampleMessageListener
             arduino01.enabled = true;
             arduino02.enabled = true;
+
+            // Active le contrôle du joueur
+            for (int i = 0; i < Joueurs.Length; i++)
+            {
+                Joueurs[i].controlsEnabled = true;
+            }
 
             // Active le timer de la course
             globalTimer.StartTimer();

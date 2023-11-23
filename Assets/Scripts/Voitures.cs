@@ -5,6 +5,7 @@ using UnityEngine;
 public class Voitures : MonoBehaviour
 {
     [SerializeField] private SampleMessageListener controls; // Donnée reçu par le Arduino
+    public bool controlsEnabled = false;
     public float rotationSpeed = 0.1f;
     public float speed = 1f;
     public float maxSpeedSol = 12;
@@ -26,7 +27,9 @@ public class Voitures : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Deplacement();
+        if(controlsEnabled){
+            Deplacement();
+        }
     }
 
     // Prend les données des Joysticks envoyé par le Arduino
@@ -36,9 +39,6 @@ public class Voitures : MonoBehaviour
         // Obtenir les valeur reçu par le arduino
         float batonG = controls.GetJoystickL();
         float batonD = controls.GetJoystickR();
-
-        Debug.Log(batonG);
-        Debug.Log(batonD);
 
         // Convertir en valeur numérique entre -1 et 1
         float conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;
