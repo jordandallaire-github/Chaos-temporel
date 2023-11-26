@@ -9,12 +9,14 @@ public class UIEcranTitre : MonoBehaviour
     [SerializeField] private Configs configurations;
     [SerializeField] private SampleMessageListener controller;
     [SerializeField] private int joueur;
+    [Tooltip("Delay between switching focus to the new button in seconds")]
     [SerializeField] private float navigationDelay = 1.0f;
     private GameObject boutonStart;
     private GameObject ecranChoix;
     private bool started = false;
     private bool cursorMoved = false;
     private bool selecting = false;
+    private bool ready = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class UIEcranTitre : MonoBehaviour
 
         boutonStart = this.transform.Find("Start").gameObject;
         ecranChoix = this.transform.Find("ChoixVehicule").gameObject;
-        
+
     }
 
     // Update is called once per frame
@@ -34,6 +36,8 @@ public class UIEcranTitre : MonoBehaviour
         }else{
             StartGame();
         }
+
+        
     }
 
     // Naviguer dans le menu
@@ -96,6 +100,8 @@ public class UIEcranTitre : MonoBehaviour
     void resetSelection(){
         cursorMoved = false;
     }
+
+
 
     
 }
