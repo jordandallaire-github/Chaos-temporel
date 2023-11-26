@@ -12,6 +12,7 @@ public class Depart : MonoBehaviour
     [SerializeField] private SerialController sc1;
     [SerializeField] private SerialController sc2;
     [SerializeField] private Voitures[] Joueurs;
+    [SerializeField] private Configs configureations;
     private UnityEngine.Vector3[] positions;
 
 
@@ -56,7 +57,9 @@ public class Depart : MonoBehaviour
 
         // Désactiver le script SerialController
         
+        sc1.portName = configureations.J1Port;
         sc1.enabled = false;
+        sc2.portName = configureations.J2Port;
         sc2.enabled = false;
 
         // Désactiver le script SampleMessageListener

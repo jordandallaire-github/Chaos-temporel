@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class UIEcranTitre : MonoBehaviour
 {
-    [SerializeField] private Rankings rankings;
     [SerializeField] private Configs configurations;
     [SerializeField] private SampleMessageListener controller;
     [SerializeField] private int joueur;
@@ -20,15 +19,10 @@ public class UIEcranTitre : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Vider le ranking
-        for (int i = 0; i < rankings.ranking.Length; i++)
-        {
-            rankings.ranking[i] = "";
-            rankings.time[i] = 0;
-        }
 
         boutonStart = this.transform.Find("Start").gameObject;
         ecranChoix = this.transform.Find("ChoixVehicule").gameObject;
+        
     }
 
     // Update is called once per frame
