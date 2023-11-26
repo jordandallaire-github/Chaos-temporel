@@ -16,7 +16,5 @@ public class MultiDisplay : MonoBehaviour
             Display.displays[i].Activate();
         }
 
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }

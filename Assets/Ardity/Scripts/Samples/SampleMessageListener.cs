@@ -7,7 +7,6 @@
  */
 
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -65,7 +64,7 @@ public class SampleMessageListener : MonoBehaviour
 
     // Envoie les valeurs du bouton rouge 
     //à n'importe quel objet qui appelle cette méthode
-    public float GetActionButton(){
+    public int GetActionButton(){
         return btnValue;
     }
     
