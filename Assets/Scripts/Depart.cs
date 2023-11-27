@@ -13,12 +13,17 @@ public class Depart : MonoBehaviour
     [SerializeField] private SerialController sc2;
     [SerializeField] private Voitures[] Joueurs;
     [SerializeField] private Configs configureations;
+
+    [SerializeField] private AudioSource audioSourceIntro;
+
+    [SerializeField] public AudioSource audioSourceMusique;
     private UnityEngine.Vector3[] positions;
 
 
 
     void Start()
     {
+        audioSourceIntro.Play();
 
         // Place les véhicules sur les positions de départ
         positions = new UnityEngine.Vector3[transform.childCount];
@@ -67,13 +72,16 @@ public class Depart : MonoBehaviour
         arduino01.enabled = false;
         arduino02.enabled = false;
 
+        audioSourceMusique.enabled = false;
+  
+
         StartCoroutine(StartGame());
     }
 
     IEnumerator StartGame()
     {
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
 
         // Réactive les mouvements des joueurs après 3 secondes
         foreach (GameObject vehicule in vehicules)
@@ -107,6 +115,9 @@ public class Depart : MonoBehaviour
 
             // Active le timer de la course
             globalTimer.StartTimer();
+
+            audioSourceMusique.enabled = true;
+
 
     }
 }

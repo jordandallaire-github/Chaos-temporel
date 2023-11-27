@@ -5,6 +5,12 @@ using UnityEngine;
 public class Voitures : MonoBehaviour
 {
     [SerializeField] private SampleMessageListener controls; // Donnée reçu par le Arduino
+
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioClip audioClipIdle;
+
+    [SerializeField] private AudioClip audioClipAvance;
     public PowerUpsEffets currentPowerUp;
     public bool controlsEnabled = false;
     private bool isResetting = false;
@@ -135,7 +141,10 @@ public class Voitures : MonoBehaviour
             joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
             // Smoothly change the speed using interpolation
-            if (movement > 0.6) {
+            if (movement > 0.7) {
+                audioSource.loop = true;
+                audioSource.clip = audioClipIdle;
+                audioSource.Play();
                 // If the vehicle is moving forward, increase the speed
                 speed = Mathf.Lerp(speed, maxSpeedSol, Time.deltaTime / accelerationTime);
             } else if (movement <= 0) {
@@ -144,6 +153,9 @@ public class Voitures : MonoBehaviour
             } else  {
                 // If the vehicle is not moving, decrease the speed
                 speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
+                audioSource.loop = true;
+                audioSource.clip = audioClipAvance;
+                audioSource.Play();
             }
 
             joueurRB.velocity = joueurRB.velocity.normalized * speed;
