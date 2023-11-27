@@ -11,12 +11,13 @@ public class UIEcranTitre : MonoBehaviour
     [SerializeField] private int joueur;
     [Tooltip("Delay between switching focus to the new button in seconds")]
     [SerializeField] private float navigationDelay = 1.0f;
+    [SerializeField] private GameObject firstButton;
     private GameObject boutonStart;
     private GameObject ecranChoix;
-    private bool started = false;
-    private bool cursorMoved = false;
-    private bool selecting = false;
-    private bool ready = false;
+    [SerializeField] private bool started = false;
+    [SerializeField] private bool cursorMoved = false;
+    [SerializeField] private bool selecting = false;
+    [SerializeField] private bool ready = false;
 
     // Start is called before the first frame update
     void Start()
@@ -46,9 +47,14 @@ public class UIEcranTitre : MonoBehaviour
         float joystickD = controller.GetJoystickR();
         int actionButton = controller.GetActionButton();
 
-        if (joystickG > 0.5f && !cursorMoved)
+        // Convertir en valeur numérique entre -1 et 1
+        float conversionG = (Mathf.InverseLerp(0, 1024, joystickG) * 2 - 1) * -1;
+        float conversionD = (Mathf.InverseLerp(0, 1024, joystickD) * 2 - 1) * -1;
+        Debug.Log(conversionG);
+
+        if (conversionG > 0.5f && !cursorMoved)
         {
-            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnRight();
+            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
             if (next != null)
             {
                 EventSystem.current.SetSelectedGameObject(next.gameObject);
@@ -57,9 +63,9 @@ public class UIEcranTitre : MonoBehaviour
             cursorMoved = true;
             this.Invoke("resetSelection", navigationDelay );
         }
-        else if (joystickG < -0.5f && !cursorMoved)
+        else if (conversionG < -0.5f && !cursorMoved)
         {
-            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnLeft();
+            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
             if (next != null)
             {
                 EventSystem.current.SetSelectedGameObject(next.gameObject);
@@ -90,6 +96,9 @@ public class UIEcranTitre : MonoBehaviour
         {
             boutonStart.SetActive(false);
             ecranChoix.SetActive(true);
+
+            // Assuming the first button is a child of ecranChoix
+            EventSystem.current.SetSelectedGameObject(firstButton);
 
             configurations.playerStarted[joueur] = true;
 

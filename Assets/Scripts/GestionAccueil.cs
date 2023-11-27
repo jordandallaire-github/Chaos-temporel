@@ -19,8 +19,15 @@ public class GestionAccueil : MonoBehaviour
             rankings.time[i] = 0;
         }
 
+        // Ajuster port Serial
         sc1.portName = configurations.J1Port;
         sc2.portName = configurations.J2Port;
+
+        // Reset player playing
+        for (int i = 0; i < configurations.playerStarted.Length; i++)
+        {
+            configurations.playerStarted[i] = false;
+        }
     }
 
 }
