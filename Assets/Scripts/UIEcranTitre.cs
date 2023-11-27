@@ -21,7 +21,7 @@ public class UIEcranTitre : MonoBehaviour
     [SerializeField] private bool started = false;
     [SerializeField] private bool cursorMoved = false;
     [SerializeField] private bool selecting = false;
-    [SerializeField] private bool ready = false;
+    public bool ready = false;
 
     // Start is called before the first frame update
     void Start()
