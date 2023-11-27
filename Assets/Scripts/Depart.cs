@@ -1,28 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using Cinemachine;
 using UnityEngine;
 
 public class Depart : MonoBehaviour
 {
-    [SerializeField] private GameObject[] vehicules;
+    [SerializeField] private GameObject[] vehicules = new GameObject[4] {null, null, null, null};
+    [SerializeField] private GameObject[] PrefabAdversaires;
     [SerializeField] private RaceTimer globalTimer;
     [SerializeField] private SampleMessageListener arduino01;
     [SerializeField] private SampleMessageListener arduino02;
     [SerializeField] private SerialController sc1;
     [SerializeField] private SerialController sc2;
-    [SerializeField] private Voitures[] Joueurs;
-    [SerializeField] private Configs configureations;
+    [SerializeField] private Configs configurations;
+    [SerializeField] private CinemachineVirtualCamera CameraJ1;
+    [SerializeField] private CinemachineVirtualCamera CameraJ2;
 
     [SerializeField] private AudioSource audioSourceIntro;
-
     [SerializeField] public AudioSource audioSourceMusique;
+
+    [SerializeField] private Voitures[] Joueurs;
     private UnityEngine.Vector3[] positions;
 
 
 
     void Start()
     {
+        // Instancie les joueurs et les CPUs
+        InstancierVehicules();
+
         audioSourceIntro.Play();
 
         // Place les véhicules sur les positions de départ
@@ -62,9 +69,9 @@ public class Depart : MonoBehaviour
 
         // Désactiver le script SerialController
         
-        sc1.portName = configureations.J1Port;
+        sc1.portName = configurations.J1Port;
         sc1.enabled = false;
-        sc2.portName = configureations.J2Port;
+        sc2.portName = configurations.J2Port;
         sc2.enabled = false;
 
         // Désactiver le script SampleMessageListener
@@ -119,5 +126,69 @@ public class Depart : MonoBehaviour
             audioSourceMusique.enabled = true;
 
 
+    }
+
+    // Instancier les joueurs et les CPU
+    void InstancierVehicules(){
+        int index = 0;
+        int NbCPUs = PrefabAdversaires.Length;
+        int NbPlayers = 0;
+
+        for (int i = 0; i < configurations.playerStarted.Length; i++)
+        {
+            if (configurations.playerStarted[i]){
+                NbPlayers++;
+            }
+        }
+
+        Joueurs = new Voitures[NbPlayers];
+
+        // Instanciate the players
+        int joueurIndex = 0;
+        for (int i = 0; i < NbPlayers; i++)
+        {
+            GameObject vehiculeJoueur;
+            if(configurations.playerStarted[i]){
+                if(i == 0){
+                    vehiculeJoueur = Instantiate(configurations.J1VehiculeChoisi);
+                    vehiculeJoueur.name = "J1";
+                    CameraJ1.Follow = vehiculeJoueur.transform;
+                    CameraJ1.LookAt = vehiculeJoueur.transform;
+                    Debug.Log(CameraJ1.Follow);
+                    Debug.Log(CameraJ1.LookAt);
+                }else{
+                    vehiculeJoueur = Instantiate(configurations.J2VehiculeChoisi);
+                    vehiculeJoueur.name = "J2";
+                    CameraJ2.Follow = vehiculeJoueur.transform;
+                    CameraJ2.LookAt = vehiculeJoueur.transform;
+                    Debug.Log(CameraJ2.Follow);
+                    Debug.Log(CameraJ2.LookAt);
+                }
+                vehicules[index] = vehiculeJoueur;
+                
+                // Get the Voitures component and add it to the Joueurs array
+                Voitures voiture = vehiculeJoueur.GetComponent<Voitures>();
+                if (voiture != null)
+                {
+                    Joueurs[joueurIndex] = voiture;
+                    if(joueurIndex == 0){
+                        voiture.controls = arduino01;
+                    }else{
+                        voiture.controls = arduino02;
+                    }
+                    joueurIndex++;
+                }
+
+                index++;
+            }
+        }
+        
+        //Instanciate the opponents filling the remaining spots
+        for (int i = index; i < vehicules.Length; i++)
+        {
+            GameObject vehiculeCPU = Instantiate(PrefabAdversaires[Random.Range(0, NbCPUs)]);
+            vehiculeCPU.name = "CPU" + index;
+            vehicules[i] = vehiculeCPU;
+        }
     }
 }
