@@ -12,8 +12,10 @@ public class UIEcranTitre : MonoBehaviour
     [Tooltip("Delay between switching focus to the new button in seconds")]
     [SerializeField] private float navigationDelay = 1.0f;
     [SerializeField] private GameObject firstButton;
+    [SerializeField] private GameObject[] Vehicules;
     private GameObject boutonStart;
     private GameObject ecranChoix;
+    private GameObject ecranPret;
     [SerializeField] private bool started = false;
     [SerializeField] private bool cursorMoved = false;
     [SerializeField] private bool selecting = false;
@@ -25,14 +27,17 @@ public class UIEcranTitre : MonoBehaviour
 
         boutonStart = this.transform.Find("Start").gameObject;
         ecranChoix = this.transform.Find("ChoixVehicule").gameObject;
+        ecranPret = this.transform.Find("Waiting").gameObject;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (started)
+        if (ready)
         {
+            ReadyScreen();
+        }else if(started){
             Navigate();
         }else{
             StartGame();
@@ -43,6 +48,7 @@ public class UIEcranTitre : MonoBehaviour
 
     // Naviguer dans le menu
     void Navigate(){
+        Debug.Log("Navigate");
         float joystickG = controller.GetJoystickL();
         float joystickD = controller.GetJoystickR();
         int actionButton = controller.GetActionButton();
@@ -50,7 +56,6 @@ public class UIEcranTitre : MonoBehaviour
         // Convertir en valeur numérique entre -1 et 1
         float conversionG = (Mathf.InverseLerp(0, 1024, joystickG) * 2 - 1) * -1;
         float conversionD = (Mathf.InverseLerp(0, 1024, joystickD) * 2 - 1) * -1;
-        Debug.Log(conversionG);
 
         if (conversionG > 0.5f && !cursorMoved)
         {
@@ -90,6 +95,7 @@ public class UIEcranTitre : MonoBehaviour
 
     // Commencer la partie ! Ça va confirmer qu'il y a un joueur
     void StartGame(){
+        Debug.Log("StartGame");
         int actionButton = controller.GetActionButton();
 
         if (actionButton > 0 && !selecting)
@@ -102,7 +108,9 @@ public class UIEcranTitre : MonoBehaviour
 
             configurations.playerStarted[joueur] = true;
 
+            selecting = true;
             started = true;
+            this.Invoke("resetSelection", navigationDelay);
         }
     }
 
@@ -120,5 +128,28 @@ public class UIEcranTitre : MonoBehaviour
         this.Invoke("resetSelection", navigationDelay);
     }
 
-    
+    public void IAmReadyBabe(){
+        ready = true;
+        ecranChoix.SetActive(false);
+        ecranPret.SetActive(true);
+        this.Invoke("resetSelection", navigationDelay);
+    }
+
+    void ReadyScreen(){
+        Debug.Log("ReadyScreen");
+        int actionButton = controller.GetActionButton();
+
+        if (actionButton > 0 && !selecting)
+        {
+            ecranPret.SetActive(false);
+            ecranChoix.SetActive(true);
+
+            // Assuming the first button is a child of ecranChoix
+            EventSystem.current.SetSelectedGameObject(firstButton);
+
+            ready = false;
+            selecting = true;
+            this.Invoke("resetSelection", navigationDelay);
+        }
+    }
 }
