@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,10 +28,28 @@ public class ChaosMod : MonoBehaviour
 
    // Start is called before the first frame update
    void Start()
-   {
+   {    
+
+        j1 = GameObject.Find("J1").GetComponent<Voitures>();
+
+        if(GameObject.Find("J2") != null ){
+            j2 = GameObject.Find("J2").GetComponent<Voitures>();
+        }
 
         effectNameTextJ1.text = "";
         effectNameTextJ2.text = "";
+
+         // Trouver tous les objets ayant le tag "Player"
+        GameObject[] player1Objects = GameObject.FindGameObjectsWithTag("Player1");
+        GameObject[] player2Objects = GameObject.FindGameObjectsWithTag("Player2");
+        // Trouver tous les objets ayant le tag "Adversaire"
+        GameObject[] adversaireObjects = GameObject.FindGameObjectsWithTag("Adversaire");
+
+        // Ajouter tous les objets trouvés à la liste
+        affectedObjects.AddRange(player1Objects);
+        affectedObjects.AddRange(player2Objects);
+        affectedObjects.AddRange(adversaireObjects);
+
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
@@ -69,7 +88,9 @@ public class ChaosMod : MonoBehaviour
     void Geler()
     {
         j1.enabled = false;
-        j2.enabled = false;
+        if(GameObject.Find("J2") != null ){
+            j2.enabled = true;
+        }
         FakeCrash();
         StartCoroutine(WaitAndResume(5f));
     }
@@ -82,7 +103,9 @@ public class ChaosMod : MonoBehaviour
     void ResumeGame()
     {   
         j1.enabled = true;
-        j2.enabled = true;
+        if(GameObject.Find("J2") != null ){
+            j2.enabled = true;
+        }
         Time.timeScale = 1;
     }
 
@@ -106,7 +129,10 @@ public class ChaosMod : MonoBehaviour
             StartCoroutine(ChangeSize(obj, 1.8f, 5f));
         }
         j1.maxSpeedSol = 7;
-        j2.maxSpeedSol = 7;
+        if(GameObject.Find("J2") != null ){
+            j2.maxSpeedSol = 7;
+        }
+
     }
 
     void DiminueTaille()
@@ -116,7 +142,10 @@ public class ChaosMod : MonoBehaviour
             StartCoroutine(ChangeSize(obj, 0.2f, 5f));
         }
         j1.maxSpeedSol = 12;
-        j2.maxSpeedSol = 12;
+        if(GameObject.Find("J2") != null ){
+            j2.maxSpeedSol = 12;
+        }
+
     }
 
     IEnumerator ChangeSize(GameObject obj, float targetScale, float duration)
@@ -133,7 +162,9 @@ public class ChaosMod : MonoBehaviour
 
         obj.transform.localScale = initialScale;
         j1.maxSpeedSol = 10;
-        j2.maxSpeedSol = 10;
+        if(GameObject.Find("J2") != null ){
+            j2.maxSpeedSol = 10;
+        }
     }
 
     IEnumerator UpdateChaosModeSlider(float duration)
