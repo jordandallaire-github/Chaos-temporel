@@ -14,6 +14,8 @@ public class UIEcranTitre : MonoBehaviour
     [SerializeField] private GameObject firstButton;
     private GameObject boutonStart;
     private GameObject ecranChoix;
+
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private bool started = false;
     [SerializeField] private bool cursorMoved = false;
     [SerializeField] private bool selecting = false;
@@ -81,6 +83,7 @@ public class UIEcranTitre : MonoBehaviour
             if (currentButton != null)
             {
                 currentButton.onClick.Invoke();
+                audioSource.Play();
             }
             selecting = true;
         }else if(actionButton == 0 && selecting){
