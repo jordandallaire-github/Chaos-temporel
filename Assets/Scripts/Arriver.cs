@@ -4,15 +4,21 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class Arriver : MonoBehaviour
 {
     private int index = 0;
+
+    [SerializeField] Configs configuration;
     [SerializeField] private Rankings rankings;
     [SerializeField] private RaceTimer timer;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject[] JoueurUIs;
     [SerializeField] private GameObject[] EcransResultat;
+
+    [SerializeField] public AudioSource audioSourceMusique;
+
 
     void OnTriggerEnter(Collider vehicule){
     if (vehicule.tag == "Player1" || vehicule.tag == "Adversaire" || vehicule.tag == "Player2")
@@ -24,9 +30,40 @@ public class Arriver : MonoBehaviour
             rankings.time[index] = timer.FetchCurrentTime();
             Debug.Log(vehicule.gameObject.GetType());
             Debug.Log(rankings.ranking[index].GetType());
-            audioSource.Play();
             index++;
+
+            if(IsEveryone()){
+                if(true){
+                    audioSource.enabled = true;
+                    audioSourceMusique.enabled = false;
+                }
+                else{
+                    
+                }
+            }
         }
     }
 }
+
+    bool IsEveryone(){
+
+        int NbJoueurs = 0;
+
+        for (int i = 0; i < configuration.playerStarted.Length; i++)
+        {
+            if(configuration.playerStarted[i]){
+                NbJoueurs++;
+            }
+        }
+
+        if(NbJoueurs == 1){
+            return true;
+        }else{
+            if(Array.Exists(rankings.ranking, element => element == "J1" && Array.Exists(rankings.ranking, element => element == "J2"))){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
 }
