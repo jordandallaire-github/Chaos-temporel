@@ -14,9 +14,13 @@ public class ChaosMod : MonoBehaviour
 
     public List<GameObject> affectedObjects;
 
-    [SerializeField] public Slider sliderTempsChaos;
+    [SerializeField] public Slider sliderTempsChaosJ1;
 
-     [SerializeField] public TextMeshProUGUI effectNameText;
+     [SerializeField] public TextMeshProUGUI effectNameTextJ1;
+
+    [SerializeField] public Slider sliderTempsChaosJ2;
+
+     [SerializeField] public TextMeshProUGUI effectNameTextJ2;
 
    // La liste des fonctions
    System.Action[] effetsPowerUps;
@@ -25,7 +29,8 @@ public class ChaosMod : MonoBehaviour
    void Start()
    {
 
-        effectNameText.text = "";
+        effectNameTextJ1.text = "";
+        effectNameTextJ2.text = "";
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
@@ -48,7 +53,10 @@ public class ChaosMod : MonoBehaviour
 
 
         // Définir le texte du composant TextMeshPro à afficher le nom de l'effet actif
-       effectNameText.text = effetsPowerUps[index].Method.Name;
+       effectNameTextJ1.text = effetsPowerUps[index].Method.Name;
+
+               // Définir le texte du composant TextMeshPro à afficher le nom de l'effet actif
+       effectNameTextJ2.text = effetsPowerUps[index].Method.Name;
 
        // Désactiver le texte de l'effet précédent après 30 secondes
        StartCoroutine(DisableEffectNameText(5f));
@@ -135,18 +143,21 @@ public class ChaosMod : MonoBehaviour
         while (Time.time < startTime + duration)
         {
             float t = (Time.time - startTime) / duration;
-            sliderTempsChaos.value = t * 180;
+            sliderTempsChaosJ1.value = t * 180;
+            sliderTempsChaosJ2.value = t * 180;
             yield return null;
         }
 
-            sliderTempsChaos.value = 0;
+            sliderTempsChaosJ1.value = 0;
+            sliderTempsChaosJ2.value = 0;
             
     }
 
        IEnumerator DisableEffectNameText(float delay)
    {
        yield return new WaitForSeconds(delay);
-       effectNameText.text = "";
+       effectNameTextJ1.text = "";
+       effectNameTextJ2.text = "";
    }
 
 
