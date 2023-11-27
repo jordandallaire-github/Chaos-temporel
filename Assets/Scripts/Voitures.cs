@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Voitures : MonoBehaviour
 {
-    [SerializeField] private SampleMessageListener controls; // Donnée reçu par le Arduino
+    public SampleMessageListener controls; // Donnée reçu par le Arduino
     public PowerUpsEffets currentPowerUp;
     public bool controlsEnabled = false;
     private bool isResetting = false;
