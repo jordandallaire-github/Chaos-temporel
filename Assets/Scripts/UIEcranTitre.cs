@@ -92,7 +92,7 @@ public class UIEcranTitre : MonoBehaviour
     void StartGame(){
         int actionButton = controller.GetActionButton();
 
-        if (actionButton > 0)
+        if (actionButton > 0 && !selecting)
         {
             boutonStart.SetActive(false);
             ecranChoix.SetActive(true);
@@ -108,9 +108,17 @@ public class UIEcranTitre : MonoBehaviour
 
     void resetSelection(){
         cursorMoved = false;
+        selecting = false;
     }
 
-
+    public void BackToStart(){
+        boutonStart.SetActive(true);
+        ecranChoix.SetActive(false);
+        configurations.playerStarted[joueur] = false;
+        started = false;
+        selecting = true;
+        this.Invoke("resetSelection", navigationDelay);
+    }
 
     
 }
