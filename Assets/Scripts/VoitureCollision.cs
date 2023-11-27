@@ -5,6 +5,9 @@ using UnityEngine;
 public class VoitureCollision : MonoBehaviour
 {
     public float repoussement = 3000;
+
+    [SerializeField] private AudioSource audioSource;
+    
     public bool isOnGround;
     public bool isOnGrass;
     public float rotationSpeed = 360f; // Vitesse de rotation en degrés par seconde
@@ -25,18 +28,21 @@ public class VoitureCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Adversaire")
         {
+            audioSource.Play();
             Rigidbody autreRb = collision.rigidbody;
             autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
         }
 
         if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
         {
+            audioSource.Play();
             Rigidbody autreRb = collision.rigidbody;
             autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
         }
 
         if (collision.gameObject.tag == "Barrel")
         {
+            audioSource.Play();
             StartCoroutine(BarrelCollisionReaction());
             collision.gameObject.SetActive(false);
         }

@@ -10,6 +10,7 @@ public class Arriver : MonoBehaviour
     private int index = 0;
     [SerializeField] private Rankings rankings;
     [SerializeField] private RaceTimer timer;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject[] JoueurUIs;
     [SerializeField] private GameObject[] EcransResultat;
 
@@ -23,6 +24,7 @@ public class Arriver : MonoBehaviour
             rankings.time[index] = timer.FetchCurrentTime();
             Debug.Log(vehicule.gameObject.GetType());
             Debug.Log(rankings.ranking[index].GetType());
+            audioSource.Play();
             index++;
         }
     }
