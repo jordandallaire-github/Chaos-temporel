@@ -20,7 +20,9 @@ public class CollisionPowerUps : MonoBehaviour
         int indexAleatoire = Random.Range(0, powerUpsDisponibles.Length);
         powerUpsActuel = powerUpsDisponibles[indexAleatoire];
         j1 = GameObject.Find("J1").GetComponent<Voitures>();
-        j2 = GameObject.Find("J2").GetComponent<Voitures>();
+         if(GameObject.Find("J2") != null ){
+            j2 = GameObject.Find("J2").GetComponent<Voitures>();
+         }
         ennemi = GameObject.Find("CPU").GetComponent<IaEnnemi>();
     }
     private void OnTriggerEnter(Collider col)
@@ -43,7 +45,8 @@ public class CollisionPowerUps : MonoBehaviour
 
         if(col.tag == "Player2"){
 
-            if (!j2.hasPowerUp)
+         if(GameObject.Find("J2") != null ){
+                if (!j2.hasPowerUp)
             {
                 // Stocker le power-up
                 j2.hasPowerUp = true;
@@ -53,6 +56,8 @@ public class CollisionPowerUps : MonoBehaviour
             {
                 // Le joueur a déjà un power-up, détruire le power-up sans prendre l'effet
             }
+         }
+
         }
 
         if(col.tag == "Adversaire"){
