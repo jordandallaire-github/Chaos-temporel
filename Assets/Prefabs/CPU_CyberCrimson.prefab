@@ -198,7 +198,7 @@ MonoBehaviour:
   rotationSpeed: 1.5
   maxSpeed: 25
   brakeSpeed: 2
-  barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
+  barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
   emplacemementTonneau: {fileID: 688042862007637132}
   checkpoints:
   - {fileID: 0}
