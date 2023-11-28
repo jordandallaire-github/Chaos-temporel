@@ -40,6 +40,21 @@ public class IaEnnemi : MonoBehaviour {
     void Start () {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+
+                // Trouve tous les GameObjects avec le tag "Checkpoint"
+        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+
+        // Crée un tableau de Transform pour stocker les positions des checkpoints
+        Transform[] checkpointPositions = new Transform[checkpoints.Length];
+
+        // Parcoure le tableau de GameObjects et ajoute leurs positions à checkpointPositions
+        for (int i = 0; i < checkpoints.Length; i++) {
+            checkpointPositions[i] = checkpoints[i].transform;
+        }
+
+        // Affecte le tableau de positions aux checkpoints de l'IA
+        this.checkpoints = checkpointPositions;
+        
         agent.stoppingDistance = 0f; // Make the AI reach exactly its destination
         GoToNextCheckpoint();
         agent.speed = speed;
