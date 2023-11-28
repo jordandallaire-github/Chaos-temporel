@@ -50,7 +50,6 @@ public class UIEcranTitre : MonoBehaviour
 
     // Naviguer dans le menu
     void Navigate(){
-        Debug.Log("Navigate");
         float joystickG = controller.GetJoystickL();
         float joystickD = controller.GetJoystickR();
         int actionButton = controller.GetActionButton();
@@ -98,7 +97,6 @@ public class UIEcranTitre : MonoBehaviour
 
     // Commencer la partie ! Ça va confirmer qu'il y a un joueur
     void StartGame(){
-        Debug.Log("StartGame");
         int actionButton = controller.GetActionButton();
 
         if (actionButton > 0 && !selecting)
@@ -139,7 +137,6 @@ public class UIEcranTitre : MonoBehaviour
     }
 
     void ReadyScreen(){
-        Debug.Log("ReadyScreen");
         int actionButton = controller.GetActionButton();
 
         if (actionButton > 0 && !selecting)
@@ -153,6 +150,16 @@ public class UIEcranTitre : MonoBehaviour
             ready = false;
             selecting = true;
             this.Invoke("resetSelection", navigationDelay);
+        }
+    }
+
+    public void ChosenCar(GameObject choice){
+        Debug.Log("tu as choisi : " + choice.name);
+        
+        if(joueur == 0){
+            configurations.J1VehiculeChoisi = choice;
+        }else{
+            configurations.J2VehiculeChoisi = choice;
         }
     }
 }

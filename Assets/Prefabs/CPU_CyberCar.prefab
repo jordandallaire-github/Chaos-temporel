@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7483245596555758962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7552516740001566751}
+  m_Layer: 0
+  m_Name: EmplacementTonneau
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7552516740001566751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7483245596555758962}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.2, y: -0.7404886, z: 56.9}
+  m_LocalScale: {x: 28.48745, y: 2.8857336, z: 28.48745}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5201970639010270281}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9189247669982187282
 GameObject:
   m_ObjectHideFlags: 0
@@ -18,7 +49,7 @@ GameObject:
   - component: {fileID: 1500653186091680145}
   m_Layer: 0
   m_Name: CPU_CyberCar
-  m_TagString: Untagged
+  m_TagString: Adversaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,9 +65,10 @@ Transform:
   m_LocalPosition: {x: -550.03125, y: 32.937714, z: -231.40178}
   m_LocalScale: {x: 0.03510318, y: 0.34653234, z: 0.03510318}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7552516740001566751}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1247324938496820698
 MeshFilter:
@@ -166,7 +198,7 @@ MonoBehaviour:
   maxSpeed: 25
   brakeSpeed: 2
   barrelPrefab: {fileID: 8364453248175074997, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
-  emplacemementTonneau: {fileID: 0}
+  emplacemementTonneau: {fileID: 7483245596555758962}
   checkpoints:
   - {fileID: 0}
   - {fileID: 0}

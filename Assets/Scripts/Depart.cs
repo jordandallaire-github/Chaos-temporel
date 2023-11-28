@@ -152,6 +152,7 @@ public class Depart : MonoBehaviour
                 if(i == 0){
                     vehiculeJoueur = Instantiate(configurations.J1VehiculeChoisi);
                     vehiculeJoueur.name = "J1";
+                    vehiculeJoueur.tag = "Player1";
                     CameraJ1.Follow = vehiculeJoueur.transform;
                     CameraJ1.LookAt = vehiculeJoueur.transform;
                     Debug.Log(CameraJ1.Follow);
@@ -159,6 +160,7 @@ public class Depart : MonoBehaviour
                 }else{
                     vehiculeJoueur = Instantiate(configurations.J2VehiculeChoisi);
                     vehiculeJoueur.name = "J2";
+                    vehiculeJoueur.tag = "Player2";
                     CameraJ2.Follow = vehiculeJoueur.transform;
                     CameraJ2.LookAt = vehiculeJoueur.transform;
                     Debug.Log(CameraJ2.Follow);

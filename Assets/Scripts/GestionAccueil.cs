@@ -30,12 +30,18 @@ public class GestionAccueil : MonoBehaviour
         {
             configurations.playerStarted[i] = false;
         }
+
+        // Reset les choix de joueurs
+        configurations.J1VehiculeChoisi = null;
+        configurations.J2VehiculeChoisi = null;
     }
 
     void Update(){
         
-        if(configurations.playerStarted[0] && configurations.playerStarted[1] && ecrans[0].ready && ecrans[1].ready){
-        
+        if(configurations.playerStarted[0] && configurations.playerStarted[1]){
+            if(ecrans[0].ready && ecrans[1].ready){
+                SceneManager.LoadScene("Piste01");
+            }
         }else{
             for (int i = 0; i < configurations.playerStarted.Length; i++)
             {
