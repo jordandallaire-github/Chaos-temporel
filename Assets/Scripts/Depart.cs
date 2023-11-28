@@ -187,7 +187,7 @@ public class Depart : MonoBehaviour
         for (int i = index; i < vehicules.Length; i++)
         {
             GameObject vehiculeCPU = Instantiate(PrefabAdversaires[Random.Range(0, NbCPUs)]);
-            vehiculeCPU.name = "CPU" + index;
+            vehiculeCPU.name = "CPU";
             vehicules[i] = vehiculeCPU;
         }
     }
