@@ -62,7 +62,7 @@ public class UIEcranTitre : MonoBehaviour
         if (conversionG > 0.5f && !cursorMoved)
         {
             var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
-            if (next != null)
+            if (next != null && next.gameObject.transform.IsChildOf(this.transform))
             {
                 eventSystem.SetSelectedGameObject(next.gameObject);
             }
@@ -73,7 +73,7 @@ public class UIEcranTitre : MonoBehaviour
         else if (conversionG < -0.5f && !cursorMoved)
         {
             var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
-            if (next != null)
+            if (next != null && next.gameObject.transform.IsChildOf(this.transform))
             {
                 eventSystem.SetSelectedGameObject(next.gameObject);
             }
