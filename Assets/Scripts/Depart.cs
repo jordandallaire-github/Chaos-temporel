@@ -144,12 +144,11 @@ public class Depart : MonoBehaviour
         Joueurs = new Voitures[NbPlayers];
 
         // Instanciate the players
+        int joueurIndex = 0;
         for (int i = 0; i < configurations.playerStarted.Length; i++)
         {
             GameObject vehiculeJoueur;
             if(configurations.playerStarted[i]){
-                
-                int joueurIndex = 0;
                 if(i == 0){
                     Debug.Log("Le premier joueur est instancié");
                     vehiculeJoueur = Instantiate(configurations.J1VehiculeChoisi);
@@ -157,6 +156,8 @@ public class Depart : MonoBehaviour
                     vehiculeJoueur.tag = "Player1";
                     CameraJ1.Follow = vehiculeJoueur.transform;
                     CameraJ1.LookAt = vehiculeJoueur.transform;
+                    Debug.Log(CameraJ1.Follow);
+                    Debug.Log(CameraJ1.LookAt);
                 }else{
                     Debug.Log("Le deuxième joueur est instancié");
                     vehiculeJoueur = Instantiate(configurations.J2VehiculeChoisi);
@@ -164,7 +165,8 @@ public class Depart : MonoBehaviour
                     vehiculeJoueur.tag = "Player2";
                     CameraJ2.Follow = vehiculeJoueur.transform;
                     CameraJ2.LookAt = vehiculeJoueur.transform;
-                    joueurIndex = 1;
+                    Debug.Log(CameraJ2.Follow);
+                    Debug.Log(CameraJ2.LookAt);
                 }
                 vehicules[index] = vehiculeJoueur;
                 
@@ -173,11 +175,12 @@ public class Depart : MonoBehaviour
                 if (voiture != null)
                 {
                     Joueurs[joueurIndex] = voiture;
-                    if(joueurIndex == 0){
+                    if(i == 0){
                         voiture.controls = arduino01;
                     }else{
                         voiture.controls = arduino02;
                     }
+                    joueurIndex++;
                 }
 
                 index++;
