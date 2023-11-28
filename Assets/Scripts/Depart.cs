@@ -20,6 +20,9 @@ public class Depart : MonoBehaviour
     [SerializeField] private AudioSource audioSourceIntro;
     [SerializeField] public AudioSource audioSourceMusique;
 
+    [SerializeField] private GameObject chaosMode;
+
+
     [SerializeField] private Voitures[] Joueurs;
     private UnityEngine.Vector3[] positions;
 
@@ -80,6 +83,7 @@ public class Depart : MonoBehaviour
         arduino02.enabled = false;
 
         audioSourceMusique.enabled = false;
+        chaosMode.SetActive(false);
   
 
         StartCoroutine(StartGame());
@@ -124,6 +128,7 @@ public class Depart : MonoBehaviour
             globalTimer.StartTimer();
 
             audioSourceMusique.enabled = true;
+            chaosMode.SetActive(true);
 
 
     }

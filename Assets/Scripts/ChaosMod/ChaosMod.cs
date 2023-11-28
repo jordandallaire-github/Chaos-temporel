@@ -21,7 +21,11 @@ public class ChaosMod : MonoBehaviour
 
     [SerializeField] public Slider sliderTempsChaosJ2;
 
-     [SerializeField] public TextMeshProUGUI effectNameTextJ2;
+    [SerializeField] public TextMeshProUGUI effectNameTextJ2;
+
+    [SerializeField] public GameObject cartoon;
+
+    [SerializeField] public GameObject cyperpunk;
 
    // La liste des fonctions
    System.Action[] effetsPowerUps;
@@ -55,12 +59,16 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
+          Cyperpunk,
+          Cartoon,
+          Geler,
+          SlowMo,
           AugmenteTaille,
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
-      InvokeRepeating(nameof(CallRandomFunction), 34, 30);
-        StartCoroutine(UpdateChaosModeSlider(34));
+      InvokeRepeating(nameof(CallRandomFunction), 30, 30);
+        StartCoroutine(UpdateChaosModeSlider(30));
    }
 
    // Appel de la fonction aléatoire
@@ -205,6 +213,16 @@ public class ChaosMod : MonoBehaviour
        yield return new WaitForSeconds(delay);
        effectNameTextJ1.text = "";
        effectNameTextJ2.text = "";
+   }
+
+   void Cyperpunk(){
+        cartoon.SetActive(false);
+        cyperpunk.SetActive(true);
+   }
+
+    void Cartoon(){
+        cartoon.SetActive(true);
+        cyperpunk.SetActive(false);
    }
 
 
