@@ -42,7 +42,6 @@ public class VoitureCollision : MonoBehaviour
 
         if (collision.gameObject.tag == "Barrel")
         {
-            audioSource.Play();
             StartCoroutine(BarrelCollisionReaction());
             collision.gameObject.SetActive(false);
         }

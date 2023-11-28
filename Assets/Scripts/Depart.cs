@@ -22,6 +22,14 @@ public class Depart : MonoBehaviour
 
     [SerializeField] private GameObject chaosMode;
 
+    [SerializeField] private GameObject chaosModeUI1;
+
+    [SerializeField] private GameObject chaosModeUI2;
+
+    [SerializeField] private GameObject chaosModeUIText1;
+
+    [SerializeField] private GameObject chaosModeUIText2;
+
 
     [SerializeField] private Voitures[] Joueurs;
     private UnityEngine.Vector3[] positions;
@@ -84,6 +92,10 @@ public class Depart : MonoBehaviour
 
         audioSourceMusique.enabled = false;
         chaosMode.SetActive(false);
+        chaosModeUI1.SetActive(false);
+        chaosModeUI2.SetActive(false);
+        chaosModeUIText1.SetActive(false);
+        chaosModeUIText2.SetActive(false);
   
 
         StartCoroutine(StartGame());
@@ -129,6 +141,10 @@ public class Depart : MonoBehaviour
 
             audioSourceMusique.enabled = true;
             chaosMode.SetActive(true);
+            chaosModeUI1.SetActive(true);
+            chaosModeUI2.SetActive(true);
+            chaosModeUIText1.SetActive(true);
+            chaosModeUIText2.SetActive(true);
 
 
     }

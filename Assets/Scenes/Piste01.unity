@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3802,7 +3802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 25.400024}
   m_SizeDelta: {x: 1280, y: 70}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &108199371
@@ -8237,6 +8237,10 @@ MonoBehaviour:
   audioSourceIntro: {fileID: 227985757}
   audioSourceMusique: {fileID: 646449123}
   chaosMode: {fileID: 1184124022}
+  chaosModeUI1: {fileID: 108199369}
+  chaosModeUI2: {fileID: 514502338}
+  chaosModeUIText1: {fileID: 1565505150}
+  chaosModeUIText2: {fileID: 263661478}
   Joueurs: []
 --- !u!4 &227985756
 Transform:
@@ -17108,7 +17112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 0, y: 25}
   m_SizeDelta: {x: 1280, y: 70}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &514502340
@@ -21866,7 +21870,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.295
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
