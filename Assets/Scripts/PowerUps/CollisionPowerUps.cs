@@ -19,6 +19,9 @@ public class CollisionPowerUps : MonoBehaviour
         // Choisir un power-up aléatoire
         int indexAleatoire = Random.Range(0, powerUpsDisponibles.Length);
         powerUpsActuel = powerUpsDisponibles[indexAleatoire];
+        j1 = GameObject.Find("J1").GetComponent<Voitures>();
+        j2 = GameObject.Find("J2").GetComponent<Voitures>();
+        ennemi = GameObject.Find("CPU").GetComponent<IaEnnemi>();
     }
     private void OnTriggerEnter(Collider col)
     {
