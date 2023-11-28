@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   J1Port: COM3
   J2Port: COM4
-  playerStarted: 0100
-  J1VehiculeChoisi: {fileID: 1153997626415972048, guid: 725f6b7604af555449e18b62dafcd5c9, type: 3}
-  J2VehiculeChoisi: {fileID: 3727984235928110119, guid: a1b8764441722da448449acc0963ff98, type: 3}
+  playerStarted: 0000
+  J1VehiculeChoisi: {fileID: 0}
+  J2VehiculeChoisi: {fileID: 0}
