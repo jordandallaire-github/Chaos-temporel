@@ -15,6 +15,7 @@ public class UIEcranTitre : MonoBehaviour
     [SerializeField] private GameObject[] Vehicules;
     private GameObject boutonStart;
     private GameObject ecranChoix;
+    [SerializeField] private EventSystem eventSystem;
 
     [SerializeField] private AudioSource audioSource;
     private GameObject ecranPret;
@@ -26,7 +27,7 @@ public class UIEcranTitre : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         boutonStart = this.transform.Find("Start").gameObject;
         ecranChoix = this.transform.Find("ChoixVehicule").gameObject;
         ecranPret = this.transform.Find("Waiting").gameObject;
@@ -155,7 +156,7 @@ public class UIEcranTitre : MonoBehaviour
 
     public void ChosenCar(GameObject choice){
         Debug.Log("tu as choisi : " + choice.name);
-        
+
         if(joueur == 0){
             configurations.J1VehiculeChoisi = choice;
         }else{
