@@ -19,6 +19,7 @@ public class Voitures : MonoBehaviour
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
+
     private bool isButtonPressed = false;
 
     private float timeUpsideDown = 0f;
