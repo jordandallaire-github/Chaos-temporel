@@ -2188,7 +2188,7 @@ MonoBehaviour:
   rankings: {fileID: 11400000, guid: db65b51ddb10d98469dfddc145484fe9, type: 2}
   ecrans:
   - {fileID: 517819281}
-  - {fileID: 0}
+  - {fileID: 1066921410}
 --- !u!4 &743374879
 Transform:
   m_ObjectHideFlags: 0
