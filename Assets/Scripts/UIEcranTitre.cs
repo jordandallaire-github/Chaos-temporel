@@ -155,4 +155,8 @@ public class UIEcranTitre : MonoBehaviour
             this.Invoke("resetSelection", navigationDelay);
         }
     }
+
+    public void ChosenCar(GameObject choice){
+        Debug.Log(choice.name);
+    }
 }

@@ -30,6 +30,10 @@ public class GestionAccueil : MonoBehaviour
         {
             configurations.playerStarted[i] = false;
         }
+
+        // Reset les choix de joueurs
+        configurations.J1VehiculeChoisi = null;
+        configurations.J2VehiculeChoisi = null;
     }
 
     void Update(){
