@@ -145,26 +145,24 @@ public class Depart : MonoBehaviour
 
         // Instanciate the players
         int joueurIndex = 0;
-        for (int i = 0; i < NbPlayers; i++)
+        for (int i = 0; i < configurations.playerStarted.Length; i++)
         {
             GameObject vehiculeJoueur;
             if(configurations.playerStarted[i]){
                 if(i == 0){
+                    Debug.Log("Le premier joueur est instancié");
                     vehiculeJoueur = Instantiate(configurations.J1VehiculeChoisi);
                     vehiculeJoueur.name = "J1";
                     vehiculeJoueur.tag = "Player1";
                     CameraJ1.Follow = vehiculeJoueur.transform;
                     CameraJ1.LookAt = vehiculeJoueur.transform;
-                    Debug.Log(CameraJ1.Follow);
-                    Debug.Log(CameraJ1.LookAt);
                 }else{
+                    Debug.Log("Le deuxième joueur est instancié");
                     vehiculeJoueur = Instantiate(configurations.J2VehiculeChoisi);
                     vehiculeJoueur.name = "J2";
                     vehiculeJoueur.tag = "Player2";
                     CameraJ2.Follow = vehiculeJoueur.transform;
                     CameraJ2.LookAt = vehiculeJoueur.transform;
-                    Debug.Log(CameraJ2.Follow);
-                    Debug.Log(CameraJ2.LookAt);
                 }
                 vehicules[index] = vehiculeJoueur;
                 

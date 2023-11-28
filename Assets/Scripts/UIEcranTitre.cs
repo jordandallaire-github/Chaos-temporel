@@ -15,6 +15,7 @@ public class UIEcranTitre : MonoBehaviour
     [SerializeField] private GameObject[] Vehicules;
     private GameObject boutonStart;
     private GameObject ecranChoix;
+    [SerializeField] private EventSystem eventSystem;
 
     [SerializeField] private AudioSource audioSource;
     private GameObject ecranPret;
@@ -26,7 +27,7 @@ public class UIEcranTitre : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         boutonStart = this.transform.Find("Start").gameObject;
         ecranChoix = this.transform.Find("ChoixVehicule").gameObject;
         ecranPret = this.transform.Find("Waiting").gameObject;
@@ -60,10 +61,10 @@ public class UIEcranTitre : MonoBehaviour
 
         if (conversionG > 0.5f && !cursorMoved)
         {
-            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+            var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
             if (next != null)
             {
-                EventSystem.current.SetSelectedGameObject(next.gameObject);
+                eventSystem.SetSelectedGameObject(next.gameObject);
             }
 
             cursorMoved = true;
@@ -71,10 +72,10 @@ public class UIEcranTitre : MonoBehaviour
         }
         else if (conversionG < -0.5f && !cursorMoved)
         {
-            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+            var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
             if (next != null)
             {
-                EventSystem.current.SetSelectedGameObject(next.gameObject);
+                eventSystem.SetSelectedGameObject(next.gameObject);
             }
 
             cursorMoved = true;
@@ -83,7 +84,7 @@ public class UIEcranTitre : MonoBehaviour
 
         if (actionButton == 1 && !selecting)
     {
-            var currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            var currentButton = eventSystem.currentSelectedGameObject.GetComponent<Button>();
             if (currentButton != null)
             {
                 currentButton.onClick.Invoke();
@@ -105,7 +106,7 @@ public class UIEcranTitre : MonoBehaviour
             ecranChoix.SetActive(true);
 
             // Assuming the first button is a child of ecranChoix
-            EventSystem.current.SetSelectedGameObject(firstButton);
+            eventSystem.SetSelectedGameObject(firstButton);
 
             configurations.playerStarted[joueur] = true;
 
@@ -145,7 +146,7 @@ public class UIEcranTitre : MonoBehaviour
             ecranChoix.SetActive(true);
 
             // Assuming the first button is a child of ecranChoix
-            EventSystem.current.SetSelectedGameObject(firstButton);
+            eventSystem.SetSelectedGameObject(firstButton);
 
             ready = false;
             selecting = true;
@@ -155,7 +156,7 @@ public class UIEcranTitre : MonoBehaviour
 
     public void ChosenCar(GameObject choice){
         Debug.Log("tu as choisi : " + choice.name);
-        
+
         if(joueur == 0){
             configurations.J1VehiculeChoisi = choice;
         }else{
