@@ -200,9 +200,9 @@ MonoBehaviour:
   controlsEnabled: 0
   rotationSpeed: 1
   speed: 1
-  maxSpeedSol: 10
+  maxSpeedSol: 16
   maxSpeedGazon: 8
-  accelerationTime: 6
+  accelerationTime: 4
   minReverseSpeed: 4
   decelerationTime: 4
   hasPowerUp: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
   barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
   emplacemementTonneau1: {fileID: 3928379800912080954}
   emplacemementTonneau2: {fileID: 0}
+  forceBas: 1
 --- !u!82 &6588022165848103271
 AudioSource:
   m_ObjectHideFlags: 0
@@ -329,11 +330,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928379800912080954}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -87.01852, y: -0.7404886, z: -117.50334}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 13.4, y: 0.51, z: 55.1}
   m_LocalScale: {x: 28.48745, y: 2.8857336, z: 28.48745}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5251345560111406593}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}

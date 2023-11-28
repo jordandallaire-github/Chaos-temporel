@@ -36,6 +36,8 @@ public class Voitures : MonoBehaviour
 
     private static bool isBarrelLaunched2 = false;
 
+    public float forceBas = 50f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -110,6 +112,8 @@ public class Voitures : MonoBehaviour
          {
             CreerTonneau();
          }
+
+         GraviterBas();
 
     }
 
@@ -290,5 +294,9 @@ public class Voitures : MonoBehaviour
             currentPowerUp = null;    
 
         }
+    }
+
+    private void GraviterBas(){
+        joueurRB.AddForce(-transform.up * forceBas * joueurRB.velocity.magnitude);
     }
 }

@@ -29,8 +29,10 @@ public class ChaosMod : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {    
+         if(GameObject.Find("J1") != null ){
+            j1 = GameObject.Find("J1").GetComponent<Voitures>();
+         }
 
-        j1 = GameObject.Find("J1").GetComponent<Voitures>();
 
         if(GameObject.Find("J2") != null ){
             j2 = GameObject.Find("J2").GetComponent<Voitures>();
@@ -87,7 +89,10 @@ public class ChaosMod : MonoBehaviour
 
     void Geler()
     {
-        j1.enabled = false;
+        if(GameObject.Find("J1") != null ){
+            j1.enabled = false;
+        }
+
         if(GameObject.Find("J2") != null ){
             j2.enabled = true;
         }
@@ -102,7 +107,10 @@ public class ChaosMod : MonoBehaviour
 
     void ResumeGame()
     {   
-        j1.enabled = true;
+        if(GameObject.Find("J1") != null ){
+            j1.enabled = true;
+        }
+
         if(GameObject.Find("J2") != null ){
             j2.enabled = true;
         }
@@ -128,7 +136,10 @@ public class ChaosMod : MonoBehaviour
         {
             StartCoroutine(ChangeSize(obj, 1.8f, 5f));
         }
-        j1.maxSpeedSol = 7;
+        if(GameObject.Find("J1") != null ){
+            j1.maxSpeedSol = 7;
+        }
+
         if(GameObject.Find("J2") != null ){
             j2.maxSpeedSol = 7;
         }
@@ -141,9 +152,11 @@ public class ChaosMod : MonoBehaviour
         {
             StartCoroutine(ChangeSize(obj, 0.2f, 5f));
         }
-        j1.maxSpeedSol = 12;
+        if(GameObject.Find("J1") != null ){
+            j1.maxSpeedSol = 20;
+        }
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 12;
+            j2.maxSpeedSol = 20;
         }
 
     }
@@ -161,9 +174,12 @@ public class ChaosMod : MonoBehaviour
         }
 
         obj.transform.localScale = initialScale;
-        j1.maxSpeedSol = 10;
+        if(GameObject.Find("J1") != null ){
+            j1.maxSpeedSol = 16;
+        }
+
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 10;
+            j2.maxSpeedSol = 16;
         }
     }
 
