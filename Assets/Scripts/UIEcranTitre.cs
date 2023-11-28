@@ -155,5 +155,11 @@ public class UIEcranTitre : MonoBehaviour
 
     public void ChosenCar(GameObject choice){
         Debug.Log("tu as choisi : " + choice.name);
+        
+        if(joueur == 0){
+            configurations.J1VehiculeChoisi = choice;
+        }else{
+            configurations.J2VehiculeChoisi = choice;
+        }
     }
 }
