@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class Arriver : MonoBehaviour
 {
@@ -18,32 +19,33 @@ public class Arriver : MonoBehaviour
     [SerializeField] private GameObject[] EcransResultat;
 
     [SerializeField] public AudioSource audioSourceMusique;
+    public UnityEvent events;
 
 
     void OnTriggerEnter(Collider vehicule){
-    if (vehicule.tag == "Player1" || vehicule.tag == "Adversaire" || vehicule.tag == "Player2")
-    {
-        if (System.Array.IndexOf(rankings.ranking, vehicule.gameObject) == -1)
+        if (vehicule.tag == "Player1" || vehicule.tag == "Adversaire" || vehicule.tag == "Player2")
         {
-            Debug.Log(vehicule.gameObject.name + " est à la place " + (index + 1) );
-            rankings.ranking[index] = vehicule.gameObject.name;
-            rankings.time[index] = timer.FetchCurrentTime();
-            Debug.Log(vehicule.gameObject.GetType());
-            Debug.Log(rankings.ranking[index].GetType());
-            index++;
+            if (System.Array.IndexOf(rankings.ranking, vehicule.gameObject.name) == -1)
+            {
+                Debug.Log(vehicule.gameObject.name + " est à la place " + (index + 1) );
+                rankings.ranking[index] = vehicule.gameObject.name;
+                rankings.time[index] = timer.FetchCurrentTime();
+                Debug.Log(vehicule.gameObject.GetType());
+                Debug.Log(rankings.ranking[index].GetType());
+                index++;
 
-            if(IsEveryone()){
-                if(true){
-                    audioSource.enabled = true;
-                    audioSourceMusique.enabled = false;
-                }
-                else{
-                    
+                if(IsEveryone()){
+                    if(true){
+                        audioSource.enabled = true;
+                        audioSourceMusique.enabled = false;
+                    }
+                    else{
+                        events.Invoke();
+                    }
                 }
             }
         }
     }
-}
 
     bool IsEveryone(){
 

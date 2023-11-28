@@ -8365,6 +8365,7 @@ GameObject:
   - component: {fileID: 228432640}
   - component: {fileID: 228432639}
   - component: {fileID: 228432638}
+  - component: {fileID: 228432642}
   m_Layer: 5
   m_Name: EcranResultat01
   m_TagString: Untagged
@@ -8456,6 +8457,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &228432642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228432637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a80eb964d34d1d4fb1ea1f5f9c8edfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noms:
+  - {fileID: 357627579}
+  - {fileID: 1481141759}
+  - {fileID: 327132650}
+  - {fileID: 1681501609}
+  time:
+  - {fileID: 210286615}
+  - {fileID: 961435214}
+  - {fileID: 567987567}
+  - {fileID: 1505111552}
+  rankings: {fileID: 11400000, guid: db65b51ddb10d98469dfddc145484fe9, type: 2}
 --- !u!1 &232030302
 GameObject:
   m_ObjectHideFlags: 0
@@ -41110,7 +41134,59 @@ MonoBehaviour:
   - {fileID: 1796941197}
   EcransResultat:
   - {fileID: 228432637}
+  - {fileID: 1648056545}
   audioSourceMusique: {fileID: 0}
+  events:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 228432637}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1648056545}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 228432642}
+        m_TargetAssemblyTypeName: ShowRankings, Assembly-CSharp
+        m_MethodName: WriteScores
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1648056550}
+        m_TargetAssemblyTypeName: ShowRankings, Assembly-CSharp
+        m_MethodName: WriteScores
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1355652175
 Transform:
   m_ObjectHideFlags: 0
@@ -49195,6 +49271,7 @@ GameObject:
   - component: {fileID: 1648056548}
   - component: {fileID: 1648056547}
   - component: {fileID: 1648056546}
+  - component: {fileID: 1648056550}
   m_Layer: 5
   m_Name: EcranResultat02
   m_TagString: Untagged
@@ -49286,6 +49363,29 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1648056550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648056545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a80eb964d34d1d4fb1ea1f5f9c8edfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noms:
+  - {fileID: 814742533}
+  - {fileID: 876179835}
+  - {fileID: 616807193}
+  - {fileID: 1639222031}
+  time:
+  - {fileID: 1062324879}
+  - {fileID: 127235792}
+  - {fileID: 807956918}
+  - {fileID: 1403833123}
+  rankings: {fileID: 11400000, guid: db65b51ddb10d98469dfddc145484fe9, type: 2}
 --- !u!1 &1650627110
 GameObject:
   m_ObjectHideFlags: 0
