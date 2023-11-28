@@ -12,7 +12,7 @@ public class CollisionPowerUps : MonoBehaviour
 
     public Voitures j2;
 
-    public IaEnnemi ennemi;
+    private IaEnnemi ennemi;
 
     void Start()
     {
@@ -26,7 +26,6 @@ public class CollisionPowerUps : MonoBehaviour
          if(GameObject.Find("J2") != null ){
             j2 = GameObject.Find("J2").GetComponent<Voitures>();
          }
-        ennemi = GameObject.Find("CPU").GetComponent<IaEnnemi>();
     }
     private void OnTriggerEnter(Collider col)
     {
@@ -68,16 +67,12 @@ public class CollisionPowerUps : MonoBehaviour
         }
 
         if(col.tag == "Adversaire"){
-            
-            if (!ennemi.hasPowerUp)
+             ennemi = col.gameObject.GetComponent<IaEnnemi>();
+            if (ennemi != null && !ennemi.hasPowerUp)
             {
                 // Stocker le power-up
                 ennemi.hasPowerUp = true;
                 ennemi.currentPowerUp = powerUpsActuel;
-            }
-            else
-            {
-                
             }
         }
   

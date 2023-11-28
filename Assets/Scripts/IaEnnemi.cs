@@ -23,9 +23,7 @@ public class IaEnnemi : MonoBehaviour {
 
     private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
 
-    private static bool isBarrelLaunched = false;
-
-    private List<GameObject> barrelPrefabs = new List<GameObject>();
+    [SerializeField] public bool isBarrelLaunched = false;
 
     private bool barrelCreated = false;
 
@@ -139,43 +137,46 @@ public class IaEnnemi : MonoBehaviour {
             {
                 if (currentPowerUp.name == "BuffVitesse")
                 {
-                    // Désactiver le power-up sur l'Arduino
-                    currentPowerUp.Desactiver(this.gameObject);
+
+                    if(this.gameObject.tag == "Adversaire"){
+                    // Appliquer le power-up sur l'Arduino
+                     currentPowerUp.Desactiver(this.gameObject);
+                    }
                 }
-                else if (currentPowerUp.name == "SabotageBarrel")
-                {
-                }
+
                 else
                 {
                     // Le power-up n'a pas de cible spécifique, ne rien faire
                 }
 
-                speed = originalSpeed;
+                if(this.gameObject.tag == "Adversaire" && currentPowerUp.name == "SabotageBarrel"){
+                    this.barrelInstance.SetActive(false);
+                    isBarrelLaunched = false;
+                }
+
                 // Réinitialiser l'état du power-up
                 hasPowerUp = false;
                 currentPowerUp = null;
 
-                isBarrelLaunched = false;
-
-                this.barrelInstance.SetActive(false);
-
-                barrelCount--;
             }
         }
 
                 private void CreerTonneau()
             {
-                if (!isBarrelLaunched && barrelCount < 5) // Vérifier si le nombre de tonneaux créés est inférieur à 1
+                if (barrelCount < 120) // Vérifier si le nombre de tonneaux créés est inférieur à 120
                 {
+
+                    if(this.gameObject.tag == "Adversaire" && !isBarrelLaunched){
                         // Créer le tonneau devant le véhicule
                         barrelInstance = Instantiate(barrelPrefab, emplacemementTonneau.transform.position, emplacemementTonneau.transform.rotation);
                         barrelInstance.transform.parent = emplacemementTonneau.transform;
+                        this.barrelInstance.SetActive(true);
 
                         barrelCount++; // Incrémenter le compteur de tonneaux créés
                         isBarrelLaunched = true;
+                    }
 
-                        // Ajouter le préfab du tonneau à la liste
-                        barrelPrefabs.Add(barrelInstance);
+
                 }
 
 

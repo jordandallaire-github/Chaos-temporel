@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6133561129820902567}
   m_Layer: 0
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Barrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,9 +106,9 @@ CapsuleCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.37583914
-  m_Height: 1.2290034
+  m_Height: 1.1518093
   m_Direction: 1
-  m_Center: {x: 3.0481328e-17, y: 0.49785495, z: -0.0067596436}
+  m_Center: {x: 7.4356025e-16, y: 0.44767648, z: -0.0067596436}
 --- !u!114 &1529630794081612975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,9 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b584d2515136b274f9a8a168c02c329c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rollForce: 10
-  bounceForce: 500
+  speed: 30
+  forceBas: 10
 --- !u!54 &6133561129820902567
 Rigidbody:
   m_ObjectHideFlags: 0

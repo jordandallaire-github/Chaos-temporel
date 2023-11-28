@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7483245596555758962}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 9.3, y: 0.51, z: 56.9}
+  m_LocalPosition: {x: 1.8, y: 0.51, z: 73.3}
   m_LocalScale: {x: 28.48745, y: 2.8857336, z: 28.48745}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,8 +177,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 61.47822, y: 5.096082, z: 97.502655}
-  m_Center: {x: 0.10954036, y: 0.67521596, z: -0.36057034}
+  m_Size: {x: 61.47822, y: 5.0960827, z: 82.299576}
+  m_Center: {x: 0.10954036, y: 0.6752161, z: -7.9621024}
 --- !u!114 &1164260358783205132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   brakeSpeed: 2
   barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
   emplacemementTonneau: {fileID: 7483245596555758962}
+  isBarrelLaunched: 0
   checkpoints:
   - {fileID: 0}
   - {fileID: 0}
