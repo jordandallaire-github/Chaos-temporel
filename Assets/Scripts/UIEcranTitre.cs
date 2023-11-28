@@ -61,10 +61,10 @@ public class UIEcranTitre : MonoBehaviour
 
         if (conversionG > 0.5f && !cursorMoved)
         {
-            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
+            var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
             if (next != null)
             {
-                EventSystem.current.SetSelectedGameObject(next.gameObject);
+                eventSystem.SetSelectedGameObject(next.gameObject);
             }
 
             cursorMoved = true;
@@ -72,10 +72,10 @@ public class UIEcranTitre : MonoBehaviour
         }
         else if (conversionG < -0.5f && !cursorMoved)
         {
-            var next = EventSystem.current.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
+            var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
             if (next != null)
             {
-                EventSystem.current.SetSelectedGameObject(next.gameObject);
+                eventSystem.SetSelectedGameObject(next.gameObject);
             }
 
             cursorMoved = true;
@@ -84,7 +84,7 @@ public class UIEcranTitre : MonoBehaviour
 
         if (actionButton == 1 && !selecting)
     {
-            var currentButton = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+            var currentButton = eventSystem.currentSelectedGameObject.GetComponent<Button>();
             if (currentButton != null)
             {
                 currentButton.onClick.Invoke();
@@ -106,7 +106,7 @@ public class UIEcranTitre : MonoBehaviour
             ecranChoix.SetActive(true);
 
             // Assuming the first button is a child of ecranChoix
-            EventSystem.current.SetSelectedGameObject(firstButton);
+            eventSystem.SetSelectedGameObject(firstButton);
 
             configurations.playerStarted[joueur] = true;
 
@@ -146,7 +146,7 @@ public class UIEcranTitre : MonoBehaviour
             ecranChoix.SetActive(true);
 
             // Assuming the first button is a child of ecranChoix
-            EventSystem.current.SetSelectedGameObject(firstButton);
+            eventSystem.SetSelectedGameObject(firstButton);
 
             ready = false;
             selecting = true;
