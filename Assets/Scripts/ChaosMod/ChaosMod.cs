@@ -27,6 +27,10 @@ public class ChaosMod : MonoBehaviour
 
     [SerializeField] public GameObject cyperpunk;
 
+    [SerializeField] public Material skyboxCyberpunk;
+
+    [SerializeField] public Material skyboxCartoon;
+
    // La liste des fonctions
    System.Action[] effetsPowerUps;
 
@@ -218,11 +222,13 @@ public class ChaosMod : MonoBehaviour
    void Cyperpunk(){
         cartoon.SetActive(false);
         cyperpunk.SetActive(true);
+        RenderSettings.skybox = skyboxCyberpunk;
    }
 
     void Cartoon(){
         cartoon.SetActive(true);
         cyperpunk.SetActive(false);
+        RenderSettings.skybox = skyboxCartoon;
    }
 
 
