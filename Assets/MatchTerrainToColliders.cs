@@ -384,8 +384,8 @@ public class MatchTerrainToColliders : MonoBehaviour
 
 			EditorGUILayout.EndVertical();
 		}
-#endif
 	}
+#endif
 
 	// debug stuff:
 	void WritePNG( float[,] array, string filename, bool normalize = false)
