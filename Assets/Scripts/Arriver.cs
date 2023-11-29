@@ -5,12 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Arriver : MonoBehaviour
 {
     private int index = 0;
 
+    [SerializeField] float duration = 10.0f;
     [SerializeField] Configs configuration;
     [SerializeField] private Rankings rankings;
     [SerializeField] private RaceTimer timer;
@@ -38,9 +40,8 @@ public class Arriver : MonoBehaviour
                     if(true){
                         audioSource.enabled = true;
                         audioSourceMusique.enabled = false;
-                    }
-                    else{
                         events.Invoke();
+                        this.Invoke("BackToTitleScreen", duration);
                     }
                 }
             }
@@ -67,5 +68,9 @@ public class Arriver : MonoBehaviour
                 return false;
             }
         }
+    }
+
+    void BackToTitleScreen(){
+        SceneManager.LoadScene("EcranTitre");
     }
 }
