@@ -29818,19 +29818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aa52632accd7e346b81e68b2f99e72e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkpointPositions:
-  - {fileID: 382807008}
-  - {fileID: 1039106368}
-  - {fileID: 906302155}
-  - {fileID: 929065348}
-  - {fileID: 1271023546}
-  - {fileID: 1816458605}
-  - {fileID: 943437630}
-  - {fileID: 2028614166}
-  checkpointXLimit: 5
-  checkpointUpdateInterval: 5
-  timer: 0
-  originalPositions: []
 --- !u!1001 &994160855
 PrefabInstance:
   m_ObjectHideFlags: 0

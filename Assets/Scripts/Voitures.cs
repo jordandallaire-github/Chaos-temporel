@@ -26,6 +26,9 @@ public class Voitures : MonoBehaviour
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
 
+    public LayerMask groundLayer;
+    public LayerMask grassLayer;
+
     private bool isButtonPressed = false;
 
     private float timeUpsideDown = 0f;
@@ -124,6 +127,8 @@ public class Voitures : MonoBehaviour
 
          joueurRB.centerOfMass = centreMass.transform.localPosition;
 
+
+
     }
 
     // Prend les données des Joysticks envoyé par le Arduino
@@ -176,7 +181,7 @@ public class Voitures : MonoBehaviour
                 speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
             }
 
-            joueurRB.velocity = joueurRB.velocity.normalized * speed;
+            joueurRB.velocity = joueurRB.velocity.normalized * speed * movement;
 
                 joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
                         
@@ -211,7 +216,7 @@ public class Voitures : MonoBehaviour
                     speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
                 }
 
-                joueurRB.velocity = joueurRB.velocity.normalized * speed;
+                joueurRB.velocity = joueurRB.velocity.normalized * speed * movement;
 
 
                 joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);

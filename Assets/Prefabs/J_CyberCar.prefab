@@ -209,6 +209,16 @@ MonoBehaviour:
   decelerationTime: 4
   hasPowerUp: 0
   brakeSpeed: 2
+  deadZoneTop: 0.9
+  deadZoneBottom: -0.9
+  deadZoneCenter: 0.1
+  deadZoneCenterNegative: -0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  grassLayer:
+    serializedVersion: 2
+    m_Bits: 64
   barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
   emplacemementTonneau1: {fileID: 3928379800912080954}
   emplacemementTonneau2: {fileID: 0}
@@ -364,7 +374,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4077664792529291031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
