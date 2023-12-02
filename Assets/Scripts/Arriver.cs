@@ -69,6 +69,6 @@ public class Arriver : MonoBehaviour
     }
 
     void BackToTitleScreen(){
-        SceneManager.LoadScene("EcranTitre");
+        SceneManager.LoadScene(0);
     }
 }
