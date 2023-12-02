@@ -20,7 +20,9 @@ public class Voitures : MonoBehaviour
     public bool hasPowerUp = false;
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
     public float deadZoneTop = 0.9f;
-    public float deadZoneBottom = 0.1f;
+    public float deadZoneBottom = -0.9f;
+    public float deadZoneCenter = 0.1f;
+    public float deadZoneCenterNegative = -0.1f;
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
 
@@ -140,11 +142,16 @@ public class Voitures : MonoBehaviour
         if(conversionG > deadZoneTop){
             conversionG = 1.0f;
         }else if(conversionG < deadZoneBottom){
+            conversionG = -1.0f;
+        }else if(conversionG < deadZoneCenter && conversionG > deadZoneCenterNegative){
             conversionG = 0;
         }
+
         if(conversionD > deadZoneTop){
             conversionD = 1.0f;
         }else if(conversionD < deadZoneBottom){
+            conversionD = -1.0f;
+        }else if(conversionD < deadZoneCenter && conversionD > deadZoneCenterNegative){
             conversionD = 0;
         }
 
