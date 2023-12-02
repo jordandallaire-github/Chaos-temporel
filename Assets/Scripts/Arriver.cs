@@ -41,12 +41,15 @@ public class Arriver : MonoBehaviour
                 rankings.time[index] = timer.FetchCurrentTime();
                 index++;
 
-                if(IsEveryone()){
-                    events.Invoke();
-                    audioSource.enabled = true;
-                    audioSourceMusique.enabled = false;
-                    this.Invoke("BackToTitleScreen", duration);
-                }
+            }
+        }
+        
+        if(vehicule.tag == "Player1" || vehicule.tag == "Player2"){
+            if(IsEveryone()){
+                events.Invoke();
+                audioSource.enabled = true;
+                audioSourceMusique.enabled = false;
+                this.Invoke("BackToTitleScreen", duration);
             }
         }
     }
