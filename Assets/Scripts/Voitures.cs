@@ -127,8 +127,8 @@ public class Voitures : MonoBehaviour
         float batonD = controls.GetJoystickR();
 
         // Convertir en valeur numérique entre -1 et 1
-        float conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;
-        float conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1) * -1;
+        float conversionG = Mathf.InverseLerp(0, 1024, batonG) * 2 - 1;
+        float conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
 
         float rotation = conversionG - conversionD;
         float movement = (conversionG + conversionD) / 2;
