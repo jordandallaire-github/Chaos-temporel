@@ -23,6 +23,8 @@ public class Voitures : MonoBehaviour
     public float deadZoneBottom = -0.9f;
     public float deadZoneCenter = 0.1f;
     public float deadZoneCenterNegative = -0.1f;
+    public float FORWARD_THRESHOLD = 0.7f;
+    public float BRAKE_THRESHOLD = 0.1f;
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
 
@@ -129,7 +131,6 @@ public class Voitures : MonoBehaviour
     // Prend les données des Joysticks envoyé par le Arduino
     // et faire déplacer le véhicule
     void Deplacement(){
-
         // Obtenir les valeur reçu par le arduino
         float batonG = controls.GetJoystickL();
         float batonD = controls.GetJoystickR();
@@ -139,97 +140,65 @@ public class Voitures : MonoBehaviour
         float conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
 
         // Dead Zones
-        if(conversionG > deadZoneTop){
-            conversionG = 1.0f;
-        }else if(conversionG < deadZoneBottom){
-            conversionG = -1.0f;
-        }else if(conversionG < deadZoneCenter && conversionG > deadZoneCenterNegative){
-            conversionG = 0;
-        }
-
-        if(conversionD > deadZoneTop){
-            conversionD = 1.0f;
-        }else if(conversionD < deadZoneBottom){
-            conversionD = -1.0f;
-        }else if(conversionD < deadZoneCenter && conversionD > deadZoneCenterNegative){
-            conversionD = 0;
-        }
+        conversionG = HandleDeadZones(conversionG);
+        conversionD = HandleDeadZones(conversionD);
 
         float rotation = conversionG - conversionD;
         float movement = (conversionG + conversionD) / 2;
 
         // Il peut se déplacer seulement si il touche le sol
         if(collision.isOnGround){
-
-            // Rotate around the Y-axis at a speed proportional to the rotation value.
-            joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
-
-            // Smoothly change the speed using interpolation
-            if (movement > 0.7) {
-                // If the vehicle is moving forward, increase the speed
-                speed = Mathf.Lerp(speed, maxSpeedSol, Time.deltaTime / accelerationTime);
-            } else if (movement <= 0) {
-                // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
-                speed = minReverseSpeed;
-            } else  {
-                // If the vehicle is not moving, decrease the speed
-                speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
-            }
-
-            joueurRB.velocity = joueurRB.velocity.normalized * speed;
-
-                joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
-                        
-                // Clamp the Rigidbody's speed to the maximum speed
-                if (joueurRB.velocity.magnitude > maxSpeedSol)
-                {
-                    joueurRB.velocity = joueurRB.velocity.normalized * maxSpeedSol;
-                }
-                        
-                // Apply a braking force when the movement value is close to zero
-                if (Mathf.Abs(movement) < 0.1f)
-                {
-                    joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
-                }
-                joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
+            HandleMovement(rotation, movement, maxSpeedSol);
         }
 
         if(collision.isOnGrass){
+            HandleMovement(rotation, movement, maxSpeedGazon);
+        }
+    }
 
-                // Rotate around the Y-axis at a speed proportional to the rotation value.
-                joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
+    float HandleDeadZones(float conversion){
+        if(conversion > deadZoneTop){
+            return 1.0f;
+        }else if(conversion < deadZoneBottom){
+            return -1.0f;
+        }else if(conversion < deadZoneCenter && conversion > deadZoneCenterNegative){
+            return 0;
+        }
+        return conversion;
+    }
 
-                // Smoothly change the speed using interpolation
-                if (movement > 0.6) {
-                    // If the vehicle is moving forward, increase the speed
-                    speed = Mathf.Lerp(speed, maxSpeedGazon, Time.deltaTime / accelerationTime);
-                } else if (movement <= 0) {
-                    // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
-                    speed = minReverseSpeed;
-                } else  {
-                    // If the vehicle is not moving, decrease the speed
-                    speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
-                }
+    void HandleMovement(float rotation, float movement, float maxSpeed){
+        // Rotate around the Y-axis at a speed proportional to the rotation value.
+        joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
-                joueurRB.velocity = joueurRB.velocity.normalized * speed;
+        // Smoothly change the speed using interpolation
+        if (movement > FORWARD_THRESHOLD) {
+            // If the vehicle is moving forward, increase the speed
+            speed = Mathf.Lerp(speed, maxSpeed, Time.deltaTime / accelerationTime);
+        } else if (movement <= 0) {
+            // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
+            speed = minReverseSpeed;
+        } else  {
+            // If the vehicle is not moving, decrease the speed
+            speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
+        }
 
+        joueurRB.velocity = joueurRB.velocity.normalized * speed * movement;
 
-                joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
-                        
-                // Clamp the Rigidbody's speed to the maximum speed
-                if (joueurRB.velocity.magnitude > maxSpeedGazon)
-                {
-                    joueurRB.velocity = joueurRB.velocity.normalized * maxSpeedGazon;
-                }
-                        
-                // Apply a braking force when the movement value is close to zero
-                if (Mathf.Abs(movement) < 0.1f)
-                {
-                    joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
-                }
-                joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
-                
-            } 
+        joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
+
+        // Clamp the Rigidbody's speed to the maximum speed
+        if (joueurRB.velocity.magnitude > maxSpeed)
+        {
+            joueurRB.velocity = joueurRB.velocity.normalized * maxSpeed;
+        }
+
+        // Apply a braking force when the movement value is close to zero
+        if (Mathf.Abs(movement) < BRAKE_THRESHOLD)
+        {
+            joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
+        }
+        joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
     }
 
     void ResetRotation()
