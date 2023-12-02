@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class Arriver : MonoBehaviour
 {
@@ -29,7 +27,6 @@ public class Arriver : MonoBehaviour
                 NbJoueurs++;
             }
         }
-        Debug.Log(NbJoueurs);
     }
 
     void OnTriggerEnter(Collider vehicule){
@@ -46,10 +43,10 @@ public class Arriver : MonoBehaviour
 
         if(vehicule.tag == "Player1" || vehicule.tag == "Player2"){
             if(IsEveryone()){
+                Invoke("BackToTitleScreen", duration);
                 events.Invoke();
                 audioSource.enabled = true;
                 audioSourceMusique.enabled = false;
-                Invoke("BackToTitleScreen", duration);
             }
         }
     }
@@ -57,14 +54,10 @@ public class Arriver : MonoBehaviour
     bool IsEveryone(){
 
         if(NbJoueurs == 1){
-            Debug.Log("The Only player has reach the goal");
             return true;
         }else if(Array.Exists(rankings.ranking, element => element.name == "J1" && Array.Exists(rankings.ranking, element => element.name == "J2"))){
-                Debug.Log("All players has reach the goal");
                 return true;
         }
-
-        Debug.Log("A player is missing");
         return false;
     }
 
