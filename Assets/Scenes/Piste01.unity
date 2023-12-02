@@ -39149,12 +39149,6 @@ MonoBehaviour:
   rankings: {fileID: 11400000, guid: db65b51ddb10d98469dfddc145484fe9, type: 2}
   timer: {fileID: 938041370}
   audioSource: {fileID: 0}
-  JoueurUIs:
-  - {fileID: 799123408}
-  - {fileID: 1796941197}
-  EcransResultat:
-  - {fileID: 228432637}
-  - {fileID: 1648056545}
   audioSourceMusique: {fileID: 0}
   events:
     m_PersistentCalls:
