@@ -173,7 +173,7 @@ public class Voitures : MonoBehaviour
             if (movement > 0.7) {
                 // If the vehicle is moving forward, increase the speed
                 speed = Mathf.Lerp(speed, maxSpeedSol, Time.deltaTime / accelerationTime);
-            } else if (movement <= 0) {
+            } else if (movement < deadZoneCenterNegative) {
                 // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
                 speed = minReverseSpeed;
             } else  {
@@ -208,7 +208,7 @@ public class Voitures : MonoBehaviour
                 if (movement > 0.6) {
                     // If the vehicle is moving forward, increase the speed
                     speed = Mathf.Lerp(speed, maxSpeedGazon, Time.deltaTime / accelerationTime);
-                } else if (movement <= 0) {
+                } else if (movement < deadZoneCenterNegative) {
                     // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
                     speed = minReverseSpeed;
                 } else  {
@@ -235,6 +235,7 @@ public class Voitures : MonoBehaviour
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
                 
             } 
+
     }
 
     void ResetRotation()

@@ -63,11 +63,8 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-          Cyperpunk,
-          Cartoon,
-          Geler,
-          SlowMo,
-          AugmenteTaille,
+          ChangeMaps,
+
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -106,7 +103,7 @@ public class ChaosMod : MonoBehaviour
         }
 
         if(GameObject.Find("J2") != null ){
-            j2.enabled = true;
+            j2.enabled = false;
         }
         FakeCrash();
         StartCoroutine(WaitAndResume(5f));
@@ -219,17 +216,23 @@ public class ChaosMod : MonoBehaviour
        effectNameTextJ2.text = "";
    }
 
-   void Cyperpunk(){
+   void ChangeMaps(){
+
+    if(cartoon.activeSelf == true){
         cartoon.SetActive(false);
         cyperpunk.SetActive(true);
         RenderSettings.skybox = skyboxCyberpunk;
-   }
+    }
 
-    void Cartoon(){
+    else{
         cartoon.SetActive(true);
         cyperpunk.SetActive(false);
         RenderSettings.skybox = skyboxCartoon;
+    }
+
    }
+
+
 
 
 }
