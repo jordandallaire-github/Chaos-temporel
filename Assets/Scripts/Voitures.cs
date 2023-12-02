@@ -19,6 +19,8 @@ public class Voitures : MonoBehaviour
     public float decelerationTime = 4f;
     public bool hasPowerUp = false;
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
+    public float deadZoneTop = 0.9f;
+    public float deadZoneBottom = 0.1f;
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
 
@@ -133,6 +135,18 @@ public class Voitures : MonoBehaviour
         // Convertir en valeur numérique entre -1 et 1
         float conversionG = Mathf.InverseLerp(0, 1024, batonG) * 2 - 1;
         float conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
+
+        // Dead Zones
+        if(conversionG > deadZoneTop){
+            conversionG = 1.0f;
+        }else if(conversionG < deadZoneBottom){
+            conversionG = 0;
+        }
+        if(conversionD > deadZoneTop){
+            conversionD = 1.0f;
+        }else if(conversionD < deadZoneBottom){
+            conversionD = 0;
+        }
 
         float rotation = conversionG - conversionD;
         float movement = (conversionG + conversionD) / 2;
