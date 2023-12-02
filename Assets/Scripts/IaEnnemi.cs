@@ -31,6 +31,8 @@ public class IaEnnemi : MonoBehaviour {
 
     private int currentCheckpointIndex = -1; 
 
+    public GameObject centreMass;
+
     public Transform[] checkpoints;
 
 
@@ -109,6 +111,9 @@ public class IaEnnemi : MonoBehaviour {
             {
                 CreerTonneau();
             }
+
+
+            rb.centerOfMass = centreMass.transform.localPosition;
     }
 
        void OnTriggerEnter(Collider other) {
