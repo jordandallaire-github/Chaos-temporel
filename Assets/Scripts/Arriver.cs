@@ -43,13 +43,13 @@ public class Arriver : MonoBehaviour
 
             }
         }
-        
+
         if(vehicule.tag == "Player1" || vehicule.tag == "Player2"){
             if(IsEveryone()){
                 events.Invoke();
                 audioSource.enabled = true;
                 audioSourceMusique.enabled = false;
-                this.Invoke("BackToTitleScreen", duration);
+                Invoke("BackToTitleScreen", duration);
             }
         }
     }
