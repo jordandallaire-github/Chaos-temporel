@@ -17,7 +17,7 @@ public class GestionAccueil : MonoBehaviour
         // Vider le ranking
         for (int i = 0; i < rankings.ranking.Length; i++)
         {
-            rankings.ranking[i] = "";
+            rankings.ranking[i] = null;
             rankings.time[i] = 0;
         }
 

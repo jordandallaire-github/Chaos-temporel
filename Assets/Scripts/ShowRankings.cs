@@ -13,7 +13,7 @@ public class ShowRankings : MonoBehaviour
     public void WriteScores(){
         for (int i = 0; i < noms.Length; i++)
         {
-            noms[i].text = rankings.ranking[i];
+            noms[i].text = rankings.ranking[i].name;
         }
 
         for (int i = 0; i < time.Length; i++)

@@ -35,9 +35,9 @@ public class Arriver : MonoBehaviour
     void OnTriggerEnter(Collider vehicule){
         if (vehicule.tag == "Player1" || vehicule.tag == "Adversaire" || vehicule.tag == "Player2")
         {
-            if (System.Array.IndexOf(rankings.ranking, vehicule.gameObject.name) == -1)
+            if (System.Array.IndexOf(rankings.ranking, vehicule.gameObject) == -1)
             {
-                rankings.ranking[index] = vehicule.gameObject.name;
+                rankings.ranking[index] = vehicule.gameObject;
                 rankings.time[index] = timer.FetchCurrentTime();
                 index++;
 
@@ -59,7 +59,7 @@ public class Arriver : MonoBehaviour
         if(NbJoueurs == 1){
             Debug.Log("The Only player has reach the goal");
             return true;
-        }else if(Array.Exists(rankings.ranking, element => element == "J1" && Array.Exists(rankings.ranking, element => element == "J2"))){
+        }else if(Array.Exists(rankings.ranking, element => element.name == "J1" && Array.Exists(rankings.ranking, element => element.name == "J2"))){
                 Debug.Log("All players has reach the goal");
                 return true;
         }
