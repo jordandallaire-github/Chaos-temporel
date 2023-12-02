@@ -6,6 +6,8 @@ public class Voitures : MonoBehaviour
 {
     public SampleMessageListener controls; // Donnée reçu par le Arduino
     public PowerUpsEffets currentPowerUp;
+
+    public GameObject centreMass;
     public bool controlsEnabled = false;
     private bool isResetting = false;
     public float rotationSpeed = 0.1f;
@@ -115,6 +117,8 @@ public class Voitures : MonoBehaviour
          }
 
          GraviterBas();
+
+         joueurRB.centerOfMass = centreMass.transform.localPosition;
 
     }
 
