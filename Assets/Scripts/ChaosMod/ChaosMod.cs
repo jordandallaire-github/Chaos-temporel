@@ -31,8 +31,13 @@ public class ChaosMod : MonoBehaviour
 
     [SerializeField] public Material skyboxCartoon;
 
+    public bool InverControle = false;
+
    // La liste des fonctions
-   System.Action[] effetsPowerUps;
+  public System.Action[] effetsPowerUps;
+
+     // L'index de l'effet actif
+   private int currentEffectIndex;
 
    // Start is called before the first frame update
    void Start()
@@ -63,8 +68,7 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-          ChangeMaps,
-
+          InversementControle,
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -76,24 +80,38 @@ public class ChaosMod : MonoBehaviour
    void CallRandomFunction()
    {
        // Choisir une fonction aléatoire
-       int index = Random.Range(0, effetsPowerUps.Length);
+       currentEffectIndex = Random.Range(0, effetsPowerUps.Length);
 
        // Appeler la fonction
-       effetsPowerUps[index]();
+       effetsPowerUps[currentEffectIndex]();
 
-
-        // Définir le texte du composant TextMeshPro à afficher le nom de l'effet actif
-       effectNameTextJ1.text = effetsPowerUps[index].Method.Name;
-
-               // Définir le texte du composant TextMeshPro à afficher le nom de l'effet actif
-       effectNameTextJ2.text = effetsPowerUps[index].Method.Name;
+       // Définir le texte du composant TextMeshPro à afficher le nom de l'effet actif
+       effectNameTextJ1.text = effetsPowerUps[currentEffectIndex].Method.Name;
+       effectNameTextJ2.text = effetsPowerUps[currentEffectIndex].Method.Name;
 
        // Désactiver le texte de l'effet précédent après 30 secondes
        StartCoroutine(DisableEffectNameText(5f));
 
-
        StartCoroutine(UpdateChaosModeSlider(30));
+   }
 
+   // Propriété pour accéder au nom de l'effet actif
+   public string CurrentEffectName
+   {
+       get
+       {
+           // Assurez-vous que l'index de l'effet actif est valide
+           if (currentEffectIndex >= 0 && currentEffectIndex < effetsPowerUps.Length)
+           {
+               // Renvoyer le nom de l'effet actif
+               return effetsPowerUps[currentEffectIndex].Method.Name;
+           }
+           else
+           {
+               // Si l'index de l'effet actif n'est pas valide, renvoyer une chaîne vide
+               return "";
+           }
+       }
    }
 
     void Geler()
@@ -123,6 +141,8 @@ public class ChaosMod : MonoBehaviour
         if(GameObject.Find("J2") != null ){
             j2.enabled = true;
         }
+
+        InverControle = false;
         Time.timeScale = 1;
     }
 
@@ -230,6 +250,13 @@ public class ChaosMod : MonoBehaviour
         RenderSettings.skybox = skyboxCartoon;
     }
 
+   }
+
+   void InversementControle(){
+
+        InverControle = true;
+
+        StartCoroutine(WaitAndResume(29f));
    }
 
 

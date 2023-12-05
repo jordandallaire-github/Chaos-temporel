@@ -109,7 +109,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123476691160546985}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -223,6 +223,10 @@ MonoBehaviour:
   emplacemementTonneau1: {fileID: 3928379800912080954}
   emplacemementTonneau2: {fileID: 0}
   forceBas: 1
+  conversionD: 0
+  conversionG: 0
+  batonD: 0
+  batonG: 0
 --- !u!82 &6588022165848103271
 AudioSource:
   m_ObjectHideFlags: 0

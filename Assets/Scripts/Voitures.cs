@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Voitures : MonoBehaviour
 {
@@ -48,16 +50,32 @@ public class Voitures : MonoBehaviour
 
     public float forceBas = 50f;
 
+    public float conversionD;
+
+    public float conversionG;
+
+    public float batonD;
+
+    public float batonG;
+
+    private GameObject GOChaosmod;
+
+    private ChaosMod chaosMod;
+
     // Start is called before the first frame update
     void Start()
     {
         joueurRB = GetComponent<Rigidbody>();
         collision = GetComponent<VoitureCollision>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        GOChaosmod = GameObject.Find("GestionnaireChaosMod");
+        chaosMod = GOChaosmod.GetComponent<ChaosMod>();
+
         if(controlsEnabled){
             Deplacement();
         }
@@ -121,13 +139,14 @@ public class Voitures : MonoBehaviour
         if (currentPowerUp != null && currentPowerUp.name == "SabotageBarrel")
          {
             CreerTonneau();
+
          }
 
          GraviterBas();
 
          joueurRB.centerOfMass = centreMass.transform.localPosition;
 
-
+        Debug.Log(chaosMod.CurrentEffectName);
 
     }
 
@@ -136,12 +155,22 @@ public class Voitures : MonoBehaviour
     void Deplacement(){
 
         // Obtenir les valeur reçu par le arduino
-        float batonG = controls.GetJoystickL();
-        float batonD = controls.GetJoystickR();
+        batonG = controls.GetJoystickL();
+        batonD = controls.GetJoystickR();
 
-        // Convertir en valeur numérique entre -1 et 1
-        float conversionG = Mathf.InverseLerp(0, 1024, batonG) * 2 - 1;
-        float conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
+        if(chaosMod.InverControle == true){
+
+            conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1)*-1;
+            conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1)*-1;
+
+        }
+
+        else{
+                
+            conversionG = Mathf.InverseLerp(0, 1024, batonG) * 2 - 1;
+            conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
+
+        }
 
         // Dead Zones
         if(conversionG > deadZoneTop){
@@ -251,7 +280,7 @@ public class Voitures : MonoBehaviour
 
     private void CreerTonneau()
     {
-        if (barrelCount < 5)
+        if (barrelCount < 100)
         {
             
             if(gameObject.tag == "Player1" && !isBarrelLaunched1){
