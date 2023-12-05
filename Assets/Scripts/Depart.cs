@@ -18,23 +18,23 @@ public class Depart : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera CameraJ2;
 
     [SerializeField] private AudioSource audioSourceIntro;
-    [SerializeField] public AudioSource audioSourceMusique;
+    public AudioSource audioSourceMusique;
+    [SerializeField] private GameObject UIJoueur01;
+    [SerializeField] private GameObject UIJoueur02;
 
     [SerializeField] private GameObject chaosMode;
 
-    [SerializeField] private GameObject chaosModeUI1;
+    private GameObject chaosModeUI1;
 
-    [SerializeField] private GameObject chaosModeUI2;
+    private GameObject chaosModeUI2;
 
-    [SerializeField] private GameObject chaosModeUIText1;
+    private GameObject chaosModeUIText1;
 
-    [SerializeField] private GameObject chaosModeUIText2;
+    private GameObject chaosModeUIText2;
 
 
     [SerializeField] private Voitures[] Joueurs;
     private UnityEngine.Vector3[] positions;
-
-
 
     void Start()
     {
@@ -91,6 +91,13 @@ public class Depart : MonoBehaviour
         arduino02.enabled = false;
 
         audioSourceMusique.enabled = false;
+
+        // ChaosMode Iniitilization
+        chaosModeUI1 = UIJoueur01.transform.Find("TempsChaos").gameObject;
+        chaosModeUI2 = UIJoueur02.transform.Find("TempsChaos").gameObject;
+        chaosModeUIText1 = UIJoueur01.transform.Find("NomChaos").gameObject;
+        chaosModeUIText2 = UIJoueur02.transform.Find("NomChaos").gameObject;
+
         chaosMode.SetActive(false);
         chaosModeUI1.SetActive(false);
         chaosModeUI2.SetActive(false);
@@ -198,8 +205,10 @@ public class Depart : MonoBehaviour
                     Joueurs[joueurIndex] = voiture;
                     if(i == 0){
                         voiture.controls = arduino01;
+                        voiture.PowerUpBarrel = UIJoueur01.transform.Find("PowerUps").gameObject.transform.Find("barrel").gameObject;
                     }else{
                         voiture.controls = arduino02;
+                        voiture.PowerUpBarrel = UIJoueur02.transform.Find("PowerUps").gameObject.transform.Find("barrel").gameObject;
                     }
                     joueurIndex++;
                 }

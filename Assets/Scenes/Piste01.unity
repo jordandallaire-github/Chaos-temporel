@@ -7833,11 +7833,9 @@ MonoBehaviour:
   CameraJ2: {fileID: 1346759395}
   audioSourceIntro: {fileID: 227985757}
   audioSourceMusique: {fileID: 646449123}
+  UIJoueur01: {fileID: 799123408}
+  UIJoueur02: {fileID: 1796941197}
   chaosMode: {fileID: 1184124022}
-  chaosModeUI1: {fileID: 108199369}
-  chaosModeUI2: {fileID: 514502338}
-  chaosModeUIText1: {fileID: 1565505150}
-  chaosModeUIText2: {fileID: 263661478}
   Joueurs: []
 --- !u!4 &227985756
 Transform:

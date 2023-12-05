@@ -49,6 +49,7 @@ public class Voitures : MonoBehaviour
     private static bool isBarrelLaunched2 = false;
 
     public float forceBas = 50f;
+    public GameObject PowerUpBarrel;
 
     public float conversionD;
 
@@ -139,7 +140,7 @@ public class Voitures : MonoBehaviour
         if (currentPowerUp != null && currentPowerUp.name == "SabotageBarrel")
          {
             CreerTonneau();
-
+            PowerUpBarrel.SetActive(true);
          }
 
          GraviterBas();
@@ -342,18 +343,19 @@ public class Voitures : MonoBehaviour
 
             if(gameObject.tag == "Player1" && currentPowerUp.name == "SabotageBarrel"){
                 this.barrelInstance.SetActive(false);
+                PowerUpBarrel.SetActive(false); 
                 isBarrelLaunched1 = false;
             }
 
             if(gameObject.tag == "Player2" && currentPowerUp.name == "SabotageBarrel"){
                 this.barrelInstance.SetActive(false);
+                PowerUpBarrel.SetActive(false); 
                 isBarrelLaunched2 = false;
             }  
 
             // Réinitialiser l'état du power-up
             hasPowerUp = false;
-            currentPowerUp = null;    
-
+            currentPowerUp = null;
         }
     }
 
