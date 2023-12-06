@@ -50,6 +50,7 @@ public class Voitures : MonoBehaviour
 
     public float forceBas = 50f;
     public GameObject PowerUpBarrel;
+    public GameObject PowerUpBoost;
 
     public float conversionD;
 
@@ -121,7 +122,6 @@ public class Voitures : MonoBehaviour
                                 currentPowerUp.Appliquer(this.gameObject);
                             }
 
-
                         }
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
                         StartCoroutine(DesactiverPowerUp());
@@ -143,11 +143,13 @@ public class Voitures : MonoBehaviour
             PowerUpBarrel.SetActive(true);
          }
 
-         GraviterBas();
+         if(currentPowerUp != null && currentPowerUp.name == "BuffVitesse"){
+          PowerUpBoost.SetActive(true);
 
+         }
+        
          joueurRB.centerOfMass = centreMass.transform.localPosition;
 
-        Debug.Log(chaosMod.CurrentEffectName);
 
     }
 
@@ -158,15 +160,16 @@ public class Voitures : MonoBehaviour
         // Obtenir les valeur reçu par le arduino
         batonG = controls.GetJoystickL();
         batonD = controls.GetJoystickR();
+        
+        float rotation = conversionG - conversionD;
+        float movement = (conversionG + conversionD) / 2;
 
-        if(chaosMod.InverControle == true){
+        if(chaosMod.InverControle){
 
-            conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1)*-1;
-            conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1)*-1;
+            conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;
+            conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1) * -1;
 
-        }
-
-        else{
+        }else{
                 
             conversionG = Mathf.InverseLerp(0, 1024, batonG) * 2 - 1;
             conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
@@ -190,8 +193,7 @@ public class Voitures : MonoBehaviour
             conversionD = 0;
         }
 
-        float rotation = conversionG - conversionD;
-        float movement = (conversionG + conversionD) / 2;
+
 
         // Il peut se déplacer seulement si il touche le sol
         if(collision.isOnGround){
@@ -229,7 +231,7 @@ public class Voitures : MonoBehaviour
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
         }
 
-        if(collision.isOnGrass){
+        else if(collision.isOnGrass){
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -265,6 +267,15 @@ public class Voitures : MonoBehaviour
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
                 
             } 
+
+            else{
+
+                 joueurRB.AddForce(-transform.up * 100000.81f);
+
+            }
+
+
+
 
     }
 
@@ -335,6 +346,8 @@ public class Voitures : MonoBehaviour
                     // Appliquer le power-up sur l'Arduino
                     currentPowerUp.Desactiver(this.gameObject);
                 }
+                PowerUpBoost.SetActive(false);
+
             }
             else
             {
@@ -359,7 +372,4 @@ public class Voitures : MonoBehaviour
         }
     }
 
-    private void GraviterBas(){
-        joueurRB.AddForce(-transform.up * forceBas * joueurRB.velocity.magnitude);
-    }
 }

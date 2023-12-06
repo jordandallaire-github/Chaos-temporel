@@ -206,9 +206,11 @@ public class Depart : MonoBehaviour
                     if(i == 0){
                         voiture.controls = arduino01;
                         voiture.PowerUpBarrel = UIJoueur01.transform.Find("PowerUps").gameObject.transform.Find("barrel").gameObject;
+                        voiture.PowerUpBoost = UIJoueur01.transform.Find("PowerUps").gameObject.transform.Find("boost").gameObject;
                     }else{
                         voiture.controls = arduino02;
                         voiture.PowerUpBarrel = UIJoueur02.transform.Find("PowerUps").gameObject.transform.Find("barrel").gameObject;
+                        voiture.PowerUpBoost = UIJoueur02.transform.Find("PowerUps").gameObject.transform.Find("boost").gameObject;
                     }
                     joueurIndex++;
                 }

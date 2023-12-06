@@ -805,7 +805,7 @@ MonoBehaviour:
         m_MethodName: ChosenCar
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6653311431158174104, guid: 92bff107bb0eb3b4e8f162b18e928aec, type: 3}
+          m_ObjectArgument: {fileID: 1123476691160546985, guid: af1d6461cef6dee4bb55f2adfcac57af, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6058,7 +6058,7 @@ MonoBehaviour:
         m_MethodName: ChosenCar
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6653311431158174104, guid: 92bff107bb0eb3b4e8f162b18e928aec, type: 3}
+          m_ObjectArgument: {fileID: 1123476691160546985, guid: af1d6461cef6dee4bb55f2adfcac57af, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
