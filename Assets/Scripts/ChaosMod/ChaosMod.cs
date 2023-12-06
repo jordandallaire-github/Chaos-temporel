@@ -68,7 +68,7 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-          InversementControle,
+         
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes

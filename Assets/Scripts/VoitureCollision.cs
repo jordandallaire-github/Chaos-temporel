@@ -14,14 +14,17 @@ public class VoitureCollision : MonoBehaviour
     public float jumpHeight = 1f; // Hauteur du saut en unités
     public float jumpDuration = 0.1f; // Durée du saut en secondes
 
+
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
     void OnCollisionEnter(Collision collision)

@@ -220,8 +220,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
-  emplacemementTonneau1: {fileID: 3928379800912080954}
-  emplacemementTonneau2: {fileID: 0}
+  emplacemementTonneau1: {fileID: 0}
+  emplacemementTonneau2: {fileID: 3928379800912080954}
   forceBas: 1
   PowerUpBarrel: {fileID: 0}
   PowerUpBoost: {fileID: 0}
