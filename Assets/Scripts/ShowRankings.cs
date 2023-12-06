@@ -22,6 +22,8 @@ public class ShowRankings : MonoBehaviour
 
             time[i].text = string.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds);
         }
+
+        CopyToScreen1();
     }
 
     private void CopyToScreen1(){
