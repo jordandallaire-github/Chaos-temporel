@@ -143,11 +143,8 @@ public class Voitures : MonoBehaviour
             PowerUpBarrel.SetActive(true);
          }
 
-         GraviterBas();
-
          joueurRB.centerOfMass = centreMass.transform.localPosition;
 
-        Debug.Log(chaosMod.CurrentEffectName);
 
     }
 
@@ -359,7 +356,4 @@ public class Voitures : MonoBehaviour
         }
     }
 
-    private void GraviterBas(){
-        joueurRB.AddForce(-transform.up * forceBas * joueurRB.velocity.magnitude);
-    }
 }
