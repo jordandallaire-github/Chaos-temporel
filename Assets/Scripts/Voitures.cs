@@ -158,15 +158,17 @@ public class Voitures : MonoBehaviour
         // Obtenir les valeur reçu par le arduino
         batonG = controls.GetJoystickL();
         batonD = controls.GetJoystickR();
+        
+        Debug.Log(gameObject.name + " Joystick Droite : " + batonD);
+        Debug.Log(gameObject.name + " Joystick Gauche : " + batonG);
+        Debug.Log(gameObject.name + "Controle inversé : " + chaosMod.InverControle);
 
-        if(chaosMod.InverControle == true){
+        if(chaosMod.InverControle){
 
-            conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1)*-1;
-            conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1)*-1;
+            conversionG = (Mathf.InverseLerp(0, 1024, batonG) * 2 - 1) * -1;
+            conversionD = (Mathf.InverseLerp(0, 1024, batonD) * 2 - 1) * -1;
 
-        }
-
-        else{
+        }else{
                 
             conversionG = Mathf.InverseLerp(0, 1024, batonG) * 2 - 1;
             conversionD = Mathf.InverseLerp(0, 1024, batonD) * 2 - 1;
