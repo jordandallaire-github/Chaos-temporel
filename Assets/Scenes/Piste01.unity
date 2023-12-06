@@ -4124,8 +4124,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 14}
-  m_SizeDelta: {x: 222.409, y: 222.409}
+  m_AnchoredPosition: {x: 8.3, y: 5.1}
+  m_SizeDelta: {x: 129.8593, y: 129.8593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &123911266
 MonoBehaviour:
@@ -30133,8 +30133,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -107.900024, y: -114.03024}
-  m_SizeDelta: {x: 1024, y: 1024}
+  m_AnchoredPosition: {x: -67.06632, y: -73.16633}
+  m_SizeDelta: {x: 675.1547, y: 675.1547}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041774323
 MonoBehaviour:
@@ -33655,6 +33655,7 @@ MonoBehaviour:
   cyperpunk: {fileID: 1337984494}
   skyboxCyberpunk: {fileID: 2100000, guid: 5d133deeaa66ed445853e946ff25e073, type: 2}
   skyboxCartoon: {fileID: 2100000, guid: 85cf0b004bc4a654b9e501efcce47902, type: 2}
+  InverControle: 0
 --- !u!4 &1184124024
 Transform:
   m_ObjectHideFlags: 0
@@ -36075,8 +36076,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 485.14697, y: -14.857178}
-  m_SizeDelta: {x: 291.538, y: 224.715}
+  m_AnchoredPosition: {x: -169.52075, y: -113.97003}
+  m_SizeDelta: {x: 215.0993, y: 147.5686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1279293004
 MonoBehaviour:
@@ -42654,8 +42655,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000017166, y: 5.1}
-  m_SizeDelta: {x: 262.602, y: 262.602}
+  m_AnchoredPosition: {x: 0.000015259, y: 5.1}
+  m_SizeDelta: {x: 172.6716, y: 172.6716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1527604934
 MonoBehaviour:
