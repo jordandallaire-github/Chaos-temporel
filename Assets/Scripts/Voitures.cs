@@ -69,6 +69,8 @@ public class Voitures : MonoBehaviour
         joueurRB = GetComponent<Rigidbody>();
         collision = GetComponent<VoitureCollision>();
 
+        Physics.gravity = new Vector3(0, -9.8F, 0);
+
     }
 
     // Update is called once per frame
@@ -156,9 +158,8 @@ public class Voitures : MonoBehaviour
         batonG = controls.GetJoystickL();
         batonD = controls.GetJoystickR();
         
-        Debug.Log(gameObject.name + " Joystick Droite : " + batonD);
-        Debug.Log(gameObject.name + " Joystick Gauche : " + batonG);
-        Debug.Log(gameObject.name + "Controle inversé : " + chaosMod.InverControle);
+        float rotation = conversionG - conversionD;
+        float movement = (conversionG + conversionD) / 2;
 
         if(chaosMod.InverControle){
 
@@ -189,8 +190,7 @@ public class Voitures : MonoBehaviour
             conversionD = 0;
         }
 
-        float rotation = conversionG - conversionD;
-        float movement = (conversionG + conversionD) / 2;
+
 
         // Il peut se déplacer seulement si il touche le sol
         if(collision.isOnGround){
@@ -264,6 +264,17 @@ public class Voitures : MonoBehaviour
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
                 
             } 
+
+            // Dans votre fonction Update ou FixedUpdate
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, -transform.up, out hit, 1f)) {
+                float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+                if (slopeAngle > 30f) { // Ajustez cette valeur en fonction de la pente à partir de laquelle vous voulez commencer à appliquer la force vers le bas
+                    joueurRB.AddForce(-transform.up * slopeAngle * 10f); // Ajustez cette valeur pour augmenter ou diminuer la force appliquée
+                }
+            }
+
+            
 
     }
 
