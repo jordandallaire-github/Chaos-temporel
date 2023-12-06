@@ -50,6 +50,7 @@ public class Voitures : MonoBehaviour
 
     public float forceBas = 50f;
     public GameObject PowerUpBarrel;
+    public GameObject PowerUpBoost;
 
     public float conversionD;
 
@@ -122,7 +123,7 @@ public class Voitures : MonoBehaviour
                                 // Appliquer le power-up sur l'Arduino
                                 currentPowerUp.Appliquer(this.gameObject);
                             }
-
+                            PowerUpBoost.SetActive(true);
 
                         }
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
@@ -345,6 +346,8 @@ public class Voitures : MonoBehaviour
                     // Appliquer le power-up sur l'Arduino
                     currentPowerUp.Desactiver(this.gameObject);
                 }
+                PowerUpBoost.SetActive(false);
+
             }
             else
             {
