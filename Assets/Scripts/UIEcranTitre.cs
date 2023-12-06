@@ -57,9 +57,8 @@ public class UIEcranTitre : MonoBehaviour
 
         // Convertir en valeur numérique entre -1 et 1
         float conversionG = Mathf.InverseLerp(0, 1024, joystickG) * 2 - 1;
-        float conversionD = Mathf.InverseLerp(0, 1024, joystickD) * 2 - 1;
 
-        if (conversionG > 0.5f || conversionD > 0.5f && !cursorMoved)
+        if (conversionG > 0.5f && !cursorMoved)
         {
             var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnUp();
             if (next != null && next.gameObject.transform.IsChildOf(this.transform))
@@ -70,7 +69,7 @@ public class UIEcranTitre : MonoBehaviour
             cursorMoved = true;
             this.Invoke("resetSelection", navigationDelay );
         }
-        else if (conversionG < -0.5f || conversionD < -0.5f && !cursorMoved)
+        else if (conversionG < -0.5f && !cursorMoved)
         {
             var next = eventSystem.currentSelectedGameObject.GetComponent<Selectable>().FindSelectableOnDown();
             if (next != null && next.gameObject.transform.IsChildOf(this.transform))

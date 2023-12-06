@@ -3,7 +3,11 @@ guid: d97133f781edb7a4384494a898e95a36
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - currentPowerUp: {instanceID: 0}
+  - barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
+  - emplacemementTonneau: {instanceID: 0}
+  - centreMass: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

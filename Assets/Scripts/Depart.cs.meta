@@ -3,7 +3,20 @@ guid: 71bd65b176df14a5e9e14a460a41fe8e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - globalTimer: {instanceID: 0}
+  - arduino01: {instanceID: 0}
+  - arduino02: {instanceID: 0}
+  - sc1: {instanceID: 0}
+  - sc2: {instanceID: 0}
+  - configurations: {fileID: 11400000, guid: 6add8931faaa20028bedb89947bcbab3, type: 2}
+  - CameraJ1: {instanceID: 0}
+  - CameraJ2: {instanceID: 0}
+  - audioSourceIntro: {instanceID: 0}
+  - audioSourceMusique: {instanceID: 0}
+  - UIJoueur01: {instanceID: 0}
+  - UIJoueur02: {instanceID: 0}
+  - chaosMode: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
