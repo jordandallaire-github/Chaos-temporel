@@ -70,8 +70,6 @@ public class Voitures : MonoBehaviour
         joueurRB = GetComponent<Rigidbody>();
         collision = GetComponent<VoitureCollision>();
 
-        Physics.gravity = new Vector3(0, -9.8F, 0);
-
     }
 
     // Update is called once per frame
@@ -233,7 +231,7 @@ public class Voitures : MonoBehaviour
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
         }
 
-        if(collision.isOnGrass){
+        else if(collision.isOnGrass){
 
                 // Rotate around the Y-axis at a speed proportional to the rotation value.
                 joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
@@ -270,16 +268,14 @@ public class Voitures : MonoBehaviour
                 
             } 
 
-            // Dans votre fonction Update ou FixedUpdate
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, -transform.up, out hit, 1f)) {
-                float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
-                if (slopeAngle > 30f) { // Ajustez cette valeur en fonction de la pente à partir de laquelle vous voulez commencer à appliquer la force vers le bas
-                    joueurRB.AddForce(-transform.up * slopeAngle * 10f); // Ajustez cette valeur pour augmenter ou diminuer la force appliquée
-                }
+            else{
+
+                 joueurRB.AddForce(-transform.up * 100000.81f);
+
             }
 
-            
+
+
 
     }
 
