@@ -121,7 +121,6 @@ public class Voitures : MonoBehaviour
                                 // Appliquer le power-up sur l'Arduino
                                 currentPowerUp.Appliquer(this.gameObject);
                             }
-                            PowerUpBoost.SetActive(true);
 
                         }
                         // Lancer la coroutine pour désactiver le power-up après la durée spécifiée
@@ -144,6 +143,11 @@ public class Voitures : MonoBehaviour
             PowerUpBarrel.SetActive(true);
          }
 
+         if(currentPowerUp != null && currentPowerUp.name == "BuffVitesse"){
+          PowerUpBoost.SetActive(true);
+
+         }
+        
          joueurRB.centerOfMass = centreMass.transform.localPosition;
 
 
