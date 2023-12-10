@@ -204,7 +204,7 @@ MonoBehaviour:
   speed: 1
   maxSpeedSol: 12
   maxSpeedGazon: 8
-  accelerationTime: 3.5
+  accelerationTime: 4
   minReverseSpeed: 8
   decelerationTime: 4
   hasPowerUp: 0
