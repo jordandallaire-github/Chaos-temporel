@@ -200,12 +200,12 @@ MonoBehaviour:
   currentPowerUp: {fileID: 0}
   centreMass: {fileID: 4077664792529291031}
   controlsEnabled: 0
-  rotationSpeed: 2
+  rotationSpeed: 1.5
   speed: 1
-  maxSpeedSol: 16
+  maxSpeedSol: 12
   maxSpeedGazon: 8
-  accelerationTime: 4
-  minReverseSpeed: 4
+  accelerationTime: 3.5
+  minReverseSpeed: 8
   decelerationTime: 4
   hasPowerUp: 0
   brakeSpeed: 2
@@ -220,7 +220,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
-  emplacemementTonneau1: {fileID: 0}
+  emplacemementTonneau1: {fileID: 3928379800912080954}
   emplacemementTonneau2: {fileID: 3928379800912080954}
   forceBas: 1
   PowerUpBarrel: {fileID: 0}

@@ -68,7 +68,7 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-         
+         ResumeGame,
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -166,11 +166,11 @@ public class ChaosMod : MonoBehaviour
             StartCoroutine(ChangeSize(obj, 1.8f, 5f));
         }
         if(GameObject.Find("J1") != null ){
-            j1.maxSpeedSol = 7;
+            j1.maxSpeedSol = 9;
         }
 
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 7;
+            j2.maxSpeedSol = 9;
         }
 
     }
@@ -182,10 +182,10 @@ public class ChaosMod : MonoBehaviour
             StartCoroutine(ChangeSize(obj, 0.2f, 5f));
         }
         if(GameObject.Find("J1") != null ){
-            j1.maxSpeedSol = 20;
+            j1.maxSpeedSol = 18;
         }
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 20;
+            j2.maxSpeedSol = 18;
         }
 
     }
@@ -204,11 +204,11 @@ public class ChaosMod : MonoBehaviour
 
         obj.transform.localScale = initialScale;
         if(GameObject.Find("J1") != null ){
-            j1.maxSpeedSol = 16;
+            j1.maxSpeedSol = 12;
         }
 
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 16;
+            j2.maxSpeedSol = 12;
         }
     }
 
