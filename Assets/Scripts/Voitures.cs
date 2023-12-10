@@ -75,8 +75,10 @@ public class Voitures : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GOChaosmod = GameObject.Find("GestionnaireChaosMod");
-        chaosMod = GOChaosmod.GetComponent<ChaosMod>();
+        if(GameObject.Find("GestionnaireChaosMod") != null){
+            GOChaosmod = GameObject.Find("GestionnaireChaosMod");
+            chaosMod = GOChaosmod.GetComponent<ChaosMod>();
+        }
 
         if(controlsEnabled){
             Deplacement();
