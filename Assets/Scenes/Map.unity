@@ -2471,7 +2471,11 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
+<<<<<<< HEAD
   m_TerrainData: {fileID: 15600000, guid: 47b2f91282360e34db9d93a6b5eeb9fc, type: 2}
+=======
+  m_TerrainData: {fileID: 15600000, guid: 06f3e21d34222fe42bdf0cc8d4c257a4, type: 2}
+>>>>>>> parent of de4bac8 (Fix terrain data)
   m_EnableTreeColliders: 1
 --- !u!218 &166621489
 Terrain:
@@ -3922,6 +3926,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db8c1da0c1899d142a7bdb5d827c002e, type: 3}
   m_PrefabInstance: {fileID: 276158565}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &279053871
 GameObject:
   m_ObjectHideFlags: 0
@@ -4059,6 +4064,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &284406276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4403,6 +4410,7 @@ MonoBehaviour:
   m_Script: {fileID: -1994553136, guid: f56d46228aee4734f9114056c53bb57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
 --- !u!1 &323250760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4540,6 +4548,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1 &328901414
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,6 +7332,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beb6aeb144dd31a47969ed59edaefe8e, type: 3}
+<<<<<<< HEAD
 --- !u!1 &478904470
 GameObject:
   m_ObjectHideFlags: 0
@@ -7596,6 +7607,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &491400599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7686,6 +7699,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 13b4914556feb5546a677b788103144c, type: 3}
   m_PrefabInstance: {fileID: 491400599}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &496492400
 GameObject:
   m_ObjectHideFlags: 0
@@ -7823,6 +7837,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &499349776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16023,6 +16039,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e1953778350e9fd4eb864afdb93a45ab, type: 3}
   m_PrefabInstance: {fileID: 1857206127}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &1268505136
 GameObject:
   m_ObjectHideFlags: 0
@@ -16160,6 +16177,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1272973129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16234,6 +16253,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: beb6aeb144dd31a47969ed59edaefe8e, type: 3}
   m_PrefabInstance: {fileID: 1272973129}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &1276011494
 GameObject:
   m_ObjectHideFlags: 0
@@ -16508,6 +16528,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1280030188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19515,6 +19537,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< HEAD
 --- !u!4 &1527584584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ffdd90714eabfeb44ae6a86fffdb3cf9, type: 3}
@@ -19632,6 +19655,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1567719929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20648,6 +20673,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: beb6aeb144dd31a47969ed59edaefe8e, type: 3}
   m_PrefabInstance: {fileID: 1630913310}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &1647165708
 GameObject:
   m_ObjectHideFlags: 0
@@ -20785,6 +20811,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1664125172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22370,6 +22398,7 @@ MonoBehaviour:
   ignore: 0
   backupObject: {fileID: 0}
   terrain: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &1771569393
 GameObject:
   m_ObjectHideFlags: 0
@@ -22507,6 +22536,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1776170022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23653,6 +23684,7 @@ Transform:
   m_Father: {fileID: 146564804}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!1 &1866553672
 GameObject:
   m_ObjectHideFlags: 0
@@ -23790,6 +23822,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1869293865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24050,6 +24084,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2051561436420900216, guid: e98b54f4a00dd3d4e99f411b557a9b82, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1891261529
 GameObject:
   m_ObjectHideFlags: 0
@@ -24187,6 +24222,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1895490659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25450,6 +25487,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4828fd4f248abf498a9e32cc2caf6a9, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1973672683
 GameObject:
   m_ObjectHideFlags: 0
@@ -25587,6 +25625,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &1977552610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26552,6 +26592,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2051561436420900216, guid: e98b54f4a00dd3d4e99f411b557a9b82, type: 3}
+<<<<<<< HEAD
 --- !u!1 &2067656481
 GameObject:
   m_ObjectHideFlags: 0
@@ -26689,6 +26730,8 @@ Terrain:
   m_AllowAutoConnect: 1
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
+=======
+>>>>>>> parent of de4bac8 (Fix terrain data)
 --- !u!1001 &2068742104
 PrefabInstance:
   m_ObjectHideFlags: 0
