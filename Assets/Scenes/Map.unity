@@ -2471,11 +2471,7 @@ TerrainCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-<<<<<<< HEAD
-  m_TerrainData: {fileID: 15600000, guid: 47b2f91282360e34db9d93a6b5eeb9fc, type: 2}
-=======
   m_TerrainData: {fileID: 15600000, guid: 06f3e21d34222fe42bdf0cc8d4c257a4, type: 2}
->>>>>>> parent of de4bac8 (Fix terrain data)
   m_EnableTreeColliders: 1
 --- !u!218 &166621489
 Terrain:
