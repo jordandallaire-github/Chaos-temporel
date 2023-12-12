@@ -116,6 +116,8 @@ public class IaEnnemi : MonoBehaviour {
             rb.centerOfMass = centreMass.transform.localPosition;
 
             
+
+            
     }
 
        void OnTriggerEnter(Collider other) {

@@ -18656,7 +18656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 3, z: -10}
+  m_FollowOffset: {x: 0, y: 3.24, z: -8.11}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -30960,6 +30960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075348215}
   - component: {fileID: 1075348214}
+  - component: {fileID: 1075348216}
   m_Layer: 7
   m_Name: Virtual Camera J1
   m_TagString: Untagged
@@ -31022,6 +31023,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1075348216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075348213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c3b9452e538914b89ca74eddb94e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1081836828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4244863611320519207, guid: 019401688d0dc4d4cab504fdf799b704, type: 3}
@@ -37823,6 +37836,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346759396}
   - component: {fileID: 1346759395}
+  - component: {fileID: 1346759397}
   m_Layer: 8
   m_Name: Virtual Camera J2
   m_TagString: Untagged
@@ -37885,6 +37899,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 11.502, y: 57.708, z: -0.75}
+--- !u!114 &1346759397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346759394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33c3b9452e538914b89ca74eddb94e74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1347365144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40140,7 +40166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 3
-  m_FollowOffset: {x: 0, y: 3, z: -10}
+  m_FollowOffset: {x: 0, y: 3.24, z: -8.11}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
