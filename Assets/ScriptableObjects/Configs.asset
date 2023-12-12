@@ -15,5 +15,5 @@ MonoBehaviour:
   J1Port: COM3
   J2Port: COM4
   playerStarted: 0101
-  J1VehiculeChoisi: {fileID: 6653311431158174104, guid: 92bff107bb0eb3b4e8f162b18e928aec, type: 3}
-  J2VehiculeChoisi: {fileID: 6653311431158174104, guid: 92bff107bb0eb3b4e8f162b18e928aec, type: 3}
+  J1VehiculeChoisi: {fileID: 1123476691160546985, guid: af1d6461cef6dee4bb55f2adfcac57af, type: 3}
+  J2VehiculeChoisi: {fileID: 1123476691160546985, guid: 72c3e49f2a1ad6749b8e6a55b4ebdd28, type: 3}
