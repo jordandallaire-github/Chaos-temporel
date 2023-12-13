@@ -253,7 +253,7 @@ public class Voitures : MonoBehaviour
                 joueurRB.velocity = joueurRB.velocity.normalized * speed * movement;
 
 
-                joueurRB.AddForce(transform.forward * movement * speed * Time.deltaTime, ForceMode.VelocityChange);
+                joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
                         
                 // Clamp the Rigidbody's speed to the maximum speed
                 if (joueurRB.velocity.magnitude > maxSpeedGazon)

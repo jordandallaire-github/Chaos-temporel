@@ -15,10 +15,11 @@ public class VoitureCollision : MonoBehaviour
     public float jumpDuration = 0.1f; // Durée du saut en secondes
 
 
+
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -29,18 +30,12 @@ public class VoitureCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Adversaire")
+        if (collision.gameObject.tag == "Adversaire" || collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
         {
             audioSource.Play();
             Rigidbody autreRb = collision.rigidbody;
             autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
-        }
-
-        if (collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
-        {
-            audioSource.Play();
-            Rigidbody autreRb = collision.rigidbody;
-            autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
+  
         }
 
         if (collision.gameObject.tag == "Barrel")
@@ -74,6 +69,7 @@ public class VoitureCollision : MonoBehaviour
         {
             isOnGrass = false;
         }
+
     }
 
     IEnumerator BarrelCollisionReaction()
