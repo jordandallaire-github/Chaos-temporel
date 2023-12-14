@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Screen.005
-    second: {fileID: 2100000, guid: 2cd3e07e239cfbe4798f71217d6ee825, type: 2}
+    second: {fileID: 2100000, guid: 3042575ffa6a2e04b83ecde8be266363, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
