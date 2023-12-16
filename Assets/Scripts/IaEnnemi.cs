@@ -35,6 +35,8 @@ public class IaEnnemi : MonoBehaviour {
 
     public Transform[] checkpoints;
 
+    private List<int> visitedCheckpoints = new List<int>();
+
 
 
     void Start () {
@@ -114,17 +116,20 @@ public class IaEnnemi : MonoBehaviour {
 
 
             rb.centerOfMass = centreMass.transform.localPosition;
-
             
 
             
     }
 
-       void OnTriggerEnter(Collider other) {
-        if (other.gameObject.CompareTag("Checkpoint")) {
-            GoToNextCheckpoint();
+        void OnTriggerEnter(Collider other) {
+            if (other.gameObject.CompareTag("Checkpoint")) {
+                int checkpointIndex = System.Array.IndexOf(checkpoints, other.transform);
+                if (!visitedCheckpoints.Contains(checkpointIndex)) {
+                    visitedCheckpoints.Add(checkpointIndex);
+                    GoToNextCheckpoint();
+                }
+            }
         }
-    }
 
         void GoToNextCheckpoint() {
             currentCheckpointIndex++;
