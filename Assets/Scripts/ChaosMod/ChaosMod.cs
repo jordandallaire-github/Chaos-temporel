@@ -74,7 +74,7 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-            DiminueTaille,
+            InversementControle,
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -99,7 +99,7 @@ public class ChaosMod : MonoBehaviour
        effectNameTextJ2.text = effetsPowerUps[currentEffectIndex].Method.Name;
 
        // Désactiver le texte de l'effet précédent après 30 secondes
-       StartCoroutine(DisableEffectNameText(5f));
+       StartCoroutine(DisableEffectNameText(8f));
 
        StartCoroutine(UpdateChaosModeSlider(30));
    }
