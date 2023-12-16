@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 2823652975510741587}
   - component: {fileID: 2599612272112018127}
   m_Layer: 0
-  m_Name: CPU_CyberCrimson
+  m_Name: CPU_CyberCarYellow
   m_TagString: Adversaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,9 +135,9 @@ MeshRenderer:
   - {fileID: 2100000, guid: 55396ca50d6f03446ab0d77abb33b7b8, type: 2}
   - {fileID: 0}
   - {fileID: 2100000, guid: beddd79dcbacdf64b9223f18a8dcb643, type: 2}
-  - {fileID: 2100000, guid: d43d46615a7169848849d56bd7a11b93, type: 2}
+  - {fileID: 2100000, guid: 6b0acc8eb58d1c2479a51c37f2effc92, type: 2}
   - {fileID: 2100000, guid: 30b9d64524e5c344e8ea1f38f1333a2a, type: 2}
-  - {fileID: 2100000, guid: f19966bdd0fc48843aac5dfa8870f781, type: 2}
+  - {fileID: -8880913325637885921, guid: 733d0517a5faf6e4eb009dad1d96ffee, type: 3}
   - {fileID: 2100000, guid: 4f53e1aee33e5f1499a4e001c680d675, type: 2}
   - {fileID: 2100000, guid: 6bfaefe0f4e34344ab2b13f5065bc7b7, type: 2}
   - {fileID: 2100000, guid: 360ab27b1f1cf6d4f8843f15c73ec8f4, type: 2}
@@ -254,7 +254,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 1
-  m_Speed: 10
+  m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

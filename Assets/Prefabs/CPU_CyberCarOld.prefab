@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 1500653186091680145}
   - component: {fileID: 1744985503559824986}
   m_Layer: 0
-  m_Name: CPU_CyberCar
+  m_Name: CPU_CyberCarOld
   m_TagString: Adversaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

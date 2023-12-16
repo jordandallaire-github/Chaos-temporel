@@ -23,6 +23,10 @@ public class ChaosMod : MonoBehaviour
 
     [SerializeField] public TextMeshProUGUI effectNameTextJ2;
 
+    [SerializeField] private GameObject panelEffet1;
+
+    [SerializeField] private GameObject panelEffet2;
+
     [SerializeField] public GameObject cartoon;
 
     [SerializeField] public GameObject cyperpunk;
@@ -51,6 +55,8 @@ public class ChaosMod : MonoBehaviour
             j2 = GameObject.Find("J2").GetComponent<Voitures>();
         }
 
+        panelEffet1.SetActive(false);
+        panelEffet2.SetActive(false);
         effectNameTextJ1.text = "";
         effectNameTextJ2.text = "";
 
@@ -84,6 +90,9 @@ public class ChaosMod : MonoBehaviour
 
        // Appeler la fonction
        effetsPowerUps[currentEffectIndex]();
+
+        panelEffet1.SetActive(true);
+       panelEffet2.SetActive(true);
 
        // Définir le texte du composant TextMeshPro à afficher le nom de l'effet actif
        effectNameTextJ1.text = effetsPowerUps[currentEffectIndex].Method.Name;
@@ -182,10 +191,10 @@ public class ChaosMod : MonoBehaviour
             StartCoroutine(ChangeSize(obj, 0.2f, 5f));
         }
         if(GameObject.Find("J1") != null ){
-            j1.maxSpeedSol = 18;
+            j1.maxSpeedSol = 14;
         }
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 18;
+            j2.maxSpeedSol = 14;
         }
 
     }
@@ -232,6 +241,10 @@ public class ChaosMod : MonoBehaviour
        IEnumerator DisableEffectNameText(float delay)
    {
        yield return new WaitForSeconds(delay);
+
+       panelEffet1.SetActive(false);
+       panelEffet2.SetActive(false);
+
        effectNameTextJ1.text = "";
        effectNameTextJ2.text = "";
    }

@@ -95,8 +95,8 @@ public class Depart : MonoBehaviour
         // ChaosMode Iniitilization
         chaosModeUI1 = UIJoueur01.transform.Find("TempsChaos").gameObject;
         chaosModeUI2 = UIJoueur02.transform.Find("TempsChaos").gameObject;
-        chaosModeUIText1 = UIJoueur01.transform.Find("NomChaos").gameObject;
-        chaosModeUIText2 = UIJoueur02.transform.Find("NomChaos").gameObject;
+        chaosModeUIText1 = UIJoueur01.transform.Find("NomChaosPanel").gameObject;
+        chaosModeUIText2 = UIJoueur02.transform.Find("NomChaosPanel").gameObject;
 
         chaosMode.SetActive(false);
         chaosModeUI1.SetActive(false);
