@@ -69,6 +69,13 @@ public class Voitures : MonoBehaviour
     {
         joueurRB = GetComponent<Rigidbody>();
         collision = GetComponent<VoitureCollision>();
+        maxSpeedGazon = 8f;
+        maxSpeedSol = 12f;
+        minReverseSpeed = 6f;
+        rotationSpeed = 1.5f;
+        accelerationTime = 4f;
+        decelerationTime = 4f;
+        speed = 1;
 
     }
 

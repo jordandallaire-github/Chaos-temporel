@@ -227,7 +227,7 @@ MonoBehaviour:
   currentPowerUp: {fileID: 0}
   hasPowerUp: 0
   detectionRange: 20
-  speed: 25
+  speed: 50
   rotationSpeed: 5
   maxSpeed: 25
   brakeSpeed: 2
