@@ -74,7 +74,7 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-         ResumeGame,
+            DiminueTaille,
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -188,13 +188,13 @@ public class ChaosMod : MonoBehaviour
     {
         foreach (GameObject obj in affectedObjects)
         {
-            StartCoroutine(ChangeSize(obj, 0.2f, 5f));
+            StartCoroutine(ChangeSize(obj, 0.85f, 5f));
         }
         if(GameObject.Find("J1") != null ){
-            j1.maxSpeedSol = 14;
+            j1.maxSpeedSol = 11;
         }
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 14;
+            j2.maxSpeedSol = 11;
         }
 
     }
@@ -208,6 +208,17 @@ public class ChaosMod : MonoBehaviour
         {
             float t = (Time.time - startTime) / duration;
             obj.transform.localScale = Vector3.Lerp(initialScale, initialScale * targetScale, t);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(29 - duration); // Attendre le reste du temps
+
+        // Rétablir la taille initiale
+        startTime = Time.time;
+        while (Time.time < startTime + duration)
+        {
+            float t = (Time.time - startTime) / duration;
+            obj.transform.localScale = Vector3.Lerp(obj.transform.localScale, initialScale, t);
             yield return null;
         }
 

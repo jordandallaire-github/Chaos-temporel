@@ -34,8 +34,8 @@ public class VoitureCollision : MonoBehaviour
         {
             audioSource.Play();
             Rigidbody autreRb = collision.rigidbody;
-            autreRb.AddExplosionForce(repoussement, collision.contacts[0].point, 5);
-  
+            Vector3 explosionPosition = collision.contacts[0].point;
+            autreRb.AddExplosionForce(repoussement, explosionPosition, 100.0f);
         }
 
         if (collision.gameObject.tag == "Barrel")

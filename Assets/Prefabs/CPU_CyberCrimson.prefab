@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27b6d439955aed4393f19859aee8826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repoussement: 1
+  repoussement: 10000
   audioSource: {fileID: 2599612272112018127}
   isOnGround: 0
   isOnGrass: 0

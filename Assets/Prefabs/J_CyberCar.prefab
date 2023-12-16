@@ -127,7 +127,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
 --- !u!208 &7739347432116736771
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27b6d439955aed4393f19859aee8826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repoussement: 0
+  repoussement: 10000
   audioSource: {fileID: 6588022165848103271}
   isOnGround: 0
   isOnGrass: 0
