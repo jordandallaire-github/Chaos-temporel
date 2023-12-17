@@ -127,7 +127,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!208 &7739347432116736771
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -157,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repoussement: 10000
-  audioSource: {fileID: 6588022165848103271}
   isOnGround: 0
   isOnGrass: 0
   rotationSpeed: 360
@@ -201,18 +200,18 @@ MonoBehaviour:
   centreMass: {fileID: 4077664792529291031}
   controlsEnabled: 0
   rotationSpeed: 1.5
-  speed: 1
+  speed: 0
   maxSpeedSol: 12
   maxSpeedGazon: 8
   accelerationTime: 4
-  minReverseSpeed: 6
-  decelerationTime: 4
+  minReverseSpeed: 1
+  decelerationTime: 2
   hasPowerUp: 0
   brakeSpeed: 2
-  deadZoneTop: 0.9
-  deadZoneBottom: -0.9
-  deadZoneCenter: 0.1
-  deadZoneCenterNegative: -0.1
+  deadZoneTop: 0.8
+  deadZoneBottom: -0.8
+  deadZoneCenter: 0.2
+  deadZoneCenterNegative: -0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -8911,7 +8911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194895514}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.51, y: 0.4, z: -7.09}
+  m_LocalPosition: {x: -8.51, y: 0.25, z: -7.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14999,7 +14999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340178784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.93, y: 0.4, z: 7}
+  m_LocalPosition: {x: -2.93, y: 0.25, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19060,7 +19060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450777463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3, y: 0.4, z: -4.6}
+  m_LocalPosition: {x: 6.3, y: 0.25, z: -4.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19448,7 +19448,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470257437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.29, y: 0.4, z: -16.45}
+  m_LocalPosition: {x: 3.29, y: 0.25, z: -16.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19906,7 +19906,7 @@ GameObject:
   - component: {fileID: 487802486}
   - component: {fileID: 487802488}
   - component: {fileID: 487802487}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: "Lumi\xE8reStart"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22893,7 +22893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4220276183634e14ca84cc74598c9280, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23973,7 +23973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565811055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.7, y: 0.4, z: 4}
+  m_LocalPosition: {x: 6.7, y: 0.25, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24326,7 +24326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573031388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.17, y: 0.4, z: -0.74}
+  m_LocalPosition: {x: -1.17, y: 0.25, z: -0.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28450,7 +28450,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 707731780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.6, y: 0.4, z: -10.5}
+  m_LocalPosition: {x: 9.6, y: 0.25, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43994,7 +43994,7 @@ GameObject:
   - component: {fileID: 1088664915}
   - component: {fileID: 1088664914}
   - component: {fileID: 1088664913}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RaceFence.009
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -47310,7 +47310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173527225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6, y: 0.4, z: -14.04}
+  m_LocalPosition: {x: -5.6, y: 0.25, z: -14.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48378,7 +48378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192978164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.82, y: 0.4, z: 3.6}
+  m_LocalPosition: {x: -9.82, y: 0.25, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51357,7 +51357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4220276183634e14ca84cc74598c9280, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62621,7 +62621,7 @@ GameObject:
   - component: {fileID: 1593312995}
   - component: {fileID: 1593312994}
   - component: {fileID: 1593312993}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Fence Montagne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62756,7 +62756,7 @@ GameObject:
   - component: {fileID: 1597417917}
   - component: {fileID: 1597417916}
   - component: {fileID: 1597417915}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RaceFence.008
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -72811,7 +72811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844833725}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47, y: 0.4, z: -6.87}
+  m_LocalPosition: {x: -0.47, y: 0.25, z: -6.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

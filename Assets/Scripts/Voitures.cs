@@ -17,14 +17,14 @@ public class Voitures : MonoBehaviour
     public float maxSpeedSol = 12;
     public float maxSpeedGazon = 8;
     public float accelerationTime = 4f; // Temps en secondes pour atteindre la vitesse maximale
-    public float minReverseSpeed = 4f;
+    public float minReverseSpeed = 1f;
     public float decelerationTime = 4f;
     public bool hasPowerUp = false;
     public float brakeSpeed = 2f; // Adjust this value to set the braking speed
-    public float deadZoneTop = 0.9f;
-    public float deadZoneBottom = -0.9f;
-    public float deadZoneCenter = 0.1f;
-    public float deadZoneCenterNegative = -0.1f;
+    public float deadZoneTop = 0.8f;
+    public float deadZoneBottom = -0.8f;
+    public float deadZoneCenter = 0.2f;
+    public float deadZoneCenterNegative = -0.2f;
     private Rigidbody joueurRB;
     private VoitureCollision collision; // Script de collision
 
@@ -69,13 +69,15 @@ public class Voitures : MonoBehaviour
     {
         joueurRB = GetComponent<Rigidbody>();
         collision = GetComponent<VoitureCollision>();
-        maxSpeedGazon = 8f;
-        maxSpeedSol = 12f;
-        minReverseSpeed = 6f;
-        rotationSpeed = 1.5f;
-        accelerationTime = 4f;
-        decelerationTime = 4f;
+        accelerationTime = 6f;
+        decelerationTime = 3f;
         speed = 1;
+        minReverseSpeed = 1;
+        conversionD = 0;
+        conversionG = 0;
+        batonD = 0;
+        batonG = 0;
+        
 
     }
 
@@ -207,6 +209,8 @@ public class Voitures : MonoBehaviour
         // Il peut se déplacer seulement si il touche le sol
         if(collision.isOnGround){
 
+            minReverseSpeed = 1;
+
             // Rotate around the Y-axis at a speed proportional to the rotation value.
             joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
@@ -216,6 +220,7 @@ public class Voitures : MonoBehaviour
                 speed = Mathf.Lerp(speed, maxSpeedSol, Time.deltaTime / accelerationTime);
             } else if (movement < deadZoneCenterNegative) {
                 // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
+                minReverseSpeed = 3;
                 speed = minReverseSpeed;
             } else  {
                 // If the vehicle is not moving, decrease the speed
@@ -238,7 +243,6 @@ public class Voitures : MonoBehaviour
                     joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
                 }
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
-                joueurRB.AddForce(-transform.up * 100000.81f);
         }
 
         else if(collision.isOnGrass){
@@ -247,7 +251,7 @@ public class Voitures : MonoBehaviour
                 joueurRB.angularVelocity = new Vector3(0, rotation * rotationSpeed, 0);
 
                 // Smoothly change the speed using interpolation
-                if (movement > 0.6) {
+                if (movement > 0.7) {
                     // If the vehicle is moving forward, increase the speed
                     speed = Mathf.Lerp(speed, maxSpeedGazon, Time.deltaTime / accelerationTime);
                 } else if (movement < deadZoneCenterNegative) {
@@ -275,7 +279,6 @@ public class Voitures : MonoBehaviour
                     joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
                 }
                 joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
-                joueurRB.AddForce(-transform.up * 100000.81f);
                 
             } 
 

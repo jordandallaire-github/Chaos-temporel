@@ -189,7 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repoussement: 100
-  audioSource: {fileID: 7956898610459063132}
   isOnGround: 0
   isOnGrass: 0
   rotationSpeed: 360
@@ -238,7 +237,7 @@ MonoBehaviour:
   maxSpeedGazon: 8
   accelerationTime: 4
   minReverseSpeed: 4
-  decelerationTime: 4
+  decelerationTime: 3
   hasPowerUp: 0
   brakeSpeed: 2
   deadZoneTop: 0.9
