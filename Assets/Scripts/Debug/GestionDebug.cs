@@ -11,11 +11,8 @@ public class GestionDebug : MonoBehaviour
     [SerializeField] private GameObject Screen;
     private bool isPressing = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private const int SCREEN_1 = 0;
+    private const int SCREEN_2 = 1;
 
     // Update is called once per frame
     void Update()
@@ -34,27 +31,25 @@ public class GestionDebug : MonoBehaviour
     }
 
     private void Toggle(){
-
-        if(!isPressing && DebugToggleScreen1.ReadValue<float>() == 1){ // Open/Close Debug Screen on Screen 1
-            isPressing = true;
-
-            if(Screen.activeInHierarchy == false){
-                Screen.SetActive(true);
-                Screen.GetComponent<Canvas>().targetDisplay = 0;
-            }else{
-                Screen.SetActive(false);
-            }
-        }else if(!isPressing && DebugToggleScreen2.ReadValue<float>() == 1){ // Open/Close Debug Screen on Screen 2
-            isPressing = true;
-
-            if(Screen.activeInHierarchy == false){
-                Screen.SetActive(true);
-                Screen.GetComponent<Canvas>().targetDisplay = 1;
-            }else{
-                Screen.SetActive(false);
+        if(!isPressing){
+            if(DebugToggleScreen1.ReadValue<float>() == 1){
+                ToggleScreen(SCREEN_1);
+            }else if(DebugToggleScreen2.ReadValue<float>() == 1){
+                ToggleScreen(SCREEN_2);
             }
         }else if(DebugToggleScreen2.ReadValue<float>() == 0 && DebugToggleScreen1.ReadValue<float>() == 0){
             isPressing = false;
+        }
+    }
+
+    private void ToggleScreen(int screen){
+        isPressing = true;
+
+        if(Screen.activeInHierarchy == false){
+            Screen.SetActive(true);
+            Screen.GetComponent<Canvas>().targetDisplay = screen;
+        }else{
+            Screen.SetActive(false);
         }
     }
 }
