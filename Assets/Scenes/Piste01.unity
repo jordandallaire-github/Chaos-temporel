@@ -77896,7 +77896,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -77913,6 +77913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1266f1ecdc2e1aadae6b89dc8caf84a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  configurations: {fileID: 11400000, guid: 6add8931faaa20028bedb89947bcbab3, type: 2}
+  J1Port: {fileID: 1989915196}
+  J2Port: {fileID: 2021956226}
 --- !u!1001 &1978099286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -78496,7 +78499,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1971996747}
+        m_TargetAssemblyTypeName: DebugScreen, Assembly-CSharp
+        m_MethodName: OnTextChangedP1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -79913,7 +79928,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1971996747}
+        m_TargetAssemblyTypeName: DebugScreen, Assembly-CSharp
+        m_MethodName: OnTextChangedP2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
