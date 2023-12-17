@@ -157,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repoussement: 10000
-  audioSource: {fileID: 6588022165848103271}
   isOnGround: 0
   isOnGrass: 0
   rotationSpeed: 360
@@ -240,7 +239,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 82f234b3dcb7910438bee8a14cb49e0d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0

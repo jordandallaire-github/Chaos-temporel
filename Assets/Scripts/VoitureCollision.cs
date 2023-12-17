@@ -6,7 +6,7 @@ public class VoitureCollision : MonoBehaviour
 {
     public float repoussement = 3000;
 
-    [SerializeField] private AudioSource audioSource;
+    private AudioSource audioSource;
     
     public bool isOnGround;
     public bool isOnGrass;
@@ -19,7 +19,9 @@ public class VoitureCollision : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+       if(this.gameObject.tag == "Player1" || this.gameObject.tag == "Player2" ){
+            audioSource = this.gameObject.GetComponent<AudioSource>();
+       }
     }
 
     // Update is called once per frame
@@ -30,12 +32,26 @@ public class VoitureCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Adversaire" || collision.gameObject.tag == "Player1" || collision.gameObject.tag == "Player2")
+        if (this.gameObject.tag == "Player1")
         {
-            audioSource.Play();
-            Rigidbody autreRb = collision.rigidbody;
-            Vector3 explosionPosition = collision.contacts[0].point;
-            autreRb.AddExplosionForce(repoussement, explosionPosition, 100.0f);
+            if(collision.gameObject.tag == "Adversaire" || collision.gameObject.tag == "Player2"){
+                audioSource.Play();
+                Rigidbody autreRb = collision.rigidbody;
+                Vector3 explosionPosition = collision.contacts[0].point;
+                autreRb.AddExplosionForce(repoussement, explosionPosition, 100.0f);
+            }
+
+        }
+
+        if (this.gameObject.tag == "Player2")
+        {
+            if(collision.gameObject.tag == "Adversaire" || collision.gameObject.tag == "Player1"){
+                audioSource.Play();
+                Rigidbody autreRb = collision.rigidbody;
+                Vector3 explosionPosition = collision.contacts[0].point;
+                autreRb.AddExplosionForce(repoussement, explosionPosition, 100.0f);
+            }
+
         }
 
         if (collision.gameObject.tag == "Barrel")
