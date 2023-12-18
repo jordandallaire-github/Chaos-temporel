@@ -74,7 +74,9 @@ public class ChaosMod : MonoBehaviour
       // Initialiser le tableau de fonctions
       effetsPowerUps = new System.Action[]
       {
-            InversementControle,
+            Geler,
+            SlowMo,
+
       };
 
       // Planifier l'appel de la fonction aléatoire à chaque 30 secondes
@@ -153,6 +155,7 @@ public class ChaosMod : MonoBehaviour
 
         InverControle = false;
         Time.timeScale = 1;
+        Time.fixedDeltaTime = Time.timeScale * 0.01f;
     }
 
     IEnumerator WaitAndResume(float temps)
@@ -224,11 +227,11 @@ public class ChaosMod : MonoBehaviour
 
         obj.transform.localScale = initialScale;
         if(GameObject.Find("J1") != null ){
-            j1.maxSpeedSol = 12;
+            j1.maxSpeedSol = 10;
         }
 
         if(GameObject.Find("J2") != null ){
-            j2.maxSpeedSol = 12;
+            j2.maxSpeedSol = 10;
         }
     }
 

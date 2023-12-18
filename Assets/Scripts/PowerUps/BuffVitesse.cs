@@ -28,11 +28,11 @@ public class BuffVitesse : PowerUpsEffets
     {
         if (cible.tag == "Player1" ){
             Voitures voitures = cible.GetComponent<Voitures>();
-            voitures.maxSpeedSol = 12;
+            voitures.maxSpeedSol = 10;
         }
         if (cible.tag == "Player2" ){
             Voitures voitures = cible.GetComponent<Voitures>();
-            voitures.maxSpeedSol = 12;
+            voitures.maxSpeedSol = 10;
         }
         if (cible.tag == "Adversaire" ){
             IaEnnemi ennemi = cible.GetComponent<IaEnnemi>();

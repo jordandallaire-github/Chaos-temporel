@@ -60,6 +60,8 @@ public class Voitures : MonoBehaviour
 
     public float batonG;
 
+    public float mouvement;
+
     private GameObject GOChaosmod;
 
     private ChaosMod chaosMod;
@@ -69,7 +71,7 @@ public class Voitures : MonoBehaviour
     {
         joueurRB = GetComponent<Rigidbody>();
         collision = GetComponent<VoitureCollision>();
-        accelerationTime = 6f;
+        accelerationTime = 4f;
         decelerationTime = 3f;
         speed = 1;
         minReverseSpeed = 1;
@@ -77,6 +79,7 @@ public class Voitures : MonoBehaviour
         conversionG = 0;
         batonD = 0;
         batonG = 0;
+        mouvement = 0;
         
 
     }
@@ -220,11 +223,12 @@ public class Voitures : MonoBehaviour
                 speed = Mathf.Lerp(speed, maxSpeedSol, Time.deltaTime / accelerationTime);
             } else if (movement < deadZoneCenterNegative) {
                 // If the vehicle is moving backward, decrease the speed to the minimum reverse speed
-                minReverseSpeed = 3;
+                minReverseSpeed = 3f;
                 speed = minReverseSpeed;
+                
             } else  {
-                // If the vehicle is not moving, decrease the speed
                 speed = Mathf.Lerp(speed, 0, Time.deltaTime / decelerationTime);
+
             }
 
             joueurRB.velocity = joueurRB.velocity.normalized * speed * movement;
@@ -242,7 +246,7 @@ public class Voitures : MonoBehaviour
                 {
                     joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
                 }
-                joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
+                //joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
         }
 
         else if(collision.isOnGrass){
@@ -284,7 +288,7 @@ public class Voitures : MonoBehaviour
 
             else{
 
-                 joueurRB.AddForce(-transform.up * 100000.81f);
+                 joueurRB.AddForce(-transform.up * 70000.81f);
 
             }
 
