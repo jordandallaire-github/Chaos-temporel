@@ -48,5 +48,5 @@ Material:
     - _DstBlendAlpha: 0
     - _ZWrite: 1
     m_Colors:
-    - _EmissionColor: {r: 2.6082377, g: 2.6082377, b: 2.6082377, a: 1}
+    - _EmissionColor: {r: 1.9766747, g: 1.9766747, b: 1.9766747, a: 1}
   m_BuildTextureStacks: []

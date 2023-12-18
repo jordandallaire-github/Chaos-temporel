@@ -34,7 +34,7 @@ Material:
     - _Glossiness: 0.9140625
     - _Smoothness: 0.9140625
     m_Colors:
-    - _EmissionColor: {r: 59.017693, g: 0, b: 0.40186167, a: 3.8999999}
+    - _EmissionColor: {r: 12.844469, g: 0, b: 0.087460205, a: 3.8999999}
   m_BuildTextureStacks: []
 --- !u!114 &5847856604615387566
 MonoBehaviour:

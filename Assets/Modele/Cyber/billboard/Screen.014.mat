@@ -35,7 +35,7 @@ Material:
     - _DstBlendAlpha: 0
     - _ZWrite: 1
     m_Colors:
-    - _EmissionColor: {r: 2.6390157, g: 2.6390157, b: 2.6390157, a: 1}
+    - _EmissionColor: {r: 1.7207952, g: 1.7207952, b: 1.7207952, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &5545108654411064862
 MonoBehaviour:

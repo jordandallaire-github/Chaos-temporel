@@ -22,6 +22,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: LightCyber.002
+    second: {fileID: 2100000, guid: 7042be87babbf274c9ff7c13d1a9eee6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Metal_Antenne_Cyber
     second: {fileID: 2100000, guid: 26c5c9eba567203428f3fa3ff3e52490, type: 2}
   - first:
