@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465878, g: 0.4964224, b: 0.57482475, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964128, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -638,6 +638,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5204608177666314649, guid: 9232902acf0b1febca922c4242a17f81, type: 3}
+      propertyPath: controllerJ1
+      value: 
+      objectReference: {fileID: 276077772}
+    - target: {fileID: 5204608177666314649, guid: 9232902acf0b1febca922c4242a17f81, type: 3}
+      propertyPath: controllerJ2
+      value: 
+      objectReference: {fileID: 440948914}
     - target: {fileID: 8661659348774657910, guid: 9232902acf0b1febca922c4242a17f81, type: 3}
       propertyPath: m_Name
       value: GestionnaireDebug

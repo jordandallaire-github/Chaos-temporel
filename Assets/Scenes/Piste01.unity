@@ -81082,6 +81082,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5204608177666314649, guid: 9232902acf0b1febca922c4242a17f81, type: 3}
+      propertyPath: controllerJ1
+      value: 
+      objectReference: {fileID: 1232238085}
+    - target: {fileID: 5204608177666314649, guid: 9232902acf0b1febca922c4242a17f81, type: 3}
+      propertyPath: controllerJ2
+      value: 
+      objectReference: {fileID: 1803024221}
     - target: {fileID: 8661659348774657910, guid: 9232902acf0b1febca922c4242a17f81, type: 3}
       propertyPath: m_Name
       value: GestionnaireDebug
