@@ -282,13 +282,13 @@ public class Voitures : MonoBehaviour
                 {
                     joueurRB.velocity = Vector3.Lerp(joueurRB.velocity, Vector3.zero, brakeSpeed * Time.deltaTime);
                 }
-                joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
+               // joueurRB.AddForce(transform.forward * movement * speed, ForceMode.VelocityChange);
                 
             } 
 
             else{
 
-                 joueurRB.AddForce(-transform.up * 70000.81f);
+                 joueurRB.AddForce(-transform.up * 100000.81f);
 
             }
 
