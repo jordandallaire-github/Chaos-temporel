@@ -23,6 +23,8 @@ public class IaEnnemi : MonoBehaviour {
 
     private static int barrelCount = 0; // Variable statique pour compter le nombre de tonneaux créés
 
+    public float checkpointTolerance = 0.5f;
+
     [SerializeField] public bool isBarrelLaunched = false;
 
     private bool barrelCreated = false;
@@ -71,12 +73,13 @@ public class IaEnnemi : MonoBehaviour {
                 if (NavMesh.CalculatePath(transform.position, checkpoints[currentCheckpointIndex % checkpoints.Length].position, NavMesh.AllAreas, path)) {
                     agent.SetPath(path);
                 }
+                
             }
         
             // Limite la vitesse maximale
-            if (rb.velocity.magnitude > maxSpeed)
+            if (agent.speed > maxSpeed)
             {
-                rb.velocity = rb.velocity.normalized * maxSpeed;
+                agent.speed = maxSpeed;
             }
 
             // Applique une force de freinage lorsque la valeur de mouvement est proche de zéro
