@@ -201,7 +201,7 @@ MonoBehaviour:
   controlsEnabled: 0
   rotationSpeed: 1.5
   speed: 0
-  maxSpeedSol: 12
+  maxSpeedSol: 10
   maxSpeedGazon: 8
   accelerationTime: 4
   minReverseSpeed: 1
@@ -228,6 +228,7 @@ MonoBehaviour:
   conversionG: 0
   batonD: 0
   batonG: 0
+  mouvement: 0
 --- !u!82 &6588022165848103271
 AudioSource:
   m_ObjectHideFlags: 0
