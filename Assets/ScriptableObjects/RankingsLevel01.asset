@@ -13,11 +13,23 @@ MonoBehaviour:
   m_Name: RankingsLevel01
   m_EditorClassIdentifier: 
   ranking:
-  - 
-  - 
-  - 
-  - 
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   time:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0

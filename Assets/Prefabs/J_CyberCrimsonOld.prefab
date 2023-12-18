@@ -141,7 +141,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6653311431158174104}
   serializedVersion: 4
-  m_Mass: 1000
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -233,7 +233,7 @@ MonoBehaviour:
   controlsEnabled: 0
   rotationSpeed: 2
   speed: 1
-  maxSpeedSol: 16
+  maxSpeedSol: 10
   maxSpeedGazon: 8
   accelerationTime: 4
   minReverseSpeed: 4
@@ -260,6 +260,7 @@ MonoBehaviour:
   conversionG: 0
   batonD: 0
   batonG: 0
+  mouvement: 0
 --- !u!82 &7956898610459063132
 AudioSource:
   m_ObjectHideFlags: 0

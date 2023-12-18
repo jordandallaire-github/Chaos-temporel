@@ -20,9 +20,6 @@ public class TonneauController : MonoBehaviour
         this.rb.velocity = direction * speed; 
         
         GraviterBas();
-
-        // Log the velocity to see when it changes
-        Debug.Log("Velocity: " + rb.velocity);
     }
 
     private void GraviterBas()

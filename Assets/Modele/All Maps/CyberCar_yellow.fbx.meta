@@ -58,7 +58,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Space Cell Cube
-    second: {fileID: 2100000, guid: 6b0acc8eb58d1c2479a51c37f2effc92, type: 2}
+    second: {fileID: 2100000, guid: ef8f4128fef191143a82d0d13c5e9050, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -11,12 +11,12 @@ public class ShowRankings : MonoBehaviour
     [SerializeField] private Rankings rankings; 
 
     public void WriteScores(){
-        for (int i = 0; i < noms.Length; i++)
+        for (int i = 0; i < 4; i++)
         {
             noms[i].text = rankings.ranking[i].name;
         }
 
-        for (int i = 0; i < time.Length; i++)
+        for (int i = 0; i < 4; i++)
         {
             TimeSpan ts = TimeSpan.FromSeconds(rankings.time[i]);
 

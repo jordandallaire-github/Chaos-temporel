@@ -105,7 +105,7 @@ public class VoitureCollision : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        transform.position = new Vector3(transform.position.x, originalY, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
 
