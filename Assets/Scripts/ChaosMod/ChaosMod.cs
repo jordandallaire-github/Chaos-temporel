@@ -76,6 +76,10 @@ public class ChaosMod : MonoBehaviour
       {
             Geler,
             SlowMo,
+            DiminueTaille,
+            ChangeMaps,
+            AugmenteTaille,
+            InversementControle,
 
       };
 

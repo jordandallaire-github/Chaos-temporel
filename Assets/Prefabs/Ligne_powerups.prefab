@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpsDisponibles:
   - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
+  - {fileID: 11400000, guid: 432a59ae6a298824195cd9e7f202e37b, type: 2}
   powerUpsActuel: {fileID: 0}
   j1: {fileID: 0}
   j2: {fileID: 0}
@@ -276,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpsDisponibles:
   - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
+  - {fileID: 11400000, guid: 432a59ae6a298824195cd9e7f202e37b, type: 2}
   powerUpsActuel: {fileID: 0}
   j1: {fileID: 0}
   j2: {fileID: 0}
@@ -465,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpsDisponibles:
   - {fileID: 11400000, guid: 41cc5e669d3179542ad9dfcbe38aeea6, type: 2}
+  - {fileID: 11400000, guid: 432a59ae6a298824195cd9e7f202e37b, type: 2}
   powerUpsActuel: {fileID: 0}
   j1: {fileID: 0}
   j2: {fileID: 0}
