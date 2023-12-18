@@ -136,7 +136,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: beddd79dcbacdf64b9223f18a8dcb643, type: 2}
   - {fileID: 2100000, guid: 6b0acc8eb58d1c2479a51c37f2effc92, type: 2}
   - {fileID: 2100000, guid: 30b9d64524e5c344e8ea1f38f1333a2a, type: 2}
-  - {fileID: -8880913325637885921, guid: 733d0517a5faf6e4eb009dad1d96ffee, type: 3}
+  - {fileID: 2100000, guid: 7042be87babbf274c9ff7c13d1a9eee6, type: 2}
   - {fileID: 2100000, guid: 4f53e1aee33e5f1499a4e001c680d675, type: 2}
   - {fileID: 2100000, guid: 6bfaefe0f4e34344ab2b13f5065bc7b7, type: 2}
   - {fileID: 2100000, guid: 360ab27b1f1cf6d4f8843f15c73ec8f4, type: 2}
@@ -226,12 +226,13 @@ MonoBehaviour:
   currentPowerUp: {fileID: 0}
   hasPowerUp: 0
   detectionRange: 20
-  speed: 25
+  speed: 0
   rotationSpeed: 5
-  maxSpeed: 25
+  maxSpeed: 31
   brakeSpeed: 2
   barrelPrefab: {fileID: 3770786341897061922, guid: 1d74352087df42741a1eb467d4f3ba16, type: 3}
   emplacemementTonneau: {fileID: 688042862007637132}
+  checkpointTolerance: 0.5
   isBarrelLaunched: 0
   centreMass: {fileID: 4043095032745374506}
   checkpoints:
@@ -252,7 +253,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8599173133756819922}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 1
+  m_Radius: 2.53
   m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 50
@@ -262,7 +263,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.42
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2823652975510741587
@@ -278,7 +279,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repoussement: 10000
-  audioSource: {fileID: 0}
   isOnGround: 0
   isOnGrass: 0
   rotationSpeed: 360

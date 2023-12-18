@@ -61,7 +61,8 @@ public class IaEnnemi : MonoBehaviour {
 
         agent.stoppingDistance = 0f; // Make the AI reach exactly its destination
         GoToNextCheckpoint();
-        agent.speed = speed;
+            // Assign a random speed between 40 and 55 to the agent
+        agent.speed = UnityEngine.Random.Range(20, 31);
         
     }
 
@@ -135,10 +136,11 @@ public class IaEnnemi : MonoBehaviour {
         }
 
         void GoToNextCheckpoint() {
-            currentCheckpointIndex++;
+
 
             if (currentCheckpointIndex < checkpoints.Length) {
                 // Définir la destination de l'IA sur la position du prochain checkpoint
+                currentCheckpointIndex++;
                 agent.SetDestination(checkpoints[currentCheckpointIndex].position);
             } else {
                 hasReachedEnd = true;

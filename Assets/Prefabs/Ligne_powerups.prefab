@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6757151543777745322}
   - component: {fileID: 4046775186162332578}
   - component: {fileID: 524314372204243054}
+  - component: {fileID: 5999481536438591799}
   m_Layer: 0
   m_Name: ticket_powerup
   m_TagString: Untagged
@@ -123,6 +124,37 @@ MonoBehaviour:
   powerUpsActuel: {fileID: 0}
   j1: {fileID: 0}
   j2: {fileID: 0}
+--- !u!114 &5999481536438591799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2948225946682229615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.25666666
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 05cd5068e5d6cee44b88fd4c80115a4d, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &3462581400434659196
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +168,7 @@ GameObject:
   - component: {fileID: 8715306910875108951}
   - component: {fileID: 8585937622476356752}
   - component: {fileID: 7830406098055288423}
+  - component: {fileID: 76516401580959487}
   m_Layer: 0
   m_Name: ticket_powerup (1)
   m_TagString: Untagged
@@ -246,6 +279,37 @@ MonoBehaviour:
   powerUpsActuel: {fileID: 0}
   j1: {fileID: 0}
   j2: {fileID: 0}
+--- !u!114 &76516401580959487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3462581400434659196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.25666666
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 2d142e03c6eb2784aad9979a29b25cab, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &6901477177899072272
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +357,7 @@ GameObject:
   - component: {fileID: 1956666076027689981}
   - component: {fileID: 415430093882281641}
   - component: {fileID: 473079235449863122}
+  - component: {fileID: 5133691857742609922}
   m_Layer: 0
   m_Name: ticket_powerup (2)
   m_TagString: Untagged
@@ -403,3 +468,34 @@ MonoBehaviour:
   powerUpsActuel: {fileID: 0}
   j1: {fileID: 0}
   j2: {fileID: 0}
+--- !u!114 &5133691857742609922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7744431070121796295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -1372625422
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.25666666
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 6393f24399bd2cf438d7b8a9627e2c17, type: 2}
+  m_BuildHeightMesh: 0
