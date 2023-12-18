@@ -23,4 +23,9 @@ public class DebugScreen : MonoBehaviour
     public void OnTextChangedP2(string newPort){
         configurations.J2Port = newPort;
     }
+
+    // Quit the game
+    public void OnQuitGame(){
+        Application.Quit();
+    }
 }
