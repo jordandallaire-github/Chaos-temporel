@@ -19489,6 +19489,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 688484683260946100, guid: b4cb50d2727317e48b0b305a8539f24f, type: 3}
   m_PrefabInstance: {fileID: 447244606}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &450115163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450115164}
+  - component: {fileID: 450115165}
+  m_Layer: 3
+  m_Name: Track Material Changer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &450115164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450115163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1681878693}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &450115165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450115163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2289fa73ae461e24cb35e0201ffbed3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cartoonMaterial: {fileID: 2100000, guid: 1f48e3261a2e35841be54827c32d28ac, type: 2}
+  cyberpunkMaterial: {fileID: 2100000, guid: 00b339ef46b37424c9e024bddec5cfcc, type: 2}
+  cartoonGameObject: {fileID: 1046538817}
+  cyberpunkGameObject: {fileID: 573438949}
+  Track: {fileID: 1959075230}
 --- !u!1001 &450167736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68288,6 +68337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 450115164}
   - {fileID: 1082642774}
   - {fileID: 1273675235}
   - {fileID: 63137325}
