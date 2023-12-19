@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1032776791015220011}
   - component: {fileID: 8876168989612940448}
   - component: {fileID: 3390508631433256147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ticket_powerup (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 6757151543777745322}
   - component: {fileID: 4046775186162332578}
   - component: {fileID: 524314372204243054}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ticket_powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 8715306910875108951}
   - component: {fileID: 8585937622476356752}
   - component: {fileID: 7830406098055288423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ticket_powerup (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2961536456423535410}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ligne_powerups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 1956666076027689981}
   - component: {fileID: 415430093882281641}
   - component: {fileID: 473079235449863122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ticket_powerup (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
